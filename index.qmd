@@ -1,0 +1,16 @@
+---
+title: "Overview"
+format: html
+---
+
+## What this analysis does
+
+This analysis compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV in the United States. It uses the Scientific Registry of Transplant Recipients (SRTR) standard analysis files, which cover every transplant performed in the country.
+
+## Methods
+
+Each recipient with HIV is matched to up to ten recipients without HIV who had the same type of transplant and similar donor and recipient characteristics. Graft loss, rejection, death and cancer after transplant are then compared between the two groups. [Study design and methods](quarto/study_methods.qmd) explains each step in plain language, and the authoritative specification is the [analysis plan](quarto/analysis-plan.qmd).
+
+## Status
+
+Preliminary. The analysis plan is a draft, and the code is being rebuilt on the [sRtr](https://github.com/VagishHemmige/sRtr) package, so this site does not yet show any code or results. Open decisions are tracked in the project's [GitHub Issues](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues).

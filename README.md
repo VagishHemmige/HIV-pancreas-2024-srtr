@@ -1,0 +1,42 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- badges: start -->
+
+[![Status](https://img.shields.io/badge/status-preliminary_analysis-yellow)](#)
+[![Methods](https://img.shields.io/badge/methods-under_development-blue)](#)
+[![Not for
+Citation](https://img.shields.io/badge/use-not_for_citation-lightgrey)](#)
+<!-- [![License](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE.md) -->
+<!-- badges: end -->
+
+# Outcomes of pancreas transplantation in recipients with HIV
+
+The goal of this analysis is to compare outcomes after kidney–pancreas
+and pancreas-alone transplantation between recipients with and without
+HIV. It uses the Scientific Registry of Transplant Recipients (SRTR)
+standard analysis files, with recipients matched on a propensity score.
+
+This analysis is in progress. The repository currently holds the
+analysis plan and project structure; the code is being rebuilt on the
+[sRtr](https://github.com/VagishHemmige/sRtr) package.
+
+The full analysis website, which explains the code step by step, is
+available at: <https://vagishhemmige.github.io/HIV-pancreas-2024-srtr/>
+
+## Documentation
+
+- [`analysis-plan.md`](analysis-plan.md): what the analysis is meant to
+  do
+- `ARCHITECTURE.md`: how the code is organized (not written yet)
+- [`AGENTS.md`](AGENTS.md): how to work in this repository
+- [Issues](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues):
+  open decisions and known gaps
+
+## Running the analysis
+
+Run `R/main.R` from the project root. Requires authorized access to the
+SRTR standard analysis files under the SRTR data use agreement, located
+through the sRtr package (`sRtr::set_srtr_wd()`). No SRTR data or
+outputs derived from them are stored in this repository.
+
+<!-- Results: add only when the figures and tables are cleared for public release. -->
