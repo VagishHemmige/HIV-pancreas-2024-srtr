@@ -1,7 +1,8 @@
 # Purpose: inverse probability weights for the average effect among
 #   recipients with HIV (ATT), separately for each transplant type (plan §6),
 #   and balance after weighting.
-# Needs: cohort (07_build_outcomes.R); IPW_COVARIATES, IPW_TRUNCATE_PERCENTILE.
+# Needs: cohort (07_build_outcomes.R); IPW_COVARIATES, IPW_TRUNCATE_PERCENTILE;
+#   att_weights() and balance_table() from functions.R.
 # Produces: ipw_fit (propensity models), weighted (named list: the cohort with
 #   PS and IPW columns), balance_weighted (SMD tables).
 # DRAFT, exploratory: run through R/draft_pipeline.R, not R/main.R.

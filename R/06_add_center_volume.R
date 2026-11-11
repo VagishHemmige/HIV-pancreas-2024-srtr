@@ -1,7 +1,8 @@
 # Purpose: add transplant center volume in the transplant year, counted from
 #   whole TX_KP, TX_PA and TX_KI files, and its groups.
 # Needs: cohort (05_add_induction.R), tx_derived (03_calculate_pdri.R),
-#   tx_ki_volume (01_load_srtr_files.R); CENTER_VOLUME_BREAKS.
+#   tx_ki_volume (01_load_srtr_files.R); CENTER_VOLUME_BREAKS;
+#   center_volume() and center_volume_group() from functions.R.
 # Produces: cohort with center volume counts and groups.
 # DRAFT, exploratory: run through R/draft_pipeline.R, not R/main.R.
 

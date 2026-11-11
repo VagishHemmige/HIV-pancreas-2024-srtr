@@ -1,6 +1,7 @@
 # Purpose: match recipients with HIV to recipients without HIV on a propensity
 #   score, separately for each transplant type (plan §6), and report balance.
-# Needs: cohort (07_build_outcomes.R); MATCHING_VARIABLES, MATCH_* constants.
+# Needs: cohort (07_build_outcomes.R); MATCHING_VARIABLES, MATCH_* constants;
+#   balance_table() from functions.R.
 # Produces: match_fit (MatchIt objects), matched (named list of matched data,
 #   with `weights` and `subclass` from MatchIt), balance_matched (SMD tables).
 # DRAFT, exploratory: run through R/draft_pipeline.R, not R/main.R.

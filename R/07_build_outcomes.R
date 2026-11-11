@@ -1,7 +1,8 @@
 # Purpose: build the six outcomes (plan §7) as time from transplant, event
 #   indicator and censor date, using sRtr's death and time-to-event helpers.
 # Needs: cohort (06_add_center_volume.R); OUTCOMES, OUTCOME_TIME_UNITS,
-#   REJECTION_TREATED_CODE, KP_DEATH_CENSOR_DATE.
+#   REJECTION_TREATED_CODE, KP_DEATH_CENSOR_DATE; srtr_code() and
+#   add_followup_dates() from functions.R.
 # Produces: cohort with, for each outcome, <OUTCOME>_CENSOR, <OUTCOME>_BINARY
 #   and <OUTCOME>_yrs.
 # DRAFT, exploratory: run through R/draft_pipeline.R, not R/main.R.

@@ -3,7 +3,7 @@ title: "Functions"
 format: html
 ---
 
-This script defines the helper functions used by the analysis scripts. Several stand in for sRtr functions that are planned but not yet written; each names the sRtr issue that will replace it. Every function is tested on synthetic data in `tests/testthat/test-functions.R`.
+This script defines the helper functions used by the analysis scripts. Several stand in for sRtr functions that are planned but not yet written; each names the sRtr issue that will replace it. Every function is tested on synthetic data in [`tests/testthat/test-functions.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/tests/testthat/test-functions.R). Each section ends by linking the scripts that use it; those scripts are still exploratory, so they link to GitHub rather than to pages of their own.
 
 ::: {.Rcode title="Source code"}
 The full R script is available at:
@@ -33,6 +33,8 @@ sRtr labels coded values as "code: meaning". This function returns the numeric c
 #| eval: false
 ```
 
+**Used in:** [`R/02_derive_variables.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/R/02_derive_variables.R), [`R/07_build_outcomes.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/R/07_build_outcomes.R).
+
 ## Diagnosis group
 
 Groups the primary diagnosis into type 1 diabetes, type 2 diabetes and other, using the codes in the plan. It will move to the planned sRtr code-grouping function ([sRtr#2](https://github.com/VagishHemmige/sRtr/issues/2)).
@@ -41,6 +43,8 @@ Groups the primary diagnosis into type 1 diabetes, type 2 diabetes and other, us
 #| label: diagnosis-group
 #| eval: false
 ```
+
+**Used in:** [`R/02_derive_variables.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/R/02_derive_variables.R).
 
 ## Missing preservation time
 
@@ -53,6 +57,8 @@ Fills missing pancreas preservation time before the PDRI is calculated, by one o
 #| eval: false
 ```
 
+**Used in:** [`R/03_calculate_pdri.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/R/03_calculate_pdri.R).
+
 ## Center volume
 
 Counts transplants per center per calendar year from a whole transplant file, optionally within a subgroup such as recipients with HIV, and groups the counts by cut-points. It will move to sRtr ([sRtr#52](https://github.com/VagishHemmige/sRtr/issues/52)).
@@ -61,6 +67,8 @@ Counts transplants per center per calendar year from a whole transplant file, op
 #| label: center-volume
 #| eval: false
 ```
+
+**Used in:** [`R/06_add_center_volume.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/R/06_add_center_volume.R).
 
 ## Induction therapy
 
@@ -73,6 +81,8 @@ Flags, for each transplant, whether it received each class of induction drug.
 #| eval: false
 ```
 
+**Used in:** [`R/05_add_induction.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/R/05_add_induction.R).
+
 ## Weights for the average effect among recipients with HIV
 
 Inverse probability weights for the plan's estimand: 1 for recipients with HIV, and the propensity score divided by one minus it for recipients without HIV, with optional truncation.
@@ -84,6 +94,8 @@ Inverse probability weights for the plan's estimand: 1 for recipients with HIV, 
 #| eval: false
 ```
 
+**Used in:** [`R/09_estimate_weights.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/R/09_estimate_weights.R).
+
 ## Balance
 
 Standardized mean differences between recipients with and without HIV, with or without weights, for each variable or each level of a categorical variable.
@@ -92,6 +104,8 @@ Standardized mean differences between recipients with and without HIV, with or w
 #| label: weighted-smd
 #| eval: false
 ```
+
+**Used in:** [`R/08_match_recipients.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/R/08_match_recipients.R), [`R/09_estimate_weights.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/R/09_estimate_weights.R).
 
 ## Concentration across centers
 
@@ -102,6 +116,8 @@ Points of a Lorenz curve and the Gini coefficient for counts across transplant c
 #| eval: false
 ```
 
+**Used in:** [`R/figures.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/R/figures.R).
+
 ## Follow-up dates
 
 First rejection and malignancy dates from the follow-up files through sRtr, with the output columns fixed so they do not depend on which organs had a rejection ([sRtr#16](https://github.com/VagishHemmige/sRtr/issues/16)).
@@ -110,3 +126,5 @@ First rejection and malignancy dates from the follow-up files through sRtr, with
 #| label: followup-dates
 #| eval: false
 ```
+
+**Used in:** [`R/07_build_outcomes.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/R/07_build_outcomes.R).

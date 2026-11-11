@@ -2,7 +2,8 @@
 #   tables, transplants in recipients with HIV by UNOS region, Lorenz curves
 #   of concentration across centers, and transplants and centers per year.
 # Needs: cohort_fc (04_build_cohort.R), km_fit (10_fit_outcome_models.R),
-#   tx_derived (03_calculate_pdri.R); FIGURES_DIR and related constants.
+#   tx_derived (03_calculate_pdri.R); FIGURES_DIR and related constants;
+#   lorenz_points() and gini_coefficient() from functions.R.
 # Produces: image files in figures/ (gitignored). Counts in risk tables,
 #   flowchart boxes and the regional map must pass the SRTR small-cell rule
 #   before anything leaves the approved environment (decision pending: #15).
