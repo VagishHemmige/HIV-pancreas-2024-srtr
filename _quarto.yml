@@ -56,23 +56,20 @@ website:
         text: Study design and methods
         icon: diagram-3
 
-      # Add when the first definitive scripts exist, one page per script:
-      # - section: Code
-      #   contents:
-      #     - section: Setup and helper functions
-      #       contents:
-      #         - href: quarto/setup.qmd
-      #           text: Setup
-      #           icon: laptop
-      #         - href: quarto/functions.qmd
-      #           text: Functions
-      #           icon: laptop
-      #     # One numbered page per definitive script, in the order main.R sources them.
-      #     - section: Data processing and analysis
-      #       contents:
-      #         - href: quarto/<script>.qmd
-      #           text: 1. <Step>
-      #           icon: laptop
+      - section: Code
+        contents:
+          - section: Setup and helper functions
+            contents:
+              - href: quarto/setup.qmd
+                text: Setup
+                icon: laptop
+              - href: quarto/functions.qmd
+                text: Functions
+                icon: laptop
+          # One numbered page per definitive script, in the order main.R
+          # sources them. The draft scripts 01-08, tables.R and figures.R are
+          # exploratory (run by R/draft_pipeline.R) and get pages when they
+          # move into main.R.
 
       # Add when outputs are cleared for release (references/quarto.md, "Pages"):
       # - section: Results

@@ -1,0 +1,41 @@
+---
+title: "Setup"
+format: html
+---
+
+This script attaches the packages and defines the constants every other script uses. It is a draft: constants that depend on an open decision hold a provisional value and name the decision issue.
+
+::: {.Rcode title="Source code"}
+The full R script is available at:
+
+-   [`R/setup.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/R/setup.R)
+
+The code sections below are imported directly from that script when this page is rendered.
+:::
+
+```{r}
+#| include: false
+#| eval: true
+#| cache: false
+knitr::read_chunk("../R/setup.R")
+```
+
+## Packages
+
+The SRTR files are loaded and labelled through [sRtr](https://github.com/VagishHemmige/sRtr), which also provides the PDRI, composite death date and time-to-event helpers. The cohort is built with flowchart so the flow diagram and the analytic data come from the same code; matching uses MatchIt; outcome models use survival; tables use gtsummary and survival curves ggsurvfit.
+
+```{r}
+#| label: load-packages
+#| eval: false
+```
+
+## Constants
+
+Every value a reader might want to change is named here: the transplant types, the age limit, the code lists for diagnosis and induction, the center-volume cut-points, the matching settings, the outcomes, and the output folders. The constants confirmed in the [analysis plan](analysis-plan.qmd) are fixed; the others are provisional.
+
+**Decision pending:** several constants hold provisional values until their decisions are made: the release ([#8](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/8)), HIV status ([#9](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/9)), missing preservation time ([#10](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/10)), induction ([#11](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/11)), balance ([#12](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/12)), censoring ([#13](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/13)), the matched model ([#14](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/14)), the small-cell rule ([#15](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/15)) and weighting ([#21](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/21)).
+
+```{r}
+#| label: define-constants
+#| eval: false
+```
