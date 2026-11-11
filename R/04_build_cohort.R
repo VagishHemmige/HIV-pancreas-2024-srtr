@@ -14,7 +14,7 @@ cohort_labels <- list(
   start = "Transplants in the SRTR file",
   no_tx_date = "Transplant date recorded",
   age = stringr::str_glue("Age {MIN_AGE_AT_TRANSPLANT} or older at transplant"),
-  followup = "Any follow-up recorded",
+  followup = "Patient status date recorded",
   pdri = "PDRI could be calculated"
 )
 

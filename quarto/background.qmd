@@ -1,0 +1,20 @@
+---
+title: "Clinical background"
+format: html
+---
+
+## Transplantation in people with HIV
+
+With effective antiretroviral therapy, transplantation has become standard care for people with HIV who have end-stage kidney or liver disease. Guidelines from the American Society of Transplantation note that the evidence for other organs, pancreas included, is thinner, though transplantation there is also thought likely to be safe and effective [@blumberg2019astid]. The same guidelines describe HIV as usually staying well controlled after transplant, with infection risks similar to those of recipients without HIV, but rejection rates that are higher despite stronger immunosuppression. Interactions between antiretroviral drugs and immunosuppressants are an important part of care, and regimens based on integrase inhibitors are preferred because they avoid interactions with calcineurin and mTOR inhibitors [@blumberg2019astid].
+
+The largest prospective evidence comes from kidney transplantation. In a multicenter study of 150 kidney recipients with well-controlled HIV, patient and graft survival at one and three years were high, but rejection was more common than expected [@stock2010kidney].
+
+## Pancreas transplantation in people with HIV
+
+Early reports of pancreas transplantation in people with HIV described frequent early graft loss. A single-center series of ten recipients with HIV and type 1 diabetes with kidney failure, who received an islet or pancreas transplant together with or after a kidney transplant, reported low rates of infectious complications, early graft loss and rejection over long follow-up [@roll2020beta].
+
+A national study using United Network for Organ Sharing data from 2001 to 2021 compared 50 pancreas recipients with HIV with more than 16,000 without HIV. Recipients with HIV were more often male, Black and covered by Medicare. Pancreas graft survival and patient survival did not differ between the groups, and neither did waiting time or treatment for rejection in the first year [@bharadwaj2024pancreas].
+
+## What remains uncertain
+
+Because so few people with HIV receive pancreas transplants, published comparisons have small numbers of recipients with HIV, and recipients with and without HIV differ in their own and their donors' characteristics. This study compares them after matching or weighting on those characteristics, separately for kidney–pancreas and pancreas-alone transplants, and adds outcomes such as rejection and cancer. The [study design and methods](study_methods.qmd) page explains how.

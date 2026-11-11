@@ -3,14 +3,18 @@ title: "Overview"
 format: html
 ---
 
+## Clinical background
+
+Transplantation is now standard care for people with HIV and end-stage kidney or liver disease, but there is less evidence for pancreas transplantation [@blumberg2019astid]. A national registry study of pancreas transplants from 2001 to 2021 found similar pancreas graft and patient survival in recipients with and without HIV [@bharadwaj2024pancreas]. The [clinical background](quarto/background.qmd) page gives more detail.
+
 ## What this analysis does
 
 This analysis compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV in the United States. It uses the Scientific Registry of Transplant Recipients (SRTR) standard analysis files, which cover every transplant performed in the country.
 
 ## Methods
 
-Each recipient with HIV is matched to up to ten recipients without HIV who had the same type of transplant and similar donor and recipient characteristics. Graft loss, rejection, death and cancer after transplant are then compared between the two groups. [Study design and methods](quarto/study_methods.qmd) explains each step in plain language, and the authoritative specification is the [analysis plan](quarto/analysis-plan.qmd).
+Recipients with HIV are compared with similar recipients without HIV of the same transplant type in two ways: by matching each to up to ten recipients without HIV, and by weighting all recipients without HIV to resemble those with HIV. Graft loss, rejection, death and cancer after transplant are then compared. [Study design and methods](quarto/study_methods.qmd) explains each step in plain language, and the authoritative specification is the [analysis plan](quarto/analysis-plan.qmd).
 
 ## Status
 
-Preliminary. The analysis plan is a draft, and the code is being rebuilt on the [sRtr](https://github.com/VagishHemmige/sRtr) package, so this site does not yet show any code or results. Open decisions are tracked in the project's [GitHub Issues](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues).
+Preliminary. The analysis plan is a draft with several decisions still open, and a draft of the code exists but has not yet been run on SRTR data. This site shows the shared setup and helper code; pages for the analysis steps are added as each step is settled. No results are shown. Open decisions are tracked in the project's [GitHub Issues](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues).

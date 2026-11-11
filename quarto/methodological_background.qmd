@@ -1,0 +1,31 @@
+---
+title: "Methodological background"
+format: html
+---
+
+This page explains the general methods the study relies on. What this study chose is on [Study design and methods](study_methods.qmd).
+
+## The registry data
+
+The Scientific Registry of Transplant Recipients (SRTR) standard analysis files hold a record of every solid-organ transplant in the United States, built from forms that transplant centers submit. A transplant form describes the recipient, the donor and the hospital stay; follow-up forms are submitted at set intervals afterwards and record events such as rejection, graft failure, cancer and death. Because events on follow-up forms are reported at the next form, the date attached to them is often the date of the form rather than of the event itself. Deaths are also identified from other sources, such as Social Security records, which can find deaths after a recipient's last follow-up form.
+
+## Donor quality: the pancreas donor risk index
+
+The pancreas donor risk index (PDRI) summarizes how the characteristics of a deceased donor, and how long the pancreas was preserved before transplant, relate to the risk that the pancreas graft fails. It was developed from national registry data on pancreas transplants, and a higher value means a higher expected risk of graft failure [@axelrod2010pdri].
+
+## Comparing groups that differ: propensity scores
+
+In an observational study, people with and without an exposure (here, HIV) differ in other ways that also affect outcomes. The propensity score is each person's probability of having the exposure given their measured characteristics. People with similar scores have, on average, similar measured characteristics, whether or not they have the exposure [@austin2011ps]. Two common ways of using it are:
+
+- **Matching:** pairing each exposed person with one or more unexposed people with a similar score, then comparing the matched groups.
+- **Inverse probability weighting:** keeping everyone and weighting each person so that the weighted groups resemble each other, or resemble a chosen target group.
+
+Both methods target a particular average effect. The effect among the exposed (the average treatment effect in the treated) asks what difference the exposure makes for people like those who have it; the effect in everyone (the average treatment effect) asks the same for the whole population. Matching each exposed person to unexposed people, and weighting for the exposed group, both target the effect among the exposed [@austin2011ps].
+
+Whether the score did its job is checked by comparing the groups' characteristics after matching or weighting, usually with the standardized mean difference, the difference in means divided by a standard deviation, rather than with significance tests [@austin2011ps]. No propensity-score method balances characteristics that were not measured.
+
+## Time-to-event outcomes
+
+Graft loss, rejection, death and cancer are analysed as the time from transplant until the event. People whose follow-up ends before the event are censored: they count as event-free up to their last known follow-up. Kaplan–Meier curves estimate the proportion still free of the event over time, and Cox proportional hazards models estimate the hazard ratio, how much higher or lower the event rate is in one group than in another.
+
+When another event prevents the outcome from being observed, most often death before graft loss, the analysis has to say how that event is treated: as the end of follow-up, as part of the outcome, or as a competing event analysed alongside it. Each answers a different question.

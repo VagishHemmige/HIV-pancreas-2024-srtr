@@ -27,7 +27,7 @@ available at: <https://vagishhemmige.github.io/HIV-pancreas-2024-srtr/>
 
 - [`analysis-plan.md`](analysis-plan.md): what the analysis is meant to
   do
-- `ARCHITECTURE.md`: how the code is organized (not written yet)
+- [`ARCHITECTURE.md`](ARCHITECTURE.md): how the code is organized
 - [`AGENTS.md`](AGENTS.md): how to work in this repository
 - [Issues](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues):
   open decisions and known gaps

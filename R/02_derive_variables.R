@@ -2,8 +2,8 @@
 #   HIV status, diagnosis group, recipient Black race, year of transplant and
 #   waiting time; and copy the pancreas-alone date columns to the
 #   kidney-pancreas names.
-# Needs: tx_raw (01_load_srtr_files.R); constants and helpers from setup.R
-#   and functions.R.
+# Needs: tx_raw (01_load_srtr_files.R); constants from setup.R; srtr_code()
+#   and diagnosis_group() from functions.R.
 # Produces: tx_derived, a named list (KP, PA) with the new columns.
 # DRAFT, exploratory: run through R/draft_pipeline.R, not R/main.R.
 
