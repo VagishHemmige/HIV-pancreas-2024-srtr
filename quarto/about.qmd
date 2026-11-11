@@ -1,0 +1,35 @@
+---
+title: "About"
+format: html
+---
+
+## The study
+
+This study compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV, using the Scientific Registry of Transplant Recipients. It is preliminary: the analysis plan is a draft, and no results are published here.
+
+-   **Vagish Hemmige** (study design and analysis)
+
+Vagish Hemmige makes the scientific decisions for the project. Open decisions are listed in the project's [GitHub Issues](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues).
+
+## This repository
+
+The analysis will run as a series of scripts, sourced in order by `R/main.R`, that load the SRTR files through the [sRtr](https://github.com/VagishHemmige/sRtr) package. SRTR data are available only to authorized users under the SRTR data use agreement, so neither the data nor any output derived from them is stored in this repository.
+
+Contributions follow the rules in [`AGENTS.md`](agents.qmd); known issues and open decisions are tracked in [Issues](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues).
+
+## How this website was created
+
+The site is built with [Quarto](https://quarto.org) from the analysis scripts themselves. Each code page imports the labelled sections of its script from `R/` and shows them with an explanation; the site never runs the analysis, so it is built without the analysis data. A GitHub Actions workflow renders the site and publishes it whenever the main branch changes.
+
+The repository was set up with the R Analysis Workflow plugin and an AI assistant (Claude). AI assistants work under the rules in `AGENTS.md`: they never read SRTR data, they write and test code on synthetic data only, and scientific decisions stay with the investigator.
+
+Four documents describe the project. In short: the plan is the scientific intent, the architecture is the workflow as implemented, and `AGENTS.md` holds the rules for working together.
+
+-   [**Analysis plan**](analysis-plan.qmd): *what the analysis is meant to do, and why.* The question, the population, the methods, and the open decisions. Code implements it and does not redefine it.
+-   [**Architecture**](architecture.qmd): *how the code does it.* The scripts, the order they run in, what each needs and produces, and how data flow between them. Not written yet.
+-   [**AGENTS.md**](agents.qmd): *how people and AI assistants work on the project.* Rules for restricted data, coding, checks, proposing changes and getting a person's approval.
+-   [**Repository blueprint**](repository-blueprint.qmd): *the layout every project of this kind starts from*, which the architecture document then describes as built.
+
+## Pages
+
+-   [**Study design and methods**](study_methods.qmd): what the study chose and why, in plain language, with the decisions still open.

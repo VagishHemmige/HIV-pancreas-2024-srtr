@@ -1,0 +1,42 @@
+---
+title: "Study design and methods"
+format: html
+---
+
+This page explains, in plain language and without code, what this study chose and why. The formal specification is the [analysis plan](analysis-plan.qmd); each section below ends by linking the part of the plan that governs it. Three kinds of note mark where the description stands:
+
+- **Specified in:** the section of the analysis plan that defines the method.
+- **Current code:** where the code does not yet do what the plan says, what it does now, with a link to the GitHub issue tracking the difference.
+- **Decision pending:** a choice the plan has not yet made, linked to its decision issue. A paragraph that starts with **Decision pending:** is highlighted in yellow automatically.
+
+## The question and the design in brief
+
+This study uses the national transplant registry to compare outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV. Because recipients with HIV may differ from others in their donors and their own characteristics, each recipient with HIV is compared with similar recipients without HIV rather than with everyone. Kidney–pancreas and pancreas-alone transplants are studied separately, because their risks differ.
+
+**Specified in:** [§1 Objective](analysis-plan.qmd#1-objective) and [§2 Design](analysis-plan.qmd#2-design).
+
+**Decision pending:** which outcome is primary ([#7](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/7)).
+
+## Who is included
+
+Adults and adolescents aged 16 or older who received a kidney–pancreas or pancreas-alone transplant and have at least some follow-up in the registry. Recipients are counted as having HIV if the registry records a positive HIV test at transplant.
+
+**Specified in:** [§4 Study population](analysis-plan.qmd#4-study-population) and [§5 Exposure and time zero](analysis-plan.qmd#5-exposure-and-time-zero).
+
+**Decision pending:** how recipients whose HIV status is missing or unknown are classified ([#9](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/9)).
+
+## Finding comparable recipients without HIV
+
+Each recipient with HIV is matched to up to ten recipients without HIV, using a score that summarizes how likely a recipient was to have HIV given the quality of the donated pancreas (the pancreas donor risk index), the year of transplant, the cause of diabetes, and the recipient's age, sex and race.
+
+**Specified in:** [§6 Comparator or matching](analysis-plan.qmd#6-comparator-or-matching).
+
+**Decision pending:** how close the matched groups must be before the comparison goes ahead ([#12](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/12)).
+
+## What is compared
+
+Loss of the kidney or pancreas graft, treated rejection of each organ, death, and cancer after transplant, each followed from the day of transplant.
+
+**Specified in:** [§7 Outcomes](analysis-plan.qmd#7-outcomes) and [§8 Statistical analysis](analysis-plan.qmd#8-statistical-analysis).
+
+**Decision pending:** when follow-up stops for each outcome, for example whether graft loss is still counted after death ([#13](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/13)).

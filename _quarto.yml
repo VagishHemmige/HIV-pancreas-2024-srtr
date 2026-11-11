@@ -1,0 +1,150 @@
+# Requires the custom-callout extension (committed in _extensions/).
+# The Project documents pages include analysis-plan.md, AGENTS.md and
+# REPOSITORY-BLUEPRINT.md from the repository root, so those files must exist
+# before the site renders. Until ARCHITECTURE.md is written, its page says so.
+project:
+  type: website
+  output-dir: docs
+  # Only the site's pages. Without this list Quarto also renders the root .md
+  # files (analysis-plan.md, ARCHITECTURE.md, ...) as pages outside the
+  # sidebar; they are shown through the Project documents pages instead.
+  render:
+    - index.qmd
+    - 404.qmd
+    - quarto/**
+
+bibliography: references.bib
+
+author:
+  - name: "Vagish Hemmige"
+
+website:
+  title: "HIV and pancreas transplantation"
+  site-url: https://vagishhemmige.github.io/HIV-pancreas-2024-srtr
+  repo-url: https://github.com/VagishHemmige/HIV-pancreas-2024-srtr
+  repo-branch: main
+  repo-actions: [edit, issue]
+  page-navigation: true
+
+  # Each kind of page has one icon, coloured in styles.css (references/quarto.md,
+  # "Visual cues"): book = background, diagram-3 = study design and methods,
+  # laptop = R code, clipboard-data = results, file-earmark-ruled = project
+  # documents.
+  sidebar:
+    style: docked
+    # Every section starts open, including those inside Code
+    collapse-level: 3
+    search: true
+    contents:
+      - href: index.qmd
+        text: Home
+        icon: house
+
+      # Background pages (clinical and methodological) are added when written:
+      # - section: Background
+      #   contents:
+      #     - href: quarto/background.qmd
+      #       text: Clinical background
+      #       icon: book
+      #     - href: quarto/methodological_background.qmd
+      #       text: Methodological background
+      #       icon: book
+
+      # One page to start; when it grows, split it into a section of pages
+      # (references/quarto.md, "Pages").
+      - href: quarto/study_methods.qmd
+        text: Study design and methods
+        icon: diagram-3
+
+      # Add when the first definitive scripts exist, one page per script:
+      # - section: Code
+      #   contents:
+      #     - section: Setup and helper functions
+      #       contents:
+      #         - href: quarto/setup.qmd
+      #           text: Setup
+      #           icon: laptop
+      #         - href: quarto/functions.qmd
+      #           text: Functions
+      #           icon: laptop
+      #     # One numbered page per definitive script, in the order main.R sources them.
+      #     - section: Data processing and analysis
+      #       contents:
+      #         - href: quarto/<script>.qmd
+      #           text: 1. <Step>
+      #           icon: laptop
+
+      # Add when outputs are cleared for release (references/quarto.md, "Pages"):
+      # - section: Results
+      #   contents:
+      #     - href: quarto/results.qmd
+      #       text: Main results
+      #       icon: clipboard-data
+
+      - section: Project documents
+        contents:
+          - href: quarto/analysis-plan.qmd
+            text: Analysis plan
+            icon: file-earmark-ruled
+          - href: quarto/architecture.qmd
+            text: Architecture
+            icon: file-earmark-ruled
+          - href: quarto/agents.qmd
+            text: AGENTS.md
+            icon: file-earmark-ruled
+          - href: quarto/repository-blueprint.qmd
+            text: Repository blueprint
+            icon: file-earmark-ruled
+
+      - href: quarto/about.qmd
+        text: About
+        icon: info-circle
+
+# Each kind of content has one callout, in its kind's colour: Rcode for code,
+# Results for results, Pending for provisional content (added by
+# quarto/_pending.lua).
+custom-callout:
+  Rcode:
+    icon: true
+    icon-symbol: "💻"
+    color: "#d63384"
+  Results:
+    icon: true
+    icon-symbol: "📊"
+    color: "#198754"
+  Pending:
+    icon: true
+    icon-symbol: "⏳"
+    color: "#f0c400"
+
+filters:
+  # Yellow marks for provisional content, and their Pending callout. It runs
+  # before custom-callout, which turns the callout it adds into a styled box.
+  - quarto/_pending.lua
+  - custom-callout
+  # Optional reader comments, filed as GitHub issues: see references/quarto.md,
+  # "Reader comments". Uncomment with the issue-comments block below.
+  # - issue-comments
+
+# issue-comments:
+#   endpoint: https://script.google.com/macros/s/XXXXXXXX/exec
+#   contact: mailto:author@example.org
+#   passcode: true
+#   # owner: defaults to the first author; text: replaces any wording readers see
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    code-fold: true
+    code-tools: true
+    page-layout: full
+    code-summary: "Click to show/hide R Code"
+
+# The site shows code; it never runs the analysis. Only these chunks set
+# eval: true: the read_chunk() imports, the Architecture page's chunk that
+# reads ARCHITECTURE.md, site helpers that read code or text, and results
+# pages that read outputs cleared for release.
+execute:
+  eval: false
