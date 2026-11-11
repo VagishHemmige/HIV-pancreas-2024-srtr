@@ -26,12 +26,14 @@ The repository was set up with the R Analysis Workflow plugin and an AI assistan
 Four documents describe the project. In short: the plan is the scientific intent, the architecture is the workflow as implemented, and `AGENTS.md` holds the rules for working together.
 
 -   [**Analysis plan**](analysis-plan.qmd): *what the analysis is meant to do, and why.* The question, the population, the methods, and the open decisions. Code implements it and does not redefine it.
--   [**Architecture**](architecture.qmd): *how the code does it.* The scripts, the order they run in, what each needs and produces, and how data flow between them. Not written yet.
+-   [**Architecture**](architecture.qmd): *how the code does it.* The scripts, the order they run in, what each needs and produces, and how data flow between them.
 -   [**AGENTS.md**](agents.qmd): *how people and AI assistants work on the project.* Rules for restricted data, coding, checks, proposing changes and getting a person's approval.
 -   [**Repository blueprint**](repository-blueprint.qmd): *the layout every project of this kind starts from*, which the architecture document then describes as built.
 
 ## Pages
 
+-   [**Clinical background**](background.qmd): transplantation in people with HIV, and what is known about pancreas transplantation in particular.
+-   [**Methodological background**](methodological_background.qmd): the registry data, the pancreas donor risk index, propensity-score matching and weighting, and time-to-event outcomes.
 -   [**Study design and methods**](study_methods.qmd): what the study chose and why, in plain language, with the decisions still open.
 -   [**Setup**](setup.qmd): packages and shared constants, including the provisional values of open decisions.
 -   [**Functions**](functions.qmd): reusable helper functions, each tested on synthetic data.

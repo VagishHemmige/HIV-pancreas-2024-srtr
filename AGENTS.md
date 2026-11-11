@@ -7,7 +7,7 @@ Four places divide the documentation:
 | Where | Covers |
 |---|---|
 | `analysis-plan.md` | Study design and statistics: what the analysis is meant to do |
-| `ARCHITECTURE.md` | Code structure: scripts, data flow, and the objects passed between them (not written yet) |
+| `ARCHITECTURE.md` | Code structure: scripts, data flow, and the objects passed between them |
 | `AGENTS.md` (this file) | How to work in the repository: rules, conventions, and checks |
 | [GitHub Issues](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues) | Open scientific decisions (decision issues), gaps between code and plan, and known defects |
 
@@ -84,7 +84,7 @@ Label analysis variables with human-readable descriptions (`sRtr::apply_srtr_var
 
 The site documents the code. It does not run the analysis.
 
-- `_quarto.yml`, `index.qmd`, `404.qmd` (the page GitHub Pages shows for a missing address) and `styles.css` sit at the root; `quarto/` has one page per definitive script, named after it, plus the Study design and methods, About and project-document pages. The `custom-callout` extension in `_extensions/` provides the `Rcode`, `Results` and `Pending` callouts. Background pages are added when written.
+- `_quarto.yml`, `index.qmd`, `404.qmd` (the page GitHub Pages shows for a missing address) and `styles.css` sit at the root; `quarto/` has one page per definitive script, named after it, plus the Background, Study design and methods, About and project-document pages. The `custom-callout` extension in `_extensions/` provides the `Rcode`, `Results` and `Pending` callouts.
 - **Visual cues.** Each kind of page has one sidebar icon, coloured by `styles.css`, and pages mark the same kind of content with the callout of that colour: background `book` (blue); study design and methods `diagram-3` (orange); R code `laptop` (pink, `Rcode` 💻); results `clipboard-data` (green, `Results` 📊); project documents `file-earmark-ruled` (grey). Give every new page the icon of its kind.
 - **Provisional content.** `quarto/_pending.lua` highlights in yellow every paragraph that starts with **Decision pending:** or, in the plan, **Open:**, and any `[text]{.pending}`, and adds a ⏳ `Pending` callout to pages that have a mark. Mark only what an open decision could change, and remove the mark when the decision is settled.
 - **Project documents.** `analysis-plan.md`, `ARCHITECTURE.md`, `AGENTS.md` and `REPOSITORY-BLUEPRINT.md` are shown on the site by pages in `quarto/` that only include the root file, which stays the one source: edit the root file, not the page.

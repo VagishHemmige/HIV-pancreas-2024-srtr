@@ -65,9 +65,11 @@ Exclusions, in order (each is one flowchart step), applied separately to each tr
 
 1. No transplant date (`REC_TX_DT` missing).
 2. Age at transplant under 16 years (`REC_AGE_AT_TX` < 16).
-3. No follow-up information (`REC_PX_STAT_DT` missing), meaning the transplant was too
-   recent to contribute follow-up.
-4. Pancreas donor risk index (PDRI) cannot be calculated ([§5](#5-exposure-and-time-zero)).
+3. No patient status date (`REC_PX_STAT_DT`, "Patient Status/Date" in the SRTR
+   dictionary, missing). The reason a status date is missing is not documented.
+4. Pancreas donor risk index (PDRI) cannot be calculated ([§5](#5-exposure-and-time-zero)),
+   which depends on how missing preservation time is handled
+   ([#10](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/10)).
 
 Index event: the transplant. Transplant period: every transplant in the release.
 

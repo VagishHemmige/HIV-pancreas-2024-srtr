@@ -40,15 +40,14 @@ website:
         text: Home
         icon: house
 
-      # Background pages (clinical and methodological) are added when written:
-      # - section: Background
-      #   contents:
-      #     - href: quarto/background.qmd
-      #       text: Clinical background
-      #       icon: book
-      #     - href: quarto/methodological_background.qmd
-      #       text: Methodological background
-      #       icon: book
+      - section: Background
+        contents:
+          - href: quarto/background.qmd
+            text: Clinical background
+            icon: book
+          - href: quarto/methodological_background.qmd
+            text: Methodological background
+            icon: book
 
       # One page to start; when it grows, split it into a section of pages
       # (references/quarto.md, "Pages").
