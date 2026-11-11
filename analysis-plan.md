@@ -29,13 +29,14 @@ Outcomes are listed in [§7](#7-outcomes).
 
 ## 2. Design
 
-Retrospective cohort study using registry data. Recipients with HIV are matched to recipients
-without HIV on a propensity score ([§6](#6-comparator-or-matching)). Kidney–pancreas and
-pancreas-alone transplants are analysed separately.
+Retrospective cohort study using registry data. Recipients with HIV are compared with
+recipients without HIV in two ways, both based on a propensity score
+([§6](#6-comparator-or-matching)): matching, and inverse probability weighting.
+Kidney–pancreas and pancreas-alone transplants are analysed separately.
 
 The estimand is the average effect of HIV status among recipients with HIV (the average
 treatment effect in the treated, ATT), as implied by matching each recipient with HIV to
-recipients without HIV.
+recipients without HIV. The weights target the same estimand.
 
 ## 3. Data source
 
@@ -117,6 +118,15 @@ Index event: the transplant. Transplant period: every transplant in the release.
   **Open:** balance criteria (for example a standardized mean difference threshold) and what
   happens if they are not met ([#12](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/12)).
 
+- **Inverse probability weighting:** a propensity score from logistic regression, estimated
+  separately for each transplant type, with weights for the average effect among recipients
+  with HIV: 1 for recipients with HIV, and the propensity score divided by one minus it for
+  recipients without HIV.
+
+  **Open:** the covariates in the weighting model, whether weighting is a main or a
+  supporting analysis alongside matching, and how weights are stabilized or truncated
+  ([#21](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/21)).
+
 ## 7. Outcomes
 
 Each outcome is measured from transplant. Follow-up ends at the organ's last follow-up date
@@ -144,12 +154,17 @@ follow-up are handled ([#13](https://github.com/VagishHemmige/HIV-pancreas-2024-
 ## 8. Statistical analysis
 
 - **Descriptive:** characteristics of recipients with and without HIV, before and after
-  matching, including each matching variable and missingness.
+  matching and after weighting, including each matching variable and missingness.
 - **Primary model:** Kaplan–Meier curves and Cox proportional hazards models of each outcome
   by HIV status in the matched cohort.
 
   **Open:** how the matched design enters the model (for example robust variance clustered by
   matched set) and whether covariates are added ([#14](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/14)).
+
+- **Weighted analysis:** weighted Kaplan–Meier curves and weighted Cox models of each outcome
+  by HIV status in the full cohort, using the weights in [§6](#6-comparator-or-matching).
+  Whether this is a main or a supporting analysis is open
+  ([#21](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/21)).
 
 - **Secondary analyses:**
   - infection-related graft loss in the first year ([#1](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/1));
