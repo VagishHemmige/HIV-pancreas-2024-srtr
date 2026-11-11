@@ -112,7 +112,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 <style>
+div.callout-Pending.callout {
+  border-left-color: #f0c400;
+}
+div.callout-Pending.callout-style-default > .callout-header {
+  background-color: rgba(240, 196, 0, 0.13);
+}
+div.callout-Pending .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pending.callout-titled .callout-icon::before {
+  content: '⏳';
+  background-image: none;
+}
 div.callout-Results.callout {
   border-left-color: #198754;
 }
@@ -133,17 +147,6 @@ div.callout-Rcode.callout-style-default > .callout-header {
 div.callout-Rcode .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
 div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode.callout-titled .callout-icon::before {
   content: '💻';
-  background-image: none;
-}
-div.callout-Pending.callout {
-  border-left-color: #f0c400;
-}
-div.callout-Pending.callout-style-default > .callout-header {
-  background-color: rgba(240, 196, 0, 0.13);
-}
-div.callout-Pending .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pending.callout-titled .callout-icon::before {
-  content: '⏳';
   background-image: none;
 }
 </style>
@@ -193,6 +196,28 @@ div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pen
  <span class="menu-text">Home</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Background</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../quarto/background.html" class="sidebar-item-text sidebar-link"><i class="bi bi-book" role="img">
+</i> 
+ <span class="menu-text">Clinical background</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../quarto/methodological_background.html" class="sidebar-item-text sidebar-link"><i class="bi bi-book" role="img">
+</i> 
+ <span class="menu-text">Methodological background</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../quarto/study_methods.html" class="sidebar-item-text sidebar-link"><i class="bi bi-diagram-3" role="img">
@@ -202,16 +227,16 @@ div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pen
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text" id="quarto-sidebar-section-1-label">Code</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Code</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text" id="quarto-sidebar-section-2-label">Setup and helper functions</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Setup and helper functions</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../quarto/setup.html" class="sidebar-item-text sidebar-link"><i class="bi bi-laptop" role="img">
@@ -232,10 +257,10 @@ div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pen
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text" id="quarto-sidebar-section-3-label">Project documents</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">Project documents</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../quarto/analysis-plan.html" class="sidebar-item-text sidebar-link"><i class="bi bi-file-earmark-ruled" role="img">
@@ -283,7 +308,23 @@ div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pen
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#architecture" id="toc-architecture" class="nav-link active" data-scroll-target="#architecture">Architecture</a></li>
+  <li><a href="#architecture" id="toc-architecture" class="nav-link active" data-scroll-target="#architecture">Architecture</a>
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#architecture-diagram" id="toc-architecture-diagram" class="nav-link" data-scroll-target="#architecture-diagram">Architecture diagram</a></li>
+  <li><a href="#components" id="toc-components" class="nav-link" data-scroll-target="#components">Components</a>
+  <ul class="collapse">
+  <li><a href="#setup-and-helpers-definitive" id="toc-setup-and-helpers-definitive" class="nav-link" data-scroll-target="#setup-and-helpers-definitive">Setup and helpers (definitive)</a></li>
+  <li><a href="#data-preparation-exploratory" id="toc-data-preparation-exploratory" class="nav-link" data-scroll-target="#data-preparation-exploratory">Data preparation (exploratory)</a></li>
+  <li><a href="#comparison-and-models-exploratory" id="toc-comparison-and-models-exploratory" class="nav-link" data-scroll-target="#comparison-and-models-exploratory">Comparison and models (exploratory)</a></li>
+  <li><a href="#outputs-exploratory" id="toc-outputs-exploratory" class="nav-link" data-scroll-target="#outputs-exploratory">Outputs (exploratory)</a></li>
+  <li><a href="#tests" id="toc-tests" class="nav-link" data-scroll-target="#tests">Tests</a></li>
+  <li><a href="#website" id="toc-website" class="nav-link" data-scroll-target="#website">Website</a></li>
+  </ul></li>
+  <li><a href="#configuration" id="toc-configuration" class="nav-link" data-scroll-target="#configuration">Configuration</a></li>
+  <li><a href="#code-references" id="toc-code-references" class="nav-link" data-scroll-target="#code-references">Code references</a></li>
+  <li><a href="#glossary" id="toc-glossary" class="nav-link" data-scroll-target="#glossary">Glossary</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/edit/main/quarto/architecture.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -326,11 +367,250 @@ It reads only ARCHITECTURE.md, never data, and runs no analysis code.
 -->
 <section id="architecture" class="level1">
 <h1>Architecture</h1>
-<p><code>ARCHITECTURE.md</code> has not been written yet.</p>
+<p>Revision scope: <code>main</code> at <code>d8f8831</code> plus branch <code>code/draft-pipeline</code> (pull request #23). Update this file in the same pull request as any change to the scripts, their order, or the objects they pass.</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>The analysis is a sequence of R scripts that share one R session: each script reads objects that earlier scripts created and adds its own. Two entry points exist while the code is a draft:</p>
+<ul>
+<li><code>R/main.R</code> runs the <strong>definitive</strong> analysis. Today it sources only <code>R/setup.R</code> and <code>R/functions.R</code>.</li>
+<li><code>R/draft_pipeline.R</code> runs the <strong>exploratory</strong> draft of the whole analysis: <code>setup.R</code>, <code>functions.R</code>, the numbered scripts <code>01</code> to <code>10</code>, then <code>tables.R</code> and <code>figures.R</code>.</li>
+</ul>
+<p>A script moves from the draft runner into <code>main.R</code>, with its website page and an update here, once its open decisions are settled and it has run in the approved environment (<code>AGENTS.md</code>, “Exploration and definitive analysis”). The scientific specification is <code>analysis-plan.md</code>; this file describes only how the code is organized.</p>
+<p>SRTR data never enter the repository. Every SRTR file is read through the sRtr package (<code>sRtr::load_srtr_file()</code>), which finds the files in the folder set by <code>sRtr::set_srtr_wd()</code>. Public data (OPTN regions) also come from sRtr.</p>
+</section>
+<section id="architecture-diagram" class="level2">
+<h2 class="anchored" data-anchor-id="architecture-diagram">Architecture diagram</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p><code>setup.R</code> (packages and constants) and <code>functions.R</code> (helpers) are sourced first and used by every script; they are left out of the diagram.</p>
+</section>
+<section id="components" class="level2">
+<h2 class="anchored" data-anchor-id="components">Components</h2>
+<section id="setup-and-helpers-definitive" class="level3">
+<h3 class="anchored" data-anchor-id="setup-and-helpers-definitive">Setup and helpers (definitive)</h3>
+<p><strong>Location:</strong> <code>R/setup.R</code>, <code>R/functions.R</code></p>
+<p><code>setup.R</code> attaches every package and defines every constant: transplant types, cohort limits, code lists, matching and weighting settings, the outcome list (<code>OUTCOMES</code>), and output folders. Each constant that depends on an open decision carries a <code>Decision pending: #N</code> comment and a provisional value.</p>
+<p><code>functions.R</code> holds helpers that take their inputs as arguments: <code>srtr_code()</code> (numeric code from a labelled SRTR value), <code>diagnosis_group()</code>, <code>impute_preservation_time()</code>, <code>center_volume()</code> and <code>center_volume_group()</code>, <code>induction_flags()</code>, <code>att_weights()</code>, <code>weighted_smd()</code> and <code>balance_table()</code>, <code>lorenz_points()</code> and <code>gini_coefficient()</code>, and <code>add_followup_dates()</code> (a guard around <code>sRtr::add_txf_outcomes()</code>). Several stand in for planned sRtr functions and name the sRtr issue that will replace them.</p>
+</section>
+<section id="data-preparation-exploratory" class="level3">
+<h3 class="anchored" data-anchor-id="data-preparation-exploratory">Data preparation (exploratory)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Script</th>
+<th>Reads</th>
+<th>Creates or changes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>R/01_load_srtr_files.R</code></td>
+<td><code>TX_KP</code>, <code>TX_PA</code>, <code>TX_KI</code> via sRtr</td>
+<td><code>tx_raw</code> (named list <code>KP</code>, <code>PA</code>); <code>tx_ki_volume</code> (three <code>TX_KI</code> columns)</td>
+</tr>
+<tr class="even">
+<td><code>R/02_derive_variables.R</code></td>
+<td><code>tx_raw</code></td>
+<td><code>tx_derived</code>: HIV status, diagnosis group, Black race, transplant year, waiting time; pancreas-alone date columns copied to the kidney–pancreas names</td>
+</tr>
+<tr class="odd">
+<td><code>R/03_calculate_pdri.R</code></td>
+<td><code>tx_derived</code></td>
+<td><code>tx_derived</code> with filled preservation time and <code>PDRI</code> (via <code>sRtr:::add_pdri()</code>)</td>
+</tr>
+<tr class="even">
+<td><code>R/04_build_cohort.R</code></td>
+<td><code>tx_derived</code></td>
+<td><code>cohort</code> (named list of analytic cohorts) and <code>cohort_fc</code> (flowchart objects split by HIV status, for the diagram)</td>
+</tr>
+<tr class="odd">
+<td><code>R/05_add_induction.R</code></td>
+<td><code>cohort</code>, <code>IMMUNO</code> via sRtr</td>
+<td><code>cohort</code> with <code>INDUCTION_*</code> columns</td>
+</tr>
+<tr class="even">
+<td><code>R/06_add_center_volume.R</code></td>
+<td><code>cohort</code>, <code>tx_derived</code>, <code>tx_ki_volume</code></td>
+<td><code>cohort</code> with center volume counts and groups</td>
+</tr>
+<tr class="odd">
+<td><code>R/07_build_outcomes.R</code></td>
+<td><code>cohort</code>, <code>TXF_*</code> via sRtr</td>
+<td><code>cohort</code> with <code>&lt;OUTCOME&gt;_CENSOR</code>, <code>&lt;OUTCOME&gt;_BINARY</code> and <code>&lt;OUTCOME&gt;_yrs</code> for each outcome</td>
+</tr>
+</tbody>
+</table>
+<p>The cohort is built only with flowchart (<code>flowchart::as_fc()</code>, <code>flowchart::fc_filter()</code>), so the flow diagram and the analytic data come from the same code. Every later script keeps one row per transplant; joins assert that the row count did not change.</p>
+</section>
+<section id="comparison-and-models-exploratory" class="level3">
+<h3 class="anchored" data-anchor-id="comparison-and-models-exploratory">Comparison and models (exploratory)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Script</th>
+<th>Reads</th>
+<th>Creates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>R/08_match_recipients.R</code></td>
+<td><code>cohort</code></td>
+<td><code>match_fit</code> (MatchIt objects), <code>matched</code> (matched data with <code>weights</code> and <code>subclass</code>), <code>balance_matched</code></td>
+</tr>
+<tr class="even">
+<td><code>R/09_estimate_weights.R</code></td>
+<td><code>cohort</code></td>
+<td><code>ipw_fit</code> (propensity models), <code>weighted</code> (cohort with <code>PS</code> and <code>IPW</code>), <code>balance_weighted</code></td>
+</tr>
+<tr class="odd">
+<td><code>R/10_fit_outcome_models.R</code></td>
+<td><code>matched</code>, <code>weighted</code></td>
+<td><code>km_fit</code>, <code>cox_fit</code>: nested lists indexed <code>[[analysis]][[type]][[outcome]]</code>, where analysis is <code>matched</code> or <code>weighted</code></td>
+</tr>
+</tbody>
+</table>
+<p>Matching stops with an error if any matching variable is missing, rather than dropping recipients, because that handling is an open decision.</p>
+</section>
+<section id="outputs-exploratory" class="level3">
+<h3 class="anchored" data-anchor-id="outputs-exploratory">Outputs (exploratory)</h3>
+<p><strong>Location:</strong> <code>R/tables.R</code>, <code>R/figures.R</code></p>
+<p><code>tables.R</code> builds Table 1 before and after matching (gtsummary), a combined balance table, and stacked Cox model tables, saved as HTML in <code>tables/</code>. <code>figures.R</code> draws the cohort flow diagrams, Kaplan–Meier curves with risk tables (ggsurvfit), the map of recipients with HIV by UNOS region, Lorenz curves of concentration across centers, and transplants and centers per year, saved as images in <code>figures/</code>. Both folders are gitignored until outputs are cleared under the SRTR small-cell rule.</p>
+</section>
+<section id="tests" class="level3">
+<h3 class="anchored" data-anchor-id="tests">Tests</h3>
+<p><strong>Location:</strong> <code>tests/testthat/</code></p>
+<p><code>helper-setup.R</code> evaluates only the constants section of <code>setup.R</code> (so tests run without sRtr installed) and builds synthetic cohorts. <code>test-functions.R</code> checks each helper against hand-calculated answers. <code>test-pipeline-synthetic.R</code> runs <code>08_match_recipients.R</code>, <code>09_estimate_weights.R</code> and <code>10_fit_outcome_models.R</code> end to end on synthetic data. Scripts <code>01</code> to <code>07</code>, <code>tables.R</code> and <code>figures.R</code> are not yet covered, because they need sRtr, flowchart, gtsummary or ggsurvfit.</p>
+</section>
+<section id="website" class="level3">
+<h3 class="anchored" data-anchor-id="website">Website</h3>
+<p><strong>Location:</strong> <code>_quarto.yml</code>, <code>index.qmd</code>, <code>quarto/</code></p>
+<p>The Quarto site documents the code without running it. <code>quarto/setup.qmd</code> and <code>quarto/functions.qmd</code> import their scripts’ labelled sections with <code>knitr::read_chunk()</code>; the project-document pages include the root files. <code>.github/workflows/publish.yml</code> renders the site on every pull request and publishes it to the <code>gh-pages</code> branch on every push to <code>main</code>.</p>
+</section>
+</section>
+<section id="configuration" class="level2">
+<h2 class="anchored" data-anchor-id="configuration">Configuration</h2>
+<ul>
+<li><strong>Data location:</strong> <code>SRTR_WD</code>, set with <code>sRtr::set_srtr_wd()</code>; the release is whatever that folder holds (label in <code>SRTR_RELEASE</code>).</li>
+<li><strong>Analysis settings:</strong> all in <code>R/setup.R</code>. Changing an open decision means changing one constant there.</li>
+<li><strong>Outputs:</strong> <code>TABLES_DIR</code> and <code>FIGURES_DIR</code> in <code>R/setup.R</code>.</li>
+</ul>
+</section>
+<section id="code-references" class="level2">
+<h2 class="anchored" data-anchor-id="code-references">Code references</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>File</th>
+<th>Key symbols</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Entry points</td>
+<td><code>R/main.R</code>, <code>R/draft_pipeline.R</code></td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>Constants</td>
+<td><code>R/setup.R</code></td>
+<td><code>TRANSPLANT_TYPES</code>, <code>MATCHING_VARIABLES</code>, <code>IPW_COVARIATES</code>, <code>OUTCOMES</code></td>
+</tr>
+<tr class="odd">
+<td>Helpers</td>
+<td><code>R/functions.R</code></td>
+<td><code>srtr_code()</code>, <code>att_weights()</code>, <code>balance_table()</code>, <code>add_followup_dates()</code></td>
+</tr>
+<tr class="even">
+<td>Cohort</td>
+<td><code>R/04_build_cohort.R</code></td>
+<td><code>cohort</code>, <code>cohort_fc</code>, <code>cohort_labels</code></td>
+</tr>
+<tr class="odd">
+<td>Outcomes</td>
+<td><code>R/07_build_outcomes.R</code></td>
+<td><code>outcome_dates</code></td>
+</tr>
+<tr class="even">
+<td>Matching</td>
+<td><code>R/08_match_recipients.R</code></td>
+<td><code>match_formula</code>, <code>matched</code></td>
+</tr>
+<tr class="odd">
+<td>Weighting</td>
+<td><code>R/09_estimate_weights.R</code></td>
+<td><code>ipw_formula</code>, <code>weighted</code></td>
+</tr>
+<tr class="even">
+<td>Models</td>
+<td><code>R/10_fit_outcome_models.R</code></td>
+<td><code>surv_formula()</code>, <code>km_fit</code>, <code>cox_fit</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="glossary" class="level2">
+<h2 class="anchored" data-anchor-id="glossary">Glossary</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>KP, PA</td>
+<td>Kidney–pancreas and pancreas-alone transplants; the names of each per-type list element</td>
+</tr>
+<tr class="even">
+<td>Definitive</td>
+<td>Sourced from <code>R/main.R</code>; has a website page and is described here in full</td>
+</tr>
+<tr class="odd">
+<td>Exploratory</td>
+<td>Run only by <code>R/draft_pipeline.R</code>; may change without a website page</td>
+</tr>
+<tr class="even">
+<td>Provisional value</td>
+<td>A constant set for an open decision until the decider settles it</td>
+</tr>
+</tbody>
+</table>
 
 
 <!-- -->
 
+</section>
 </section>
 
 </main> <!-- /main -->

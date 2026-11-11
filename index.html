@@ -62,7 +62,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -72,7 +91,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./quarto/study_methods.html" rel="next">
+<link href="./quarto/background.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -123,17 +142,6 @@ div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode
   content: '💻';
   background-image: none;
 }
-div.callout-Results.callout {
-  border-left-color: #198754;
-}
-div.callout-Results.callout-style-default > .callout-header {
-  background-color: rgba(25, 135, 84, 0.13);
-}
-div.callout-Results .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-Results.callout-style-default .callout-icon::before, div.callout-Results.callout-titled .callout-icon::before {
-  content: '📊';
-  background-image: none;
-}
 div.callout-Pending.callout {
   border-left-color: #f0c400;
 }
@@ -143,6 +151,17 @@ div.callout-Pending.callout-style-default > .callout-header {
 div.callout-Pending .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
 div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pending.callout-titled .callout-icon::before {
   content: '⏳';
+  background-image: none;
+}
+div.callout-Results.callout {
+  border-left-color: #198754;
+}
+div.callout-Results.callout-style-default > .callout-header {
+  background-color: rgba(25, 135, 84, 0.13);
+}
+div.callout-Results .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-Results.callout-style-default .callout-icon::before, div.callout-Results.callout-titled .callout-icon::before {
+  content: '📊';
   background-image: none;
 }
 </style>
@@ -192,6 +211,28 @@ div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pen
  <span class="menu-text">Home</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Background</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quarto/background.html" class="sidebar-item-text sidebar-link"><i class="bi bi-book" role="img">
+</i> 
+ <span class="menu-text">Clinical background</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quarto/methodological_background.html" class="sidebar-item-text sidebar-link"><i class="bi bi-book" role="img">
+</i> 
+ <span class="menu-text">Methodological background</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quarto/study_methods.html" class="sidebar-item-text sidebar-link"><i class="bi bi-diagram-3" role="img">
@@ -201,16 +242,16 @@ div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pen
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text" id="quarto-sidebar-section-1-label">Code</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Code</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text" id="quarto-sidebar-section-2-label">Setup and helper functions</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Setup and helper functions</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quarto/setup.html" class="sidebar-item-text sidebar-link"><i class="bi bi-laptop" role="img">
@@ -231,10 +272,10 @@ div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pen
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text" id="quarto-sidebar-section-3-label">Project documents</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">Project documents</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quarto/analysis-plan.html" class="sidebar-item-text sidebar-link"><i class="bi bi-file-earmark-ruled" role="img">
@@ -282,7 +323,8 @@ div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pen
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-this-analysis-does" id="toc-what-this-analysis-does" class="nav-link active" data-scroll-target="#what-this-analysis-does">What this analysis does</a></li>
+  <li><a href="#clinical-background" id="toc-clinical-background" class="nav-link active" data-scroll-target="#clinical-background">Clinical background</a></li>
+  <li><a href="#what-this-analysis-does" id="toc-what-this-analysis-does" class="nav-link" data-scroll-target="#what-this-analysis-does">What this analysis does</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
   <li><a href="#status" id="toc-status" class="nav-link" data-scroll-target="#status">Status</a></li>
   </ul>
@@ -316,24 +358,36 @@ div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pen
 </header>
 
 
+<section id="clinical-background" class="level2">
+<h2 class="anchored" data-anchor-id="clinical-background">Clinical background</h2>
+<p>Transplantation is now standard care for people with HIV and end-stage kidney or liver disease, but there is less evidence for pancreas transplantation <span class="citation" data-cites="blumberg2019astid">(<a href="#ref-blumberg2019astid" role="doc-biblioref">Blumberg et al. 2019</a>)</span>. A national registry study of pancreas transplants from 2001 to 2021 found similar pancreas graft and patient survival in recipients with and without HIV <span class="citation" data-cites="bharadwaj2024pancreas">(<a href="#ref-bharadwaj2024pancreas" role="doc-biblioref">Bharadwaj et al. 2025</a>)</span>. The <a href="./quarto/background.html">clinical background</a> page gives more detail.</p>
+</section>
 <section id="what-this-analysis-does" class="level2">
 <h2 class="anchored" data-anchor-id="what-this-analysis-does">What this analysis does</h2>
 <p>This analysis compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV in the United States. It uses the Scientific Registry of Transplant Recipients (SRTR) standard analysis files, which cover every transplant performed in the country.</p>
 </section>
 <section id="methods" class="level2">
 <h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<p>Each recipient with HIV is matched to up to ten recipients without HIV who had the same type of transplant and similar donor and recipient characteristics. Graft loss, rejection, death and cancer after transplant are then compared between the two groups. <a href="./quarto/study_methods.html">Study design and methods</a> explains each step in plain language, and the authoritative specification is the <a href="./quarto/analysis-plan.html">analysis plan</a>.</p>
+<p>Recipients with HIV are compared with similar recipients without HIV of the same transplant type in two ways: by matching each to up to ten recipients without HIV, and by weighting all recipients without HIV to resemble those with HIV. Graft loss, rejection, death and cancer after transplant are then compared. <a href="./quarto/study_methods.html">Study design and methods</a> explains each step in plain language, and the authoritative specification is the <a href="./quarto/analysis-plan.html">analysis plan</a>.</p>
 </section>
 <section id="status" class="level2">
 <h2 class="anchored" data-anchor-id="status">Status</h2>
-<p>Preliminary. The analysis plan is a draft, and the code is being rebuilt on the <a href="https://github.com/VagishHemmige/sRtr">sRtr</a> package, so this site does not yet show any code or results. Open decisions are tracked in the project’s <a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues">GitHub Issues</a>.</p>
+<p>Preliminary. The analysis plan is a draft with several decisions still open, and a draft of the code exists but has not yet been run on SRTR data. This site shows the shared setup and helper code; pages for the analysis steps are added as each step is settled. No results are shown. Open decisions are tracked in the project’s <a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues">GitHub Issues</a>.</p>
 
 
 <!-- -->
 
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-bharadwaj2024pancreas" class="csl-entry" role="listitem">
+Bharadwaj, R R, G Orozco, X Mei, H El-Haddad, R Gedaly, and M Gupta. 2025. <span>“Pancreas Transplant Outcomes in Patients with Human Immunodeficiency Virus Infection.”</span> <em>American Journal of Transplantation</em> 25: 836–47. <a href="https://doi.org/10.1016/j.ajt.2024.11.023">https://doi.org/10.1016/j.ajt.2024.11.023</a>.
+</div>
+<div id="ref-blumberg2019astid" class="csl-entry" role="listitem">
+Blumberg, E A, C C Rogers, and AST Infectious Diseases Community of Practice. 2019. <span>“Solid Organ Transplantation in the <span>HIV</span>-Infected Patient: Guidelines from the <span class="nocase">American Society of Transplantation Infectious Diseases Community of Practice</span>.”</span> <em>Clinical Transplantation</em> 33 (9): e13499. <a href="https://doi.org/10.1111/ctr.13499">https://doi.org/10.1111/ctr.13499</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -865,8 +919,8 @@ div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pen
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./quarto/study_methods.html" class="pagination-link" aria-label="Study design and methods">
-        <span class="nav-page-text">Study design and methods</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./quarto/background.html" class="pagination-link" aria-label="Clinical background">
+        <span class="nav-page-text">Clinical background</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
@@ -875,17 +929,21 @@ div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pen
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## What this analysis does</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Clinical background</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>This analysis compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV in the United States. It uses the Scientific Registry of Transplant Recipients (SRTR) standard analysis files, which cover every transplant performed in the country.</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Transplantation is now standard care for people with HIV and end-stage kidney or liver disease, but there is less evidence for pancreas transplantation <span class="co">[</span><span class="ot">@blumberg2019astid</span><span class="co">]</span>. A national registry study of pancreas transplants from 2001 to 2021 found similar pancreas graft and patient survival in recipients with and without HIV <span class="co">[</span><span class="ot">@bharadwaj2024pancreas</span><span class="co">]</span>. The <span class="co">[</span><span class="ot">clinical background</span><span class="co">](quarto/background.qmd)</span> page gives more detail.</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## Methods</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## What this analysis does</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Each recipient with HIV is matched to up to ten recipients without HIV who had the same type of transplant and similar donor and recipient characteristics. Graft loss, rejection, death and cancer after transplant are then compared between the two groups. <span class="co">[</span><span class="ot">Study design and methods</span><span class="co">](quarto/study_methods.qmd)</span> explains each step in plain language, and the authoritative specification is the <span class="co">[</span><span class="ot">analysis plan</span><span class="co">](quarto/analysis-plan.qmd)</span>.</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>This analysis compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV in the United States. It uses the Scientific Registry of Transplant Recipients (SRTR) standard analysis files, which cover every transplant performed in the country.</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Status</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Methods</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Preliminary. The analysis plan is a draft, and the code is being rebuilt on the <span class="co">[</span><span class="ot">sRtr</span><span class="co">](https://github.com/VagishHemmige/sRtr)</span> package, so this site does not yet show any code or results. Open decisions are tracked in the project's <span class="co">[</span><span class="ot">GitHub Issues</span><span class="co">](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues)</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Recipients with HIV are compared with similar recipients without HIV of the same transplant type in two ways: by matching each to up to ten recipients without HIV, and by weighting all recipients without HIV to resemble those with HIV. Graft loss, rejection, death and cancer after transplant are then compared. <span class="co">[</span><span class="ot">Study design and methods</span><span class="co">](quarto/study_methods.qmd)</span> explains each step in plain language, and the authoritative specification is the <span class="co">[</span><span class="ot">analysis plan</span><span class="co">](quarto/analysis-plan.qmd)</span>.</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Status</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>Preliminary. The analysis plan is a draft with several decisions still open, and a draft of the code exists but has not yet been run on SRTR data. This site shows the shared setup and helper code; pages for the analysis steps are added as each step is settled. No results are shown. Open decisions are tracked in the project's <span class="co">[</span><span class="ot">GitHub Issues</span><span class="co">](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues)</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

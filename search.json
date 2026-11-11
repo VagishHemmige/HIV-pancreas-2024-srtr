@@ -4,10 +4,120 @@
     "href": "quarto/architecture.html",
     "title": "",
     "section": "",
-    "text": "Project documentsArchitecture Code\n\n\n\n\n\n\nArchitecture\nARCHITECTURE.md has not been written yet.",
+    "text": "Project documentsArchitecture Code",
     "crumbs": [
       "Project documents",
       "Architecture"
+    ]
+  },
+  {
+    "objectID": "quarto/architecture.html#overview",
+    "href": "quarto/architecture.html#overview",
+    "title": "",
+    "section": "Overview",
+    "text": "Overview\nThe analysis is a sequence of R scripts that share one R session: each script reads objects that earlier scripts created and adds its own. Two entry points exist while the code is a draft:\n\nR/main.R runs the definitive analysis. Today it sources only R/setup.R and R/functions.R.\nR/draft_pipeline.R runs the exploratory draft of the whole analysis: setup.R, functions.R, the numbered scripts 01 to 10, then tables.R and figures.R.\n\nA script moves from the draft runner into main.R, with its website page and an update here, once its open decisions are settled and it has run in the approved environment (AGENTS.md, “Exploration and definitive analysis”). The scientific specification is analysis-plan.md; this file describes only how the code is organized.\nSRTR data never enter the repository. Every SRTR file is read through the sRtr package (sRtr::load_srtr_file()), which finds the files in the folder set by sRtr::set_srtr_wd(). Public data (OPTN regions) also come from sRtr.",
+    "crumbs": [
+      "Project documents",
+      "Architecture"
+    ]
+  },
+  {
+    "objectID": "quarto/architecture.html#architecture-diagram",
+    "href": "quarto/architecture.html#architecture-diagram",
+    "title": "",
+    "section": "Architecture diagram",
+    "text": "Architecture diagram\n\n\n\n\n\n\n\n\n\n\n\nsetup.R (packages and constants) and functions.R (helpers) are sourced first and used by every script; they are left out of the diagram.",
+    "crumbs": [
+      "Project documents",
+      "Architecture"
+    ]
+  },
+  {
+    "objectID": "quarto/architecture.html#components",
+    "href": "quarto/architecture.html#components",
+    "title": "",
+    "section": "Components",
+    "text": "Components\n\nSetup and helpers (definitive)\nLocation: R/setup.R, R/functions.R\nsetup.R attaches every package and defines every constant: transplant types, cohort limits, code lists, matching and weighting settings, the outcome list (OUTCOMES), and output folders. Each constant that depends on an open decision carries a Decision pending: #N comment and a provisional value.\nfunctions.R holds helpers that take their inputs as arguments: srtr_code() (numeric code from a labelled SRTR value), diagnosis_group(), impute_preservation_time(), center_volume() and center_volume_group(), induction_flags(), att_weights(), weighted_smd() and balance_table(), lorenz_points() and gini_coefficient(), and add_followup_dates() (a guard around sRtr::add_txf_outcomes()). Several stand in for planned sRtr functions and name the sRtr issue that will replace them.\n\n\nData preparation (exploratory)\n\n\n\n\n\n\n\n\nScript\nReads\nCreates or changes\n\n\n\n\nR/01_load_srtr_files.R\nTX_KP, TX_PA, TX_KI via sRtr\ntx_raw (named list KP, PA); tx_ki_volume (three TX_KI columns)\n\n\nR/02_derive_variables.R\ntx_raw\ntx_derived: HIV status, diagnosis group, Black race, transplant year, waiting time; pancreas-alone date columns copied to the kidney–pancreas names\n\n\nR/03_calculate_pdri.R\ntx_derived\ntx_derived with filled preservation time and PDRI (via sRtr:::add_pdri())\n\n\nR/04_build_cohort.R\ntx_derived\ncohort (named list of analytic cohorts) and cohort_fc (flowchart objects split by HIV status, for the diagram)\n\n\nR/05_add_induction.R\ncohort, IMMUNO via sRtr\ncohort with INDUCTION_* columns\n\n\nR/06_add_center_volume.R\ncohort, tx_derived, tx_ki_volume\ncohort with center volume counts and groups\n\n\nR/07_build_outcomes.R\ncohort, TXF_* via sRtr\ncohort with &lt;OUTCOME&gt;_CENSOR, &lt;OUTCOME&gt;_BINARY and &lt;OUTCOME&gt;_yrs for each outcome\n\n\n\nThe cohort is built only with flowchart (flowchart::as_fc(), flowchart::fc_filter()), so the flow diagram and the analytic data come from the same code. Every later script keeps one row per transplant; joins assert that the row count did not change.\n\n\nComparison and models (exploratory)\n\n\n\n\n\n\n\n\nScript\nReads\nCreates\n\n\n\n\nR/08_match_recipients.R\ncohort\nmatch_fit (MatchIt objects), matched (matched data with weights and subclass), balance_matched\n\n\nR/09_estimate_weights.R\ncohort\nipw_fit (propensity models), weighted (cohort with PS and IPW), balance_weighted\n\n\nR/10_fit_outcome_models.R\nmatched, weighted\nkm_fit, cox_fit: nested lists indexed [[analysis]][[type]][[outcome]], where analysis is matched or weighted\n\n\n\nMatching stops with an error if any matching variable is missing, rather than dropping recipients, because that handling is an open decision.\n\n\nOutputs (exploratory)\nLocation: R/tables.R, R/figures.R\ntables.R builds Table 1 before and after matching (gtsummary), a combined balance table, and stacked Cox model tables, saved as HTML in tables/. figures.R draws the cohort flow diagrams, Kaplan–Meier curves with risk tables (ggsurvfit), the map of recipients with HIV by UNOS region, Lorenz curves of concentration across centers, and transplants and centers per year, saved as images in figures/. Both folders are gitignored until outputs are cleared under the SRTR small-cell rule.\n\n\nTests\nLocation: tests/testthat/\nhelper-setup.R evaluates only the constants section of setup.R (so tests run without sRtr installed) and builds synthetic cohorts. test-functions.R checks each helper against hand-calculated answers. test-pipeline-synthetic.R runs 08_match_recipients.R, 09_estimate_weights.R and 10_fit_outcome_models.R end to end on synthetic data. Scripts 01 to 07, tables.R and figures.R are not yet covered, because they need sRtr, flowchart, gtsummary or ggsurvfit.\n\n\nWebsite\nLocation: _quarto.yml, index.qmd, quarto/\nThe Quarto site documents the code without running it. quarto/setup.qmd and quarto/functions.qmd import their scripts’ labelled sections with knitr::read_chunk(); the project-document pages include the root files. .github/workflows/publish.yml renders the site on every pull request and publishes it to the gh-pages branch on every push to main.",
+    "crumbs": [
+      "Project documents",
+      "Architecture"
+    ]
+  },
+  {
+    "objectID": "quarto/architecture.html#configuration",
+    "href": "quarto/architecture.html#configuration",
+    "title": "",
+    "section": "Configuration",
+    "text": "Configuration\n\nData location: SRTR_WD, set with sRtr::set_srtr_wd(); the release is whatever that folder holds (label in SRTR_RELEASE).\nAnalysis settings: all in R/setup.R. Changing an open decision means changing one constant there.\nOutputs: TABLES_DIR and FIGURES_DIR in R/setup.R.",
+    "crumbs": [
+      "Project documents",
+      "Architecture"
+    ]
+  },
+  {
+    "objectID": "quarto/architecture.html#code-references",
+    "href": "quarto/architecture.html#code-references",
+    "title": "",
+    "section": "Code references",
+    "text": "Code references\n\n\n\n\n\n\n\n\nComponent\nFile\nKey symbols\n\n\n\n\nEntry points\nR/main.R, R/draft_pipeline.R\n—\n\n\nConstants\nR/setup.R\nTRANSPLANT_TYPES, MATCHING_VARIABLES, IPW_COVARIATES, OUTCOMES\n\n\nHelpers\nR/functions.R\nsrtr_code(), att_weights(), balance_table(), add_followup_dates()\n\n\nCohort\nR/04_build_cohort.R\ncohort, cohort_fc, cohort_labels\n\n\nOutcomes\nR/07_build_outcomes.R\noutcome_dates\n\n\nMatching\nR/08_match_recipients.R\nmatch_formula, matched\n\n\nWeighting\nR/09_estimate_weights.R\nipw_formula, weighted\n\n\nModels\nR/10_fit_outcome_models.R\nsurv_formula(), km_fit, cox_fit",
+    "crumbs": [
+      "Project documents",
+      "Architecture"
+    ]
+  },
+  {
+    "objectID": "quarto/architecture.html#glossary",
+    "href": "quarto/architecture.html#glossary",
+    "title": "",
+    "section": "Glossary",
+    "text": "Glossary\n\n\n\n\n\n\n\nTerm\nDefinition\n\n\n\n\nKP, PA\nKidney–pancreas and pancreas-alone transplants; the names of each per-type list element\n\n\nDefinitive\nSourced from R/main.R; has a website page and is described here in full\n\n\nExploratory\nRun only by R/draft_pipeline.R; may change without a website page\n\n\nProvisional value\nA constant set for an open decision until the decider settles it",
+    "crumbs": [
+      "Project documents",
+      "Architecture"
+    ]
+  },
+  {
+    "objectID": "quarto/background.html",
+    "href": "quarto/background.html",
+    "title": "Clinical background",
+    "section": "",
+    "text": "With effective antiretroviral therapy, transplantation has become standard care for people with HIV who have end-stage kidney or liver disease. Guidelines from the American Society of Transplantation note that the evidence for other organs, pancreas included, is thinner, though transplantation there is also thought likely to be safe and effective (Blumberg et al. 2019). The same guidelines describe HIV as usually staying well controlled after transplant, with infection risks similar to those of recipients without HIV, but rejection rates that are higher despite stronger immunosuppression. Interactions between antiretroviral drugs and immunosuppressants are an important part of care, and regimens based on integrase inhibitors are preferred because they avoid interactions with calcineurin and mTOR inhibitors (Blumberg et al. 2019).\nThe largest prospective evidence comes from kidney transplantation. In a multicenter study of 150 kidney recipients with well-controlled HIV, patient and graft survival at one and three years were high, but rejection was more common than expected (Stock et al. 2010).",
+    "crumbs": [
+      "Background",
+      "Clinical background"
+    ]
+  },
+  {
+    "objectID": "quarto/background.html#transplantation-in-people-with-hiv",
+    "href": "quarto/background.html#transplantation-in-people-with-hiv",
+    "title": "Clinical background",
+    "section": "",
+    "text": "With effective antiretroviral therapy, transplantation has become standard care for people with HIV who have end-stage kidney or liver disease. Guidelines from the American Society of Transplantation note that the evidence for other organs, pancreas included, is thinner, though transplantation there is also thought likely to be safe and effective (Blumberg et al. 2019). The same guidelines describe HIV as usually staying well controlled after transplant, with infection risks similar to those of recipients without HIV, but rejection rates that are higher despite stronger immunosuppression. Interactions between antiretroviral drugs and immunosuppressants are an important part of care, and regimens based on integrase inhibitors are preferred because they avoid interactions with calcineurin and mTOR inhibitors (Blumberg et al. 2019).\nThe largest prospective evidence comes from kidney transplantation. In a multicenter study of 150 kidney recipients with well-controlled HIV, patient and graft survival at one and three years were high, but rejection was more common than expected (Stock et al. 2010).",
+    "crumbs": [
+      "Background",
+      "Clinical background"
+    ]
+  },
+  {
+    "objectID": "quarto/background.html#pancreas-transplantation-in-people-with-hiv",
+    "href": "quarto/background.html#pancreas-transplantation-in-people-with-hiv",
+    "title": "Clinical background",
+    "section": "Pancreas transplantation in people with HIV",
+    "text": "Pancreas transplantation in people with HIV\nEarly reports of pancreas transplantation in people with HIV described frequent early graft loss. A single-center series of ten recipients with HIV and type 1 diabetes with kidney failure, who received an islet or pancreas transplant together with or after a kidney transplant, reported low rates of infectious complications, early graft loss and rejection over long follow-up (Roll et al. 2020).\nA national study using United Network for Organ Sharing data from 2001 to 2021 compared 50 pancreas recipients with HIV with more than 16,000 without HIV. Recipients with HIV were more often male, Black and covered by Medicare. Pancreas graft survival and patient survival did not differ between the groups, and neither did waiting time or treatment for rejection in the first year (Bharadwaj et al. 2025).",
+    "crumbs": [
+      "Background",
+      "Clinical background"
+    ]
+  },
+  {
+    "objectID": "quarto/background.html#what-remains-uncertain",
+    "href": "quarto/background.html#what-remains-uncertain",
+    "title": "Clinical background",
+    "section": "What remains uncertain",
+    "text": "What remains uncertain\nBecause so few people with HIV receive pancreas transplants, published comparisons have small numbers of recipients with HIV, and recipients with and without HIV differ in their own and their donors’ characteristics. This study compares them after matching or weighting on those characteristics, separately for kidney–pancreas and pancreas-alone transplants, and adds outcomes such as rejection and cancer. The study design and methods page explains how.",
+    "crumbs": [
+      "Background",
+      "Clinical background"
     ]
   },
   {
@@ -81,7 +191,7 @@
     "href": "quarto/about.html#how-this-website-was-created",
     "title": "About",
     "section": "How this website was created",
-    "text": "How this website was created\nThe site is built with Quarto from the analysis scripts themselves. Each code page imports the labelled sections of its script from R/ and shows them with an explanation; the site never runs the analysis, so it is built without the analysis data. A GitHub Actions workflow renders the site and publishes it whenever the main branch changes.\nThe repository was set up with the R Analysis Workflow plugin and an AI assistant (Claude). AI assistants work under the rules in AGENTS.md: they never read SRTR data, they write and test code on synthetic data only, and scientific decisions stay with the investigator.\nFour documents describe the project. In short: the plan is the scientific intent, the architecture is the workflow as implemented, and AGENTS.md holds the rules for working together.\n\nAnalysis plan: what the analysis is meant to do, and why. The question, the population, the methods, and the open decisions. Code implements it and does not redefine it.\nArchitecture: how the code does it. The scripts, the order they run in, what each needs and produces, and how data flow between them. Not written yet.\nAGENTS.md: how people and AI assistants work on the project. Rules for restricted data, coding, checks, proposing changes and getting a person’s approval.\nRepository blueprint: the layout every project of this kind starts from, which the architecture document then describes as built.",
+    "text": "How this website was created\nThe site is built with Quarto from the analysis scripts themselves. Each code page imports the labelled sections of its script from R/ and shows them with an explanation; the site never runs the analysis, so it is built without the analysis data. A GitHub Actions workflow renders the site and publishes it whenever the main branch changes.\nThe repository was set up with the R Analysis Workflow plugin and an AI assistant (Claude). AI assistants work under the rules in AGENTS.md: they never read SRTR data, they write and test code on synthetic data only, and scientific decisions stay with the investigator.\nFour documents describe the project. In short: the plan is the scientific intent, the architecture is the workflow as implemented, and AGENTS.md holds the rules for working together.\n\nAnalysis plan: what the analysis is meant to do, and why. The question, the population, the methods, and the open decisions. Code implements it and does not redefine it.\nArchitecture: how the code does it. The scripts, the order they run in, what each needs and produces, and how data flow between them.\nAGENTS.md: how people and AI assistants work on the project. Rules for restricted data, coding, checks, proposing changes and getting a person’s approval.\nRepository blueprint: the layout every project of this kind starts from, which the architecture document then describes as built.",
     "crumbs": [
       "About"
     ]
@@ -91,7 +201,7 @@
     "href": "quarto/about.html#pages",
     "title": "About",
     "section": "Pages",
-    "text": "Pages\n\nStudy design and methods: what the study chose and why, in plain language, with the decisions still open.\nSetup: packages and shared constants, including the provisional values of open decisions.\nFunctions: reusable helper functions, each tested on synthetic data.",
+    "text": "Pages\n\nClinical background: transplantation in people with HIV, and what is known about pancreas transplantation in particular.\nMethodological background: the registry data, the pancreas donor risk index, propensity-score matching and weighting, and time-to-event outcomes.\nStudy design and methods: what the study chose and why, in plain language, with the decisions still open.\nSetup: packages and shared constants, including the provisional values of open decisions.\nFunctions: reusable helper functions, each tested on synthetic data.",
     "crumbs": [
       "About"
     ]
@@ -178,7 +288,7 @@
     "href": "quarto/agents.html#quarto-website",
     "title": "",
     "section": "Quarto website",
-    "text": "Quarto website\nThe site documents the code. It does not run the analysis.\n\n_quarto.yml, index.qmd, 404.qmd (the page GitHub Pages shows for a missing address) and styles.css sit at the root; quarto/ has one page per definitive script, named after it, plus the Study design and methods, About and project-document pages. The custom-callout extension in _extensions/ provides the Rcode, Results and Pending callouts. Background pages are added when written.\nVisual cues. Each kind of page has one sidebar icon, coloured by styles.css, and pages mark the same kind of content with the callout of that colour: background book (blue); study design and methods diagram-3 (orange); R code laptop (pink, Rcode 💻); results clipboard-data (green, Results 📊); project documents file-earmark-ruled (grey). Give every new page the icon of its kind.\nProvisional content. quarto/_pending.lua highlights in yellow every paragraph that starts with Decision pending: or, in the plan, Open:, and any [text]{.pending}, and adds a ⏳ Pending callout to pages that have a mark. Mark only what an open decision could change, and remove the mark when the decision is settled.\nProject documents. analysis-plan.md, ARCHITECTURE.md, AGENTS.md and REPOSITORY-BLUEPRINT.md are shown on the site by pages in quarto/ that only include the root file, which stays the one source: edit the root file, not the page.\nEach page loads its script with knitr::read_chunk(\"../R/&lt;script&gt;.R\") in a hidden chunk and shows each labelled section with #| eval: false, with prose explaining what the section does and why. Pages link to the script on GitHub and to the scripts it depends on.\nNever evaluate analysis code in the site. Pages render without restricted data. Only the read_chunk() imports, the Architecture page’s chunk that reads ARCHITECTURE.md, site helpers that read code or text, and results pages that read cleared outputs run.\nThe site renders to docs/, which is not committed; the GitHub Actions workflow in .github/workflows/publish.yml renders and publishes it to the gh-pages branch on every push to main. When you add a script, add its page and sidebar entry in the same pull request, and check that the site renders.\nProse must match the code. If a change alters what a section does, update its explanation in the same pull request.",
+    "text": "Quarto website\nThe site documents the code. It does not run the analysis.\n\n_quarto.yml, index.qmd, 404.qmd (the page GitHub Pages shows for a missing address) and styles.css sit at the root; quarto/ has one page per definitive script, named after it, plus the Background, Study design and methods, About and project-document pages. The custom-callout extension in _extensions/ provides the Rcode, Results and Pending callouts.\nVisual cues. Each kind of page has one sidebar icon, coloured by styles.css, and pages mark the same kind of content with the callout of that colour: background book (blue); study design and methods diagram-3 (orange); R code laptop (pink, Rcode 💻); results clipboard-data (green, Results 📊); project documents file-earmark-ruled (grey). Give every new page the icon of its kind.\nProvisional content. quarto/_pending.lua highlights in yellow every paragraph that starts with Decision pending: or, in the plan, Open:, and any [text]{.pending}, and adds a ⏳ Pending callout to pages that have a mark. Mark only what an open decision could change, and remove the mark when the decision is settled.\nProject documents. analysis-plan.md, ARCHITECTURE.md, AGENTS.md and REPOSITORY-BLUEPRINT.md are shown on the site by pages in quarto/ that only include the root file, which stays the one source: edit the root file, not the page.\nEach page loads its script with knitr::read_chunk(\"../R/&lt;script&gt;.R\") in a hidden chunk and shows each labelled section with #| eval: false, with prose explaining what the section does and why. Pages link to the script on GitHub and to the scripts it depends on.\nNever evaluate analysis code in the site. Pages render without restricted data. Only the read_chunk() imports, the Architecture page’s chunk that reads ARCHITECTURE.md, site helpers that read code or text, and results pages that read cleared outputs run.\nThe site renders to docs/, which is not committed; the GitHub Actions workflow in .github/workflows/publish.yml renders and publishes it to the gh-pages branch on every push to main. When you add a script, add its page and sidebar entry in the same pull request, and check that the site renders.\nProse must match the code. If a change alters what a section does, update its explanation in the same pull request.",
     "crumbs": [
       "Project documents",
       "AGENTS.md"
@@ -244,7 +354,17 @@
     "href": "index.html",
     "title": "Overview",
     "section": "",
-    "text": "This analysis compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV in the United States. It uses the Scientific Registry of Transplant Recipients (SRTR) standard analysis files, which cover every transplant performed in the country.",
+    "text": "Transplantation is now standard care for people with HIV and end-stage kidney or liver disease, but there is less evidence for pancreas transplantation (Blumberg et al. 2019). A national registry study of pancreas transplants from 2001 to 2021 found similar pancreas graft and patient survival in recipients with and without HIV (Bharadwaj et al. 2025). The clinical background page gives more detail.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#clinical-background",
+    "href": "index.html#clinical-background",
+    "title": "Overview",
+    "section": "",
+    "text": "Transplantation is now standard care for people with HIV and end-stage kidney or liver disease, but there is less evidence for pancreas transplantation (Blumberg et al. 2019). A national registry study of pancreas transplants from 2001 to 2021 found similar pancreas graft and patient survival in recipients with and without HIV (Bharadwaj et al. 2025). The clinical background page gives more detail.",
     "crumbs": [
       "Home"
     ]
@@ -253,8 +373,8 @@
     "objectID": "index.html#what-this-analysis-does",
     "href": "index.html#what-this-analysis-does",
     "title": "Overview",
-    "section": "",
-    "text": "This analysis compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV in the United States. It uses the Scientific Registry of Transplant Recipients (SRTR) standard analysis files, which cover every transplant performed in the country.",
+    "section": "What this analysis does",
+    "text": "What this analysis does\nThis analysis compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV in the United States. It uses the Scientific Registry of Transplant Recipients (SRTR) standard analysis files, which cover every transplant performed in the country.",
     "crumbs": [
       "Home"
     ]
@@ -264,7 +384,7 @@
     "href": "index.html#methods",
     "title": "Overview",
     "section": "Methods",
-    "text": "Methods\nEach recipient with HIV is matched to up to ten recipients without HIV who had the same type of transplant and similar donor and recipient characteristics. Graft loss, rejection, death and cancer after transplant are then compared between the two groups. Study design and methods explains each step in plain language, and the authoritative specification is the analysis plan.",
+    "text": "Methods\nRecipients with HIV are compared with similar recipients without HIV of the same transplant type in two ways: by matching each to up to ten recipients without HIV, and by weighting all recipients without HIV to resemble those with HIV. Graft loss, rejection, death and cancer after transplant are then compared. Study design and methods explains each step in plain language, and the authoritative specification is the analysis plan.",
     "crumbs": [
       "Home"
     ]
@@ -274,7 +394,7 @@
     "href": "index.html#status",
     "title": "Overview",
     "section": "Status",
-    "text": "Status\nPreliminary. The analysis plan is a draft, and the code is being rebuilt on the sRtr package, so this site does not yet show any code or results. Open decisions are tracked in the project’s GitHub Issues.",
+    "text": "Status\nPreliminary. The analysis plan is a draft with several decisions still open, and a draft of the code exists but has not yet been run on SRTR data. This site shows the shared setup and helper code; pages for the analysis steps are added as each step is settled. No results are shown. Open decisions are tracked in the project’s GitHub Issues.",
     "crumbs": [
       "Home"
     ]
@@ -328,7 +448,7 @@
     "href": "quarto/functions.html",
     "title": "Functions",
     "section": "",
-    "text": "PendingProvisional\n\n\n\nText highlighted like this is provisional: it depends on a decision the analysis plan has not yet made.\nThis script defines the helper functions used by the analysis scripts. Several stand in for sRtr functions that are planned but not yet written; each names the sRtr issue that will replace it. Every function is tested on synthetic data in tests/testthat/test-functions.R.",
+    "text": "PendingProvisional\n\n\n\nText highlighted like this is provisional: it depends on a decision the analysis plan has not yet made.\nThis script defines the helper functions used by the analysis scripts. Several stand in for sRtr functions that are planned but not yet written; each names the sRtr issue that will replace it. Every function is tested on synthetic data in tests/testthat/test-functions.R. Each section ends by linking the scripts that use it; those scripts are still exploratory, so they link to GitHub rather than to pages of their own.",
     "crumbs": [
       "Code",
       "Setup and helper functions",
@@ -340,7 +460,7 @@
     "href": "quarto/functions.html#reading-srtr-codes",
     "title": "Functions",
     "section": "Reading SRTR codes",
-    "text": "Reading SRTR codes\nsRtr labels coded values as “code: meaning”. This function returns the numeric code from either form, so code lists can be matched against the SRTR formats whether or not the labels have been applied.\n\n\nClick to show/hide R Code\n# The numeric code of an SRTR value. sRtr::load_srtr_file() labels coded\n# values as \"&lt;code&gt;: &lt;meaning&gt;\" (for example \"3011: KI:DIABETES ...\"); this\n# returns 3011 whether the value is labelled or still a number.\nsrtr_code &lt;- function(x) {\n  if (is.numeric(x)) {\n    return(as.numeric(x))\n  }\n  x |&gt;\n    as.character() |&gt;\n    stringr::str_extract(\"^-?[0-9]+\") |&gt;\n    as.numeric()\n}",
+    "text": "Reading SRTR codes\nsRtr labels coded values as “code: meaning”. This function returns the numeric code from either form, so code lists can be matched against the SRTR formats whether or not the labels have been applied.\n\n\nClick to show/hide R Code\n# The numeric code of an SRTR value. sRtr::load_srtr_file() labels coded\n# values as \"&lt;code&gt;: &lt;meaning&gt;\" (for example \"3011: KI:DIABETES ...\"); this\n# returns 3011 whether the value is labelled or still a number.\nsrtr_code &lt;- function(x) {\n  if (is.numeric(x)) {\n    return(as.numeric(x))\n  }\n  x |&gt;\n    as.character() |&gt;\n    stringr::str_extract(\"^-?[0-9]+\") |&gt;\n    as.numeric()\n}\n\n\nUsed in: R/02_derive_variables.R, R/07_build_outcomes.R.",
     "crumbs": [
       "Code",
       "Setup and helper functions",
@@ -352,7 +472,7 @@
     "href": "quarto/functions.html#diagnosis-group",
     "title": "Functions",
     "section": "Diagnosis group",
-    "text": "Diagnosis group\nGroups the primary diagnosis into type 1 diabetes, type 2 diabetes and other, using the codes in the plan. It will move to the planned sRtr code-grouping function (sRtr#2).\n\n\nClick to show/hide R Code\n# Diagnosis group from REC_DGN. To move to sRtr::srtr_collapse_codes()\n# (VagishHemmige/sRtr#2) once it exists.\ndiagnosis_group &lt;- function(dgn, codes, other_label) {\n  dgn_code &lt;- srtr_code(dgn)\n  group &lt;- rep(other_label, length(dgn_code))\n  for (group_name in names(codes)) {\n    group[dgn_code %in% codes[[group_name]]] &lt;- group_name\n  }\n  factor(group, levels = c(names(codes), other_label))\n}",
+    "text": "Diagnosis group\nGroups the primary diagnosis into type 1 diabetes, type 2 diabetes and other, using the codes in the plan. It will move to the planned sRtr code-grouping function (sRtr#2).\n\n\nClick to show/hide R Code\n# Diagnosis group from REC_DGN. To move to sRtr::srtr_collapse_codes()\n# (VagishHemmige/sRtr#2) once it exists.\ndiagnosis_group &lt;- function(dgn, codes, other_label) {\n  dgn_code &lt;- srtr_code(dgn)\n  group &lt;- rep(other_label, length(dgn_code))\n  for (group_name in names(codes)) {\n    group[dgn_code %in% codes[[group_name]]] &lt;- group_name\n  }\n  factor(group, levels = c(names(codes), other_label))\n}\n\n\nUsed in: R/02_derive_variables.R.",
     "crumbs": [
       "Code",
       "Setup and helper functions",
@@ -364,7 +484,7 @@
     "href": "quarto/functions.html#missing-preservation-time",
     "title": "Functions",
     "section": "Missing preservation time",
-    "text": "Missing preservation time\nFills missing pancreas preservation time before the PDRI is calculated, by one of three rules.\n\nDecision pending: which rule applies (#10).\n\n\n\nClick to show/hide R Code\n# Missing preservation time for the PDRI (decision pending: #10). `rule` is\n# \"hiv_only\", \"everyone\" or \"none\"; the mean is taken over `eligible` rows.\nimpute_preservation_time &lt;- function(preserv_tm, hiv_positive, eligible, rule) {\n  if (rule == \"none\") {\n    return(preserv_tm)\n  }\n  fill_value &lt;- mean(preserv_tm[eligible], na.rm = TRUE)\n  to_fill &lt;- is.na(preserv_tm)\n  if (rule == \"hiv_only\") {\n    to_fill &lt;- to_fill & hiv_positive == 1\n  }\n  dplyr::if_else(to_fill, fill_value, preserv_tm)\n}",
+    "text": "Missing preservation time\nFills missing pancreas preservation time before the PDRI is calculated, by one of three rules.\n\nDecision pending: which rule applies (#10).\n\n\n\nClick to show/hide R Code\n# Missing preservation time for the PDRI (decision pending: #10). `rule` is\n# \"hiv_only\", \"everyone\" or \"none\"; the mean is taken over `eligible` rows.\nimpute_preservation_time &lt;- function(preserv_tm, hiv_positive, eligible, rule) {\n  if (rule == \"none\") {\n    return(preserv_tm)\n  }\n  fill_value &lt;- mean(preserv_tm[eligible], na.rm = TRUE)\n  to_fill &lt;- is.na(preserv_tm)\n  if (rule == \"hiv_only\") {\n    to_fill &lt;- to_fill & hiv_positive == 1\n  }\n  dplyr::if_else(to_fill, fill_value, preserv_tm)\n}\n\n\nUsed in: R/03_calculate_pdri.R.",
     "crumbs": [
       "Code",
       "Setup and helper functions",
@@ -376,7 +496,7 @@
     "href": "quarto/functions.html#center-volume",
     "title": "Functions",
     "section": "Center volume",
-    "text": "Center volume\nCounts transplants per center per calendar year from a whole transplant file, optionally within a subgroup such as recipients with HIV, and groups the counts by cut-points. It will move to sRtr (sRtr#52).\n\n\nClick to show/hide R Code\n# Transplants per center per calendar year, from a whole transplant file.\n# To move to sRtr::srtr_center_volume() (VagishHemmige/sRtr#52).\ncenter_volume &lt;- function(tx, prefix, subset = NULL) {\n  subset &lt;- rlang::enquo(subset)\n  if (!rlang::quo_is_null(subset)) {\n    tx &lt;- dplyr::filter(tx, !!subset)\n  }\n  tx |&gt;\n    dplyr::filter(!is.na(.data$REC_TX_DT)) |&gt;\n    dplyr::mutate(YEAR_TRANSPLANT = as.integer(format(.data$REC_TX_DT, \"%Y\"))) |&gt;\n    dplyr::count(.data$REC_CTR_CD, .data$YEAR_TRANSPLANT,\n                 name = paste0(prefix, \"_VOLUME\"))\n}\n\n# Group volumes by upper cut-points: `breaks` is a named vector of the upper\n# bound of each group but the last (for example c(Low = 6, Medium = 13)).\ncenter_volume_group &lt;- function(volume, breaks, top_label = \"High\") {\n  labels &lt;- c(names(breaks), top_label)\n  cut(volume, breaks = c(-Inf, breaks, Inf), labels = labels, right = TRUE)\n}",
+    "text": "Center volume\nCounts transplants per center per calendar year from a whole transplant file, optionally within a subgroup such as recipients with HIV, and groups the counts by cut-points. It will move to sRtr (sRtr#52).\n\n\nClick to show/hide R Code\n# Transplants per center per calendar year, from a whole transplant file.\n# To move to sRtr::srtr_center_volume() (VagishHemmige/sRtr#52).\ncenter_volume &lt;- function(tx, prefix, subset = NULL) {\n  subset &lt;- rlang::enquo(subset)\n  if (!rlang::quo_is_null(subset)) {\n    tx &lt;- dplyr::filter(tx, !!subset)\n  }\n  tx |&gt;\n    dplyr::filter(!is.na(.data$REC_TX_DT)) |&gt;\n    dplyr::mutate(YEAR_TRANSPLANT = as.integer(format(.data$REC_TX_DT, \"%Y\"))) |&gt;\n    dplyr::count(.data$REC_CTR_CD, .data$YEAR_TRANSPLANT,\n                 name = paste0(prefix, \"_VOLUME\"))\n}\n\n# Group volumes by upper cut-points: `breaks` is a named vector of the upper\n# bound of each group but the last (for example c(Low = 6, Medium = 13)).\ncenter_volume_group &lt;- function(volume, breaks, top_label = \"High\") {\n  labels &lt;- c(names(breaks), top_label)\n  cut(volume, breaks = c(-Inf, breaks, Inf), labels = labels, right = TRUE)\n}\n\n\nUsed in: R/06_add_center_volume.R.",
     "crumbs": [
       "Code",
       "Setup and helper functions",
@@ -388,7 +508,7 @@
     "href": "quarto/functions.html#induction-therapy",
     "title": "Functions",
     "section": "Induction therapy",
-    "text": "Induction therapy\nFlags, for each transplant, whether it received each class of induction drug.\n\nDecision pending: which drugs count, and whether only drugs recorded as induction count (#11). The function will move to sRtr (sRtr#51).\n\n\n\nClick to show/hide R Code\n# Induction classes per transplant from IMMUNO rows (decision pending: #11).\n# Returns one row per TRR_ID in `immuno`. To move to sRtr::srtr_induction()\n# (VagishHemmige/sRtr#51).\ninduction_flags &lt;- function(immuno, drug_codes, use_induction_flag) {\n  if (use_induction_flag) {\n    immuno &lt;- dplyr::filter(immuno, srtr_code(.data$REC_DRUG_INDUCTION) == 1)\n  }\n  immuno &lt;- dplyr::mutate(immuno, DRUG_CODE = srtr_code(.data$REC_DRUG_CD))\n  flags &lt;- dplyr::distinct(immuno, .data$TRR_ID)\n  for (class_name in names(drug_codes)) {\n    class_flags &lt;- immuno |&gt;\n      dplyr::group_by(.data$TRR_ID) |&gt;\n      dplyr::summarise(\n        !!paste0(\"INDUCTION_\", toupper(class_name)) :=\n          as.integer(any(.data$DRUG_CODE %in% drug_codes[[class_name]])),\n        .groups = \"drop\"\n      )\n    flags &lt;- dplyr::left_join(flags, class_flags,\n                              by = dplyr::join_by(\"TRR_ID\"),\n                              relationship = \"one-to-one\")\n  }\n  flags\n}",
+    "text": "Induction therapy\nFlags, for each transplant, whether it received each class of induction drug.\n\nDecision pending: which drugs count, and whether only drugs recorded as induction count (#11). The function will move to sRtr (sRtr#51).\n\n\n\nClick to show/hide R Code\n# Induction classes per transplant from IMMUNO rows (decision pending: #11).\n# Returns one row per TRR_ID in `immuno`. To move to sRtr::srtr_induction()\n# (VagishHemmige/sRtr#51).\ninduction_flags &lt;- function(immuno, drug_codes, use_induction_flag) {\n  if (use_induction_flag) {\n    immuno &lt;- dplyr::filter(immuno, srtr_code(.data$REC_DRUG_INDUCTION) == 1)\n  }\n  immuno &lt;- dplyr::mutate(immuno, DRUG_CODE = srtr_code(.data$REC_DRUG_CD))\n  flags &lt;- dplyr::distinct(immuno, .data$TRR_ID)\n  for (class_name in names(drug_codes)) {\n    class_flags &lt;- immuno |&gt;\n      dplyr::group_by(.data$TRR_ID) |&gt;\n      dplyr::summarise(\n        !!paste0(\"INDUCTION_\", toupper(class_name)) :=\n          as.integer(any(.data$DRUG_CODE %in% drug_codes[[class_name]])),\n        .groups = \"drop\"\n      )\n    flags &lt;- dplyr::left_join(flags, class_flags,\n                              by = dplyr::join_by(\"TRR_ID\"),\n                              relationship = \"one-to-one\")\n  }\n  flags\n}\n\n\nUsed in: R/05_add_induction.R.",
     "crumbs": [
       "Code",
       "Setup and helper functions",
@@ -400,7 +520,7 @@
     "href": "quarto/functions.html#weights-for-the-average-effect-among-recipients-with-hiv",
     "title": "Functions",
     "section": "Weights for the average effect among recipients with HIV",
-    "text": "Weights for the average effect among recipients with HIV\nInverse probability weights for the plan’s estimand: 1 for recipients with HIV, and the propensity score divided by one minus it for recipients without HIV, with optional truncation.\n\nDecision pending: stabilization and truncation (#21).\n\n\n\nClick to show/hide R Code\n# Inverse probability weights for the average effect among the exposed (ATT):\n# 1 for exposed, ps / (1 - ps) for unexposed. Optional truncation of the\n# unexposed weights at an upper percentile (decision pending: #21).\natt_weights &lt;- function(exposed, ps, truncate_percentile = NA_real_) {\n  stopifnot(length(exposed) == length(ps), all(ps &gt; 0 & ps &lt; 1, na.rm = TRUE))\n  weights &lt;- dplyr::if_else(exposed == 1, 1, ps / (1 - ps))\n  if (!is.na(truncate_percentile)) {\n    cap &lt;- stats::quantile(weights[exposed == 0], truncate_percentile,\n                           na.rm = TRUE, names = FALSE)\n    weights &lt;- dplyr::if_else(exposed == 0, pmin(weights, cap), weights)\n  }\n  weights\n}",
+    "text": "Weights for the average effect among recipients with HIV\nInverse probability weights for the plan’s estimand: 1 for recipients with HIV, and the propensity score divided by one minus it for recipients without HIV, with optional truncation.\n\nDecision pending: stabilization and truncation (#21).\n\n\n\nClick to show/hide R Code\n# Inverse probability weights for the average effect among the exposed (ATT):\n# 1 for exposed, ps / (1 - ps) for unexposed. Optional truncation of the\n# unexposed weights at an upper percentile (decision pending: #21).\natt_weights &lt;- function(exposed, ps, truncate_percentile = NA_real_) {\n  stopifnot(length(exposed) == length(ps), all(ps &gt; 0 & ps &lt; 1, na.rm = TRUE))\n  weights &lt;- dplyr::if_else(exposed == 1, 1, ps / (1 - ps))\n  if (!is.na(truncate_percentile)) {\n    cap &lt;- stats::quantile(weights[exposed == 0], truncate_percentile,\n                           na.rm = TRUE, names = FALSE)\n    weights &lt;- dplyr::if_else(exposed == 0, pmin(weights, cap), weights)\n  }\n  weights\n}\n\n\nUsed in: R/09_estimate_weights.R.",
     "crumbs": [
       "Code",
       "Setup and helper functions",
@@ -412,7 +532,7 @@
     "href": "quarto/functions.html#balance",
     "title": "Functions",
     "section": "Balance",
-    "text": "Balance\nStandardized mean differences between recipients with and without HIV, with or without weights, for each variable or each level of a categorical variable.\n\n\nClick to show/hide R Code\n# Standardized mean difference of a numeric or 0/1 variable between exposed\n# and unexposed, with optional weights. The denominator is the unweighted\n# standard deviation in the exposed group, as is usual for the ATT.\nweighted_smd &lt;- function(x, exposed, weights = rep(1, length(x))) {\n  keep &lt;- !is.na(x)\n  x &lt;- x[keep]\n  exposed &lt;- exposed[keep]\n  weights &lt;- weights[keep]\n  mean_exposed &lt;- stats::weighted.mean(x[exposed == 1], weights[exposed == 1])\n  mean_unexposed &lt;- stats::weighted.mean(x[exposed == 0], weights[exposed == 0])\n  sd_exposed &lt;- stats::sd(x[exposed == 1])\n  if (is.na(sd_exposed) || sd_exposed == 0) {\n    return(NA_real_)\n  }\n  (mean_exposed - mean_unexposed) / sd_exposed\n}\n\n# Balance table: one row per variable (factors expanded to one row per level).\nbalance_table &lt;- function(data, variables, exposure, weights = NULL) {\n  w &lt;- if (is.null(weights)) rep(1, nrow(data)) else data[[weights]]\n  rows &lt;- list()\n  for (variable in variables) {\n    x &lt;- data[[variable]]\n    if (is.factor(x) || is.character(x)) {\n      for (level in sort(unique(stats::na.omit(as.character(x))))) {\n        rows[[paste(variable, level)]] &lt;- tibble::tibble(\n          variable = variable, level = level,\n          smd = weighted_smd(as.numeric(as.character(x) == level),\n                             data[[exposure]], w)\n        )\n      }\n    } else {\n      rows[[variable]] &lt;- tibble::tibble(\n        variable = variable, level = NA_character_,\n        smd = weighted_smd(as.numeric(x), data[[exposure]], w)\n      )\n    }\n  }\n  dplyr::bind_rows(rows)\n}",
+    "text": "Balance\nStandardized mean differences between recipients with and without HIV, with or without weights, for each variable or each level of a categorical variable.\n\n\nClick to show/hide R Code\n# Standardized mean difference of a numeric or 0/1 variable between exposed\n# and unexposed, with optional weights. The denominator is the unweighted\n# standard deviation in the exposed group, as is usual for the ATT.\nweighted_smd &lt;- function(x, exposed, weights = rep(1, length(x))) {\n  keep &lt;- !is.na(x)\n  x &lt;- x[keep]\n  exposed &lt;- exposed[keep]\n  weights &lt;- weights[keep]\n  mean_exposed &lt;- stats::weighted.mean(x[exposed == 1], weights[exposed == 1])\n  mean_unexposed &lt;- stats::weighted.mean(x[exposed == 0], weights[exposed == 0])\n  sd_exposed &lt;- stats::sd(x[exposed == 1])\n  if (is.na(sd_exposed) || sd_exposed == 0) {\n    return(NA_real_)\n  }\n  (mean_exposed - mean_unexposed) / sd_exposed\n}\n\n# Balance table: one row per variable (factors expanded to one row per level).\nbalance_table &lt;- function(data, variables, exposure, weights = NULL) {\n  w &lt;- if (is.null(weights)) rep(1, nrow(data)) else data[[weights]]\n  rows &lt;- list()\n  for (variable in variables) {\n    x &lt;- data[[variable]]\n    if (is.factor(x) || is.character(x)) {\n      for (level in sort(unique(stats::na.omit(as.character(x))))) {\n        rows[[paste(variable, level)]] &lt;- tibble::tibble(\n          variable = variable, level = level,\n          smd = weighted_smd(as.numeric(as.character(x) == level),\n                             data[[exposure]], w)\n        )\n      }\n    } else {\n      rows[[variable]] &lt;- tibble::tibble(\n        variable = variable, level = NA_character_,\n        smd = weighted_smd(as.numeric(x), data[[exposure]], w)\n      )\n    }\n  }\n  dplyr::bind_rows(rows)\n}\n\n\nUsed in: R/08_match_recipients.R, R/09_estimate_weights.R.",
     "crumbs": [
       "Code",
       "Setup and helper functions",
@@ -424,7 +544,7 @@
     "href": "quarto/functions.html#concentration-across-centers",
     "title": "Functions",
     "section": "Concentration across centers",
-    "text": "Concentration across centers\nPoints of a Lorenz curve and the Gini coefficient for counts across transplant centers.\n\n\nClick to show/hide R Code\n# Lorenz curve points and Gini coefficient for counts across units (centers).\nlorenz_points &lt;- function(counts) {\n  counts &lt;- sort(counts)\n  tibble::tibble(\n    share_units = c(0, seq_along(counts) / length(counts)),\n    share_counts = c(0, cumsum(counts) / sum(counts))\n  )\n}\n\ngini_coefficient &lt;- function(counts) {\n  counts &lt;- sort(counts)\n  n &lt;- length(counts)\n  if (n == 0 || sum(counts) == 0) {\n    return(NA_real_)\n  }\n  # Gini from the ordered counts: base R arithmetic on one vector, kept here\n  # in a named, tested function (AGENTS.md, \"Coding conventions\").\n  sum((2 * seq_len(n) - n - 1) * counts) / (n * sum(counts))\n}",
+    "text": "Concentration across centers\nPoints of a Lorenz curve and the Gini coefficient for counts across transplant centers.\n\n\nClick to show/hide R Code\n# Lorenz curve points and Gini coefficient for counts across units (centers).\nlorenz_points &lt;- function(counts) {\n  counts &lt;- sort(counts)\n  tibble::tibble(\n    share_units = c(0, seq_along(counts) / length(counts)),\n    share_counts = c(0, cumsum(counts) / sum(counts))\n  )\n}\n\ngini_coefficient &lt;- function(counts) {\n  counts &lt;- sort(counts)\n  n &lt;- length(counts)\n  if (n == 0 || sum(counts) == 0) {\n    return(NA_real_)\n  }\n  # Gini from the ordered counts: base R arithmetic on one vector, kept here\n  # in a named, tested function (AGENTS.md, \"Coding conventions\").\n  sum((2 * seq_len(n) - n - 1) * counts) / (n * sum(counts))\n}\n\n\nUsed in: R/figures.R.",
     "crumbs": [
       "Code",
       "Setup and helper functions",
@@ -436,7 +556,7 @@
     "href": "quarto/functions.html#follow-up-dates",
     "title": "Functions",
     "section": "Follow-up dates",
-    "text": "Follow-up dates\nFirst rejection and malignancy dates from the follow-up files through sRtr, with the output columns fixed so they do not depend on which organs had a rejection (sRtr#16).\n\n\nClick to show/hide R Code\n# First follow-up rejection and malignancy dates through\n# sRtr::add_txf_outcomes(), with the output columns fixed so they do not depend\n# on which organs happen to have rejections (VagishHemmige/sRtr#16).\n# For TX_KP, see also VagishHemmige/sRtr#37 (TRR_ID vs TRR_ID_PA).\nadd_followup_dates &lt;- function(cohort, file_key) {\n  attr(cohort, \"file_key\") &lt;- file_key\n  out &lt;- sRtr::add_txf_outcomes(cohort)\n  expected &lt;- if (file_key == \"TX_KP\") {\n    c(\"FIRST_FU_REJ_DATE_KI\", \"FIRST_FU_REJ_DATE_PA\")\n  } else {\n    \"FIRST_FU_REJ_DATE\"\n  }\n  if (file_key == \"TX_KP\" && \"FIRST_FU_REJ_DATE\" %in% names(out)) {\n    stop(\"add_txf_outcomes() returned a single rejection column for TX_KP; \",\n         \"the organ is ambiguous (VagishHemmige/sRtr#16).\", call. = FALSE)\n  }\n  for (column in c(\"FIRST_FU_MALIG_DATE\", expected)) {\n    if (!column %in% names(out)) {\n      out[[column]] &lt;- as.Date(NA)\n    }\n  }\n  out\n}",
+    "text": "Follow-up dates\nFirst rejection and malignancy dates from the follow-up files through sRtr, with the output columns fixed so they do not depend on which organs had a rejection (sRtr#16).\n\n\nClick to show/hide R Code\n# First follow-up rejection and malignancy dates through\n# sRtr::add_txf_outcomes(), with the output columns fixed so they do not depend\n# on which organs happen to have rejections (VagishHemmige/sRtr#16).\n# For TX_KP, see also VagishHemmige/sRtr#37 (TRR_ID vs TRR_ID_PA).\nadd_followup_dates &lt;- function(cohort, file_key) {\n  attr(cohort, \"file_key\") &lt;- file_key\n  out &lt;- sRtr::add_txf_outcomes(cohort)\n  expected &lt;- if (file_key == \"TX_KP\") {\n    c(\"FIRST_FU_REJ_DATE_KI\", \"FIRST_FU_REJ_DATE_PA\")\n  } else {\n    \"FIRST_FU_REJ_DATE\"\n  }\n  if (file_key == \"TX_KP\" && \"FIRST_FU_REJ_DATE\" %in% names(out)) {\n    stop(\"add_txf_outcomes() returned a single rejection column for TX_KP; \",\n         \"the organ is ambiguous (VagishHemmige/sRtr#16).\", call. = FALSE)\n  }\n  for (column in c(\"FIRST_FU_MALIG_DATE\", expected)) {\n    if (!column %in% names(out)) {\n      out[[column]] &lt;- as.Date(NA)\n    }\n  }\n  out\n}\n\n\nUsed in: R/07_build_outcomes.R.",
     "crumbs": [
       "Code",
       "Setup and helper functions",
@@ -448,7 +568,7 @@
     "href": "quarto/study_methods.html",
     "title": "Study design and methods",
     "section": "",
-    "text": "PendingProvisional\n\n\n\nText highlighted like this is provisional: it depends on a decision the analysis plan has not yet made.\nThis page explains, in plain language and without code, what this study chose and why. The formal specification is the analysis plan; each section below ends by linking the part of the plan that governs it. Three kinds of note mark where the description stands:",
+    "text": "PendingProvisional\n\n\n\nText highlighted like this is provisional: it depends on a decision the analysis plan has not yet made.\nThis page explains, in plain language and without code, what this study chose and why. The general background it relies on is on Methodological background. The formal specification is the analysis plan; each section below ends by linking the part of the plan that governs it. Three kinds of note mark where the description stands:",
     "crumbs": [
       "Study design and methods"
     ]
@@ -458,7 +578,7 @@
     "href": "quarto/study_methods.html#the-question-and-the-design-in-brief",
     "title": "Study design and methods",
     "section": "The question and the design in brief",
-    "text": "The question and the design in brief\nThis study uses the national transplant registry to compare outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV. Because recipients with HIV may differ from others in their donors and their own characteristics, each recipient with HIV is compared with similar recipients without HIV rather than with everyone. Kidney–pancreas and pancreas-alone transplants are studied separately, because their risks differ.\nSpecified in: §1 Objective and §2 Design.\n\nDecision pending: which outcome is primary (#7).",
+    "text": "The question and the design in brief\nThis study uses the national transplant registry to compare outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV. Because recipients with HIV may differ from others in their donors and their own characteristics, each recipient with HIV is compared with similar recipients without HIV rather than with everyone. Kidney–pancreas and pancreas-alone transplants are studied separately, because their risks differ.\nThe comparison is planned, not yet carried out, and it describes how outcomes differ between similar recipients with and without HIV. Whether HIV itself causes any difference depends on assumptions the data cannot fully check (see Comparing similar recipients below).\nSpecified in: §1 Objective and §2 Design.\n\nDecision pending: which outcome is primary (#7).",
     "crumbs": [
       "Study design and methods"
     ]
@@ -468,17 +588,17 @@
     "href": "quarto/study_methods.html#who-is-included",
     "title": "Study design and methods",
     "section": "Who is included",
-    "text": "Who is included\nAdults and adolescents aged 16 or older who received a kidney–pancreas or pancreas-alone transplant and have at least some follow-up in the registry. Recipients are counted as having HIV if the registry records a positive HIV test at transplant.\nSpecified in: §4 Study population and §5 Exposure and time zero.\n\nDecision pending: how recipients whose HIV status is missing or unknown are classified (#9).",
+    "text": "Who is included\nRecipients aged 16 or older at transplant who received a kidney–pancreas or pancreas-alone transplant. Four exclusions are applied in order, each shown as a step in the flow diagram: no transplant date recorded; age under 16; no patient status date recorded; and a pancreas donor risk index (PDRI) that cannot be calculated. The PDRI is a summary of donated-pancreas quality, and it needs every one of its inputs, including how long the pancreas was preserved before transplant. So the rule for missing preservation time decides who is excluded at the last step.\nRecipients are counted as having HIV if the registry records a positive HIV test at transplant.\nSpecified in: §4 Study population and §5 Exposure and time zero.\n\nDecision pending: how missing preservation time is handled, which sets who is excluded for a missing PDRI (#10).\n\n\nDecision pending: how recipients whose HIV status is missing or unknown are classified (#9).",
     "crumbs": [
       "Study design and methods"
     ]
   },
   {
-    "objectID": "quarto/study_methods.html#finding-comparable-recipients-without-hiv",
-    "href": "quarto/study_methods.html#finding-comparable-recipients-without-hiv",
+    "objectID": "quarto/study_methods.html#comparing-similar-recipients",
+    "href": "quarto/study_methods.html#comparing-similar-recipients",
     "title": "Study design and methods",
-    "section": "Finding comparable recipients without HIV",
-    "text": "Finding comparable recipients without HIV\nEach recipient with HIV is matched to up to ten recipients without HIV, using a score that summarizes how likely a recipient was to have HIV given the quality of the donated pancreas (the pancreas donor risk index), the year of transplant, the cause of diabetes, and the recipient’s age, sex and race.\nSpecified in: §6 Comparator or matching.\n\nDecision pending: how close the matched groups must be before the comparison goes ahead (#12).",
+    "section": "Comparing similar recipients",
+    "text": "Comparing similar recipients\nTwo methods are planned, both built on a propensity score: each recipient’s estimated chance of having HIV, given the quality of the donated pancreas (the PDRI), the year of transplant, the cause of diabetes, and the recipient’s age, sex and race.\n\nMatching: each recipient with HIV is paired with up to ten recipients without HIV who have similar scores.\nWeighting: every recipient without HIV is kept but weighted, so that together they resemble the recipients with HIV.\n\nBoth aim to make the groups alike in the characteristics that went into the score. Neither can balance characteristics the registry does not record, such as HIV control (viral load and CD4 count) or how centers chose recipients. Any difference that remains can still reflect those, not HIV alone.\nSpecified in: §6 Comparator or matching.\n\nDecision pending: how close the matched groups must be before the comparison goes ahead (#12).\n\n\nDecision pending: which characteristics go into the weighting, and whether weighting is a main or a supporting analysis (#21).",
     "crumbs": [
       "Study design and methods"
     ]
@@ -488,7 +608,7 @@
     "href": "quarto/study_methods.html#what-is-compared",
     "title": "Study design and methods",
     "section": "What is compared",
-    "text": "What is compared\nLoss of the kidney or pancreas graft, treated rejection of each organ, death, and cancer after transplant, each followed from the day of transplant.\nSpecified in: §7 Outcomes and §8 Statistical analysis.\n\nDecision pending: when follow-up stops for each outcome, for example whether graft loss is still counted after death (#13).",
+    "text": "What is compared\nSix outcomes are followed from the day of transplant:\n\nGraft loss: the transplanted organ stops working, for example a pancreas that no longer controls blood sugar, or a kidney that leaves the recipient needing dialysis. Kidney graft loss applies only to kidney–pancreas recipients; pancreas graft loss applies to both groups.\nTreated rejection: an episode of the immune system attacking the organ that was treated with anti-rejection medicines. Rejection can be reversed and is not the same as graft loss, though it can lead to it. Kidney rejection applies only to kidney–pancreas recipients.\nDeath from any cause.\nCancer reported on a follow-up form.\n\nFor each outcome, follow-up stops at a censoring point, and how death and graft loss are handled is still open. Graft loss could be counted only while the recipient is alive (death treated as the end of follow-up), counted regardless of death, or analysed with death as a competing outcome. Similar choices apply to rejection and cancer after graft loss or death. Until that decision is made, the outcome labels in the plan describe the intended measures, not a settled method.\nSpecified in: §7 Outcomes and §8 Statistical analysis.\n\nDecision pending: when follow-up stops for each outcome, and whether death is treated as the end of follow-up or as a competing outcome (#13).",
     "crumbs": [
       "Study design and methods"
     ]
@@ -553,7 +673,7 @@
     "href": "quarto/analysis-plan.html#4-study-population",
     "title": "",
     "section": "4. Study population",
-    "text": "4. Study population\nSource population: all kidney–pancreas and pancreas-alone transplants in the release.\nExclusions, in order (each is one flowchart step), applied separately to each transplant type:\n\nNo transplant date (REC_TX_DT missing).\nAge at transplant under 16 years (REC_AGE_AT_TX &lt; 16).\nNo follow-up information (REC_PX_STAT_DT missing), meaning the transplant was too recent to contribute follow-up.\nPancreas donor risk index (PDRI) cannot be calculated (§5).\n\nIndex event: the transplant. Transplant period: every transplant in the release.\n\nOpen: whether to restrict or stratify by transplant era (#2).",
+    "text": "4. Study population\nSource population: all kidney–pancreas and pancreas-alone transplants in the release.\nExclusions, in order (each is one flowchart step), applied separately to each transplant type:\n\nNo transplant date (REC_TX_DT missing).\nAge at transplant under 16 years (REC_AGE_AT_TX &lt; 16).\nNo patient status date (REC_PX_STAT_DT, “Patient Status/Date” in the SRTR dictionary, missing). The reason a status date is missing is not documented.\nPancreas donor risk index (PDRI) cannot be calculated (§5), which depends on how missing preservation time is handled (#10).\n\nIndex event: the transplant. Transplant period: every transplant in the release.\n\nOpen: whether to restrict or stratify by transplant era (#2).",
     "crumbs": [
       "Project documents",
       "Analysis plan"
@@ -656,6 +776,61 @@
     "crumbs": [
       "Project documents",
       "Analysis plan"
+    ]
+  },
+  {
+    "objectID": "quarto/methodological_background.html",
+    "href": "quarto/methodological_background.html",
+    "title": "Methodological background",
+    "section": "",
+    "text": "This page explains the general methods the study relies on. What this study chose is on Study design and methods.",
+    "crumbs": [
+      "Background",
+      "Methodological background"
+    ]
+  },
+  {
+    "objectID": "quarto/methodological_background.html#the-registry-data",
+    "href": "quarto/methodological_background.html#the-registry-data",
+    "title": "Methodological background",
+    "section": "The registry data",
+    "text": "The registry data\nThe Scientific Registry of Transplant Recipients (SRTR) standard analysis files hold a record of every solid-organ transplant in the United States, built from forms that transplant centers submit. A transplant form describes the recipient, the donor and the hospital stay; follow-up forms are submitted at set intervals afterwards and record events such as rejection, graft failure, cancer and death. Because events on follow-up forms are reported at the next form, the date attached to them is often the date of the form rather than of the event itself. Deaths are also identified from other sources, such as Social Security records, which can find deaths after a recipient’s last follow-up form.",
+    "crumbs": [
+      "Background",
+      "Methodological background"
+    ]
+  },
+  {
+    "objectID": "quarto/methodological_background.html#donor-quality-the-pancreas-donor-risk-index",
+    "href": "quarto/methodological_background.html#donor-quality-the-pancreas-donor-risk-index",
+    "title": "Methodological background",
+    "section": "Donor quality: the pancreas donor risk index",
+    "text": "Donor quality: the pancreas donor risk index\nThe pancreas donor risk index (PDRI) summarizes how the characteristics of a deceased donor, and how long the pancreas was preserved before transplant, relate to the risk that the pancreas graft fails. It was developed from national registry data on pancreas transplants, and a higher value means a higher expected risk of graft failure (Axelrod et al. 2010).",
+    "crumbs": [
+      "Background",
+      "Methodological background"
+    ]
+  },
+  {
+    "objectID": "quarto/methodological_background.html#comparing-groups-that-differ-propensity-scores",
+    "href": "quarto/methodological_background.html#comparing-groups-that-differ-propensity-scores",
+    "title": "Methodological background",
+    "section": "Comparing groups that differ: propensity scores",
+    "text": "Comparing groups that differ: propensity scores\nIn an observational study, people with and without an exposure (here, HIV) differ in other ways that also affect outcomes. The propensity score is each person’s probability of having the exposure given their measured characteristics. People with similar scores have, on average, similar measured characteristics, whether or not they have the exposure (Austin 2011). Two common ways of using it are:\n\nMatching: pairing each exposed person with one or more unexposed people with a similar score, then comparing the matched groups.\nInverse probability weighting: keeping everyone and weighting each person so that the weighted groups resemble each other, or resemble a chosen target group.\n\nBoth methods target a particular average effect. The effect among the exposed (the average treatment effect in the treated) asks what difference the exposure makes for people like those who have it; the effect in everyone (the average treatment effect) asks the same for the whole population. Matching each exposed person to unexposed people, and weighting for the exposed group, both target the effect among the exposed (Austin 2011).\nWhether the score did its job is checked by comparing the groups’ characteristics after matching or weighting, usually with the standardized mean difference, the difference in means divided by a standard deviation, rather than with significance tests (Austin 2011). No propensity-score method balances characteristics that were not measured.",
+    "crumbs": [
+      "Background",
+      "Methodological background"
+    ]
+  },
+  {
+    "objectID": "quarto/methodological_background.html#time-to-event-outcomes",
+    "href": "quarto/methodological_background.html#time-to-event-outcomes",
+    "title": "Methodological background",
+    "section": "Time-to-event outcomes",
+    "text": "Time-to-event outcomes\nGraft loss, rejection, death and cancer are analysed as the time from transplant until the event. People whose follow-up ends before the event are censored: they count as event-free up to their last known follow-up. Kaplan–Meier curves estimate the proportion still free of the event over time, and Cox proportional hazards models estimate the hazard ratio, how much higher or lower the event rate is in one group than in another.\nWhen another event prevents the outcome from being observed, most often death before graft loss, the analysis has to say how that event is treated: as the end of follow-up, as part of the outcome, or as a competing event analysed alongside it. Each answers a different question.",
+    "crumbs": [
+      "Background",
+      "Methodological background"
     ]
   }
 ]
