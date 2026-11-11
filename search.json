@@ -1,0 +1,505 @@
+[
+  {
+    "objectID": "quarto/architecture.html",
+    "href": "quarto/architecture.html",
+    "title": "",
+    "section": "",
+    "text": "Project documentsArchitecture Code\n\n\n\n\n\n\nArchitecture\nARCHITECTURE.md has not been written yet.",
+    "crumbs": [
+      "Project documents",
+      "Architecture"
+    ]
+  },
+  {
+    "objectID": "quarto/study_methods.html",
+    "href": "quarto/study_methods.html",
+    "title": "Study design and methods",
+    "section": "",
+    "text": "PendingProvisional\n\n\n\nText highlighted like this is provisional: it depends on a decision the analysis plan has not yet made.\nThis page explains, in plain language and without code, what this study chose and why. The formal specification is the analysis plan; each section below ends by linking the part of the plan that governs it. Three kinds of note mark where the description stands:",
+    "crumbs": [
+      "Study design and methods"
+    ]
+  },
+  {
+    "objectID": "quarto/study_methods.html#the-question-and-the-design-in-brief",
+    "href": "quarto/study_methods.html#the-question-and-the-design-in-brief",
+    "title": "Study design and methods",
+    "section": "The question and the design in brief",
+    "text": "The question and the design in brief\nThis study uses the national transplant registry to compare outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV. Because recipients with HIV may differ from others in their donors and their own characteristics, each recipient with HIV is compared with similar recipients without HIV rather than with everyone. Kidney–pancreas and pancreas-alone transplants are studied separately, because their risks differ.\nSpecified in: §1 Objective and §2 Design.\n\nDecision pending: which outcome is primary (#7).",
+    "crumbs": [
+      "Study design and methods"
+    ]
+  },
+  {
+    "objectID": "quarto/study_methods.html#who-is-included",
+    "href": "quarto/study_methods.html#who-is-included",
+    "title": "Study design and methods",
+    "section": "Who is included",
+    "text": "Who is included\nAdults and adolescents aged 16 or older who received a kidney–pancreas or pancreas-alone transplant and have at least some follow-up in the registry. Recipients are counted as having HIV if the registry records a positive HIV test at transplant.\nSpecified in: §4 Study population and §5 Exposure and time zero.\n\nDecision pending: how recipients whose HIV status is missing or unknown are classified (#9).",
+    "crumbs": [
+      "Study design and methods"
+    ]
+  },
+  {
+    "objectID": "quarto/study_methods.html#finding-comparable-recipients-without-hiv",
+    "href": "quarto/study_methods.html#finding-comparable-recipients-without-hiv",
+    "title": "Study design and methods",
+    "section": "Finding comparable recipients without HIV",
+    "text": "Finding comparable recipients without HIV\nEach recipient with HIV is matched to up to ten recipients without HIV, using a score that summarizes how likely a recipient was to have HIV given the quality of the donated pancreas (the pancreas donor risk index), the year of transplant, the cause of diabetes, and the recipient’s age, sex and race.\nSpecified in: §6 Comparator or matching.\n\nDecision pending: how close the matched groups must be before the comparison goes ahead (#12).",
+    "crumbs": [
+      "Study design and methods"
+    ]
+  },
+  {
+    "objectID": "quarto/study_methods.html#what-is-compared",
+    "href": "quarto/study_methods.html#what-is-compared",
+    "title": "Study design and methods",
+    "section": "What is compared",
+    "text": "What is compared\nLoss of the kidney or pancreas graft, treated rejection of each organ, death, and cancer after transplant, each followed from the day of transplant.\nSpecified in: §7 Outcomes and §8 Statistical analysis.\n\nDecision pending: when follow-up stops for each outcome, for example whether graft loss is still counted after death (#13).",
+    "crumbs": [
+      "Study design and methods"
+    ]
+  },
+  {
+    "objectID": "quarto/agents.html",
+    "href": "quarto/agents.html",
+    "title": "",
+    "section": "",
+    "text": "Project documentsAGENTS.md Code",
+    "crumbs": [
+      "Project documents",
+      "AGENTS.md"
+    ]
+  },
+  {
+    "objectID": "quarto/agents.html#the-project",
+    "href": "quarto/agents.html#the-project",
+    "title": "",
+    "section": "The project",
+    "text": "The project\nThis project compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV, using propensity-score matching in the SRTR standard analysis files. The code and methods are published as a Quarto website. The project restarts an unfinished 2024 analysis; that script is kept outside the repository as a source and is not committed. Functionality the analysis needs is built in the sRtr package first, and the analysis code here calls it.\n\nanalysis-plan.md is the source of truth for design. Code implements the plan; it does not redefine it. If code needs to depart from the plan, open a decision issue, or comment on the existing one, for the deciders. Once a decider has settled it (in the issue, or relayed there in their exact words), the plan change and the code can go in the same pull request, which closes the issue.\nDeciders. Scientific decisions are made by: Vagish Hemmige (all areas). Anyone may open or contribute to a decision issue; only a decider settles it (see “Working with agents”).\nThis is an analysis project, not an R package. Do not add DESCRIPTION, NAMESPACE, roxygen, or pkgdown infrastructure, or apply CRAN conventions.\nDefault branch: main, protected. Changes reach it only through pull requests.",
+    "crumbs": [
+      "Project documents",
+      "AGENTS.md"
+    ]
+  },
+  {
+    "objectID": "quarto/agents.html#data-sources",
+    "href": "quarto/agents.html#data-sources",
+    "title": "",
+    "section": "Data sources",
+    "text": "Data sources\nEach source this project uses is listed below with the package that accesses it. Code that touches a source goes through its package. Do not write project-specific loading, cleaning, or definition code for something the package already does.\n\n\n\nSource\nAccessed through\nPackage documentation\nPackage maintained by\nAccess\nWhat AI agents may do\n\n\n\n\nSRTR standard analysis files (TX_KP, TX_PA, TXF_KP, TXF_PA, IMMUNO, TX_KI), release in analysis plan §3\nsRtr (load_srtr_file())\nhttps://vagishhemmige.github.io/sRtr/\nThis team\nRestricted (SRTR data use agreement)\nNone: code, documentation and synthetic data only\n\n\nSRTR SAF supplement (KDPI at allocation)\nsRtr (planned: sRtr#54)\nhttps://vagishhemmige.github.io/sRtr/\nThis team\nRestricted (SRTR data use agreement)\nNone: code, documentation and synthetic data only\n\n\nHRSA transplant centers\nsRtr (get_hrsa_transplant_centers())\nhttps://vagishhemmige.github.io/sRtr/\nThis team\nPublic\nNo restriction (public data)\n\n\nOPTN regions\nsRtr (get_hrsa_optn_regions())\nhttps://vagishhemmige.github.io/sRtr/\nThis team\nPublic\nNo restriction (public data)\n\n\n\nTo allow more for a source, a person changes its row through a pull request, naming the agreement and section that permit it, the approved AI service, and exactly what agents may do. Agents never propose or make this change themselves, and nothing in personal instructions can grant it.\nFor every package:\n\nRead its documentation before writing code for a source, including known issues. Behavior that sets the cohort, an exposure, an outcome, or a denominator is checked in the documentation, not assumed from a function’s name.\n\nFor packages this team maintains:\n\nFacts about the source belong in the package’s documentation, not in this file. If the package lacks something this project needs to know, add it there or open an issue there.\nProblems belong in the package. If a function is wrong or does not quite do what the plan needs, open an issue in its repository. Fix it in the package (preferred when generally useful) or wrap it here with a code comment linking the issue, and remove the wrapper once the issue is fixed.\n\nFor external packages:\n\nWork around problems here. Wrap the function in R/functions.R with a comment explaining the problem and linking any upstream issue. Reporting a bug upstream is an external communication; the person directing the work decides whether to file it.\nFacts about the source that this project relies on (definitions, release quirks, suppression rules) go in references/ with a citation to the provider’s documentation, or in the plan when they shape a decision.",
+    "crumbs": [
+      "Project documents",
+      "AGENTS.md"
+    ]
+  },
+  {
+    "objectID": "quarto/agents.html#exploration-and-definitive-analysis",
+    "href": "quarto/agents.html#exploration-and-definitive-analysis",
+    "title": "",
+    "section": "Exploration and definitive analysis",
+    "text": "Exploration and definitive analysis\nExploration is welcome on branches or forks. Experimental scripts need not be sourced from R/main.R or have Quarto pages, and their findings are labelled preliminary. A script becomes part of the definitive analysis when it is sourced from R/main.R; from then on every rule below applies to it.",
+    "crumbs": [
+      "Project documents",
+      "AGENTS.md"
+    ]
+  },
+  {
+    "objectID": "quarto/agents.html#r-scripts",
+    "href": "quarto/agents.html#r-scripts",
+    "title": "",
+    "section": "R scripts",
+    "text": "R scripts\n\nRunning the analysis. Run R/main.R from the project root. It sources the other scripts in dependency order; ARCHITECTURE.md describes what each does.\nOne job per script. When you add a definitive script, source it from main.R at the right point and update ARCHITECTURE.md in the same pull request.\nHeader comment. Each script begins with what it does, which objects it needs from earlier scripts, and what it produces.\nConstants, libraries, and code lists live in R/setup.R. Other scripts do not call library(), re-source setup.R, or hard-code values. Any number a reader might want to change (a window, a year, a threshold, a ratio) is a named constant there.\nHelper functions go in R/functions.R. A function takes its inputs as arguments and does not read global objects.\nNo side effects outside the project. No setwd(), absolute paths, or writes outside the project. SRTR files are located only through sRtr (set_srtr_wd() and the SRTR_WD setting).\nNo results in the repository. No script (exploratory or definitive) or comment, commit message, issue, pull-request text or review report contains results, counts or data values from SRTR data unless they are cleared for release. Check before every commit and post, since a public repository publishes everything pushed to it, on any branch.",
+    "crumbs": [
+      "Project documents",
+      "AGENTS.md"
+    ]
+  },
+  {
+    "objectID": "quarto/agents.html#chunk-labels",
+    "href": "quarto/agents.html#chunk-labels",
+    "title": "",
+    "section": "Chunk labels",
+    "text": "Chunk labels\nScripts are divided into labelled sections so Quarto pages can show the code without copying it:\n## ---- &lt;step-name&gt;\n\nEvery logical step has a label. A label covers the code from its line to the next label.\nLabels are kebab-case, describe the step, and are unique across all scripts; a duplicate silently picks up the wrong code.\nSearch the .qmd files before renaming or deleting a label.\nLabels are comments and never change what the code does.",
+    "crumbs": [
+      "Project documents",
+      "AGENTS.md"
+    ]
+  },
+  {
+    "objectID": "quarto/agents.html#variable-labels",
+    "href": "quarto/agents.html#variable-labels",
+    "title": "",
+    "section": "Variable labels",
+    "text": "Variable labels\nLabel analysis variables with human-readable descriptions (sRtr::apply_srtr_varlabels() for SAF variables, labelled::set_variable_labels() for derived ones). Label each derived variable where it is created, with units and windows where they apply.",
+    "crumbs": [
+      "Project documents",
+      "AGENTS.md"
+    ]
+  },
+  {
+    "objectID": "quarto/agents.html#quarto-website",
+    "href": "quarto/agents.html#quarto-website",
+    "title": "",
+    "section": "Quarto website",
+    "text": "Quarto website\nThe site documents the code. It does not run the analysis.\n\n_quarto.yml, index.qmd, 404.qmd (the page GitHub Pages shows for a missing address) and styles.css sit at the root; quarto/ has one page per definitive script, named after it, plus the Study design and methods, About and project-document pages. The custom-callout extension in _extensions/ provides the Rcode, Results and Pending callouts. Background pages are added when written.\nVisual cues. Each kind of page has one sidebar icon, coloured by styles.css, and pages mark the same kind of content with the callout of that colour: background book (blue); study design and methods diagram-3 (orange); R code laptop (pink, Rcode 💻); results clipboard-data (green, Results 📊); project documents file-earmark-ruled (grey). Give every new page the icon of its kind.\nProvisional content. quarto/_pending.lua highlights in yellow every paragraph that starts with Decision pending: or, in the plan, Open:, and any [text]{.pending}, and adds a ⏳ Pending callout to pages that have a mark. Mark only what an open decision could change, and remove the mark when the decision is settled.\nProject documents. analysis-plan.md, ARCHITECTURE.md, AGENTS.md and REPOSITORY-BLUEPRINT.md are shown on the site by pages in quarto/ that only include the root file, which stays the one source: edit the root file, not the page.\nEach page loads its script with knitr::read_chunk(\"../R/&lt;script&gt;.R\") in a hidden chunk and shows each labelled section with #| eval: false, with prose explaining what the section does and why. Pages link to the script on GitHub and to the scripts it depends on.\nNever evaluate analysis code in the site. Pages render without restricted data. Only the read_chunk() imports, the Architecture page’s chunk that reads ARCHITECTURE.md, site helpers that read code or text, and results pages that read cleared outputs run.\nThe site renders to docs/, which is not committed; the GitHub Actions workflow in .github/workflows/publish.yml renders and publishes it to the gh-pages branch on every push to main. When you add a script, add its page and sidebar entry in the same pull request, and check that the site renders.\nProse must match the code. If a change alters what a section does, update its explanation in the same pull request.",
+    "crumbs": [
+      "Project documents",
+      "AGENTS.md"
+    ]
+  },
+  {
+    "objectID": "quarto/agents.html#outputs",
+    "href": "quarto/agents.html#outputs",
+    "title": "",
+    "section": "Outputs",
+    "text": "Outputs\n\nTables and figures are exported by R/tables.R and R/figures.R to tables/ and figures/. They are gitignored, because they come from restricted data, until a review against the SRTR data use agreement’s disclosure rules clears them for release. Agents may not open them (see Restricted data).\nPublished figures need alt text.\nREADME.Rmd is the source of README.md; edit the .Rmd and re-knit.",
+    "crumbs": [
+      "Project documents",
+      "AGENTS.md"
+    ]
+  },
+  {
+    "objectID": "quarto/agents.html#restricted-data-applies-to-everyone",
+    "href": "quarto/agents.html#restricted-data-applies-to-everyone",
+    "title": "",
+    "section": "Restricted data (applies to everyone)",
+    "text": "Restricted data (applies to everyone)\nThe Access column of “Data sources” says which sources are restricted. For each restricted source:\n\nNever commit data, extracts, or saved objects or outputs derived from patient-level records. Keep data outside the repository, and check .gitignore before adding a new output type.\nAI agents never read restricted data. Anything an agent opens, prints, or summarizes is sent to the model provider. Agents do not open data files or patient-level objects, print rows, or display identifiers, person-level dates, or small geographies. Agents also do not open outputs from restricted data that are not yet cleared for release (tables/ and figures/ while they are ignored). Agents write code, review it, and run it on synthetic data; results on real data are produced by an authorized person. The only exception is what the Data sources table explicitly allows for a source, and only within those words.\nSynthetic data are built in code, labelled as synthetic, and never derived from real records.\nDisclosure. The SRTR data use agreement’s small-cell rule applies to every table, flowchart box, risk table and map, including regional counts of recipients with HIV, which are small. The exact rule is an open decision in the analysis plan §10; until it is recorded, nothing derived from SRTR data leaves the approved environment. Check every output before it leaves, including scripts, comments, commit messages, issues, pull-request text and review reports (see R scripts).\nCredentials and paid APIs. Never commit keys, tokens, or .Renviron. Ask before paid, bulk, or uncached API calls.",
+    "crumbs": [
+      "Project documents",
+      "AGENTS.md"
+    ]
+  },
+  {
+    "objectID": "quarto/agents.html#coding-conventions",
+    "href": "quarto/agents.html#coding-conventions",
+    "title": "",
+    "section": "Coding conventions",
+    "text": "Coding conventions\n\nCohort flow uses the flowchart package, so the STROBE flow diagram and the analytic cohort come from the same code. Every inclusion or exclusion goes through fc_filter(), in the plan’s order. Never remove people from the cohort outside the flowchart. Record-level processing is fine. An analysis that uses fewer people than the cohort (complete cases, a subgroup) reports its own number with that analysis. The cohort used downstream is the data from the final step (fc_view(what = \"data\")). Flowchart labels are built from constants in setup.R.\nCode lists carry each code’s category, code system and version, and matching rule. Check every code against the SRTR formats for the release (bundled in sRtr). Never invent codes, variables, files, or definitions.\nJoins use join_by() with an explicit relationship where possible. After every join of follow-up or immunosuppression records to transplants, assert that rows did not multiply, and decide deliberately what happens to unmatched rows.\nDates and windows are written as inclusive offsets from the transplant date, matching the plan, and the edges are tested on synthetic data.\nCode that turns model output into reported numbers lives in named functions in R/functions.R, tested on synthetic data with a known answer.\nPackage APIs: read the help page and NEWS for the installed version before calling a package; don’t write calls from memory. A test that fakes a package checks only our own logic, so call the real package once (synthetic data, or one cheap call) before relying on the code.\nStyle: readable for a clinician-analyst who learned R from online guides: pipes and dplyr/tidyr verbs, case_when(), loops over names or named lists rather than the apply family, Reduce or positional indexing. Required base R goes in a named, tested function. Tidyverse layout; style changes in their own commits.",
+    "crumbs": [
+      "Project documents",
+      "AGENTS.md"
+    ]
+  },
+  {
+    "objectID": "quarto/agents.html#checks-for-any-change",
+    "href": "quarto/agents.html#checks-for-any-change",
+    "title": "",
+    "section": "Checks for any change",
+    "text": "Checks for any change\nCheck the items that apply before opening a pull request.\n\nPlan: does the change implement the plan as written, and does it leave every open decision open?\nData sources: does it use the access package’s functions, and does their documented behavior match what the plan needs?\nPackage APIs: for new or changed calls to a package, does the pull request name the installed version and the help page or NEWS entry relied on?\nCohort: do the flowchart steps’ order, denominators, and labels match their conditions, and can each count be reproduced from code?\nJoins and denominators: no unintended row multiplication; missing, suppressed, and zero kept distinct.\nReported numbers: does each estimate match the plan’s estimand, and do tables, figures, and site prose say what the code actually computes?\nStructure: is ARCHITECTURE.md current; are chunk labels unique and found by their pages; does every definitive script have a page and sidebar entry; does any site chunk run analysis code?\nDisclosure: search every changed tracked file, and the commit messages and pull-request text, for dates, record IDs, names, absolute paths and numbers that could come from SRTR data. Read each hit in context; legitimate ones (plan dates, deciders’ names, synthetic examples) stay.\nExecution: does main.R run in a fresh session with relative paths; are any saved intermediates or caches stale?\nMatching: are kidney–pancreas and pancreas-alone transplants matched separately as the plan says; is balance reported for every matching variable; is the matching ratio a named constant?\nKidney–pancreas linkage: does any join of TXF_KP or IMMUNO to TX_KP account for the two registration IDs (TRR_ID, TRR_ID_PA) (sRtr#37)?\nSmall counts: recipients with HIV are few; does every table, figure and map produced from them pass the disclosure rule?",
+    "crumbs": [
+      "Project documents",
+      "AGENTS.md"
+    ]
+  },
+  {
+    "objectID": "quarto/agents.html#working-with-agents",
+    "href": "quarto/agents.html#working-with-agents",
+    "title": "",
+    "section": "Working with agents",
+    "text": "Working with agents\n\nAutonomy. The person directing an agent sets its working style (review only, step by step, or hands-off) in their own instructions, and may add stricter rules; those take precedence. Without a style, an agent works step by step. At most, an agent may edit code and documentation, add scripts and tests, run code and render the site on synthetic data, and commit to a branch and open a pull request.\nDecisions. Anyone, including an agent, may add options and evidence to a decision issue. A decider states the choice in the issue. Agents implement decisions; they never choose among options on their own, in the issue, the plan, or the code.\nEvery agent, under any autonomy: never merges a pull request; follows the restricted-data rules; asks before running the full pipeline or making expensive calls; shows a person the exact text before posting or sending anything as them, unless that person’s own instructions waive this; and proposes another way of writing something already agreed before committing it.\nPull requests opened by an agent are focused. Each says which plan section or issue it addresses, what was checked, and whether by running code on synthetic data or by reading only. Synthetic results are never described as results.\nReferences: cite the source documentation and literature used, in references.bib.",
+    "crumbs": [
+      "Project documents",
+      "AGENTS.md"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Overview",
+    "section": "",
+    "text": "This analysis compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV in the United States. It uses the Scientific Registry of Transplant Recipients (SRTR) standard analysis files, which cover every transplant performed in the country.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#what-this-analysis-does",
+    "href": "index.html#what-this-analysis-does",
+    "title": "Overview",
+    "section": "",
+    "text": "This analysis compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV in the United States. It uses the Scientific Registry of Transplant Recipients (SRTR) standard analysis files, which cover every transplant performed in the country.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#methods",
+    "href": "index.html#methods",
+    "title": "Overview",
+    "section": "Methods",
+    "text": "Methods\nEach recipient with HIV is matched to up to ten recipients without HIV who had the same type of transplant and similar donor and recipient characteristics. Graft loss, rejection, death and cancer after transplant are then compared between the two groups. Study design and methods explains each step in plain language, and the authoritative specification is the analysis plan.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#status",
+    "href": "index.html#status",
+    "title": "Overview",
+    "section": "Status",
+    "text": "Status\nPreliminary. The analysis plan is a draft, and the code is being rebuilt on the sRtr package, so this site does not yet show any code or results. Open decisions are tracked in the project’s GitHub Issues.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "quarto/repository-blueprint.html",
+    "href": "quarto/repository-blueprint.html",
+    "title": "",
+    "section": "",
+    "text": "Project documentsRepository blueprint Code",
+    "crumbs": [
+      "Project documents",
+      "Repository blueprint"
+    ]
+  },
+  {
+    "objectID": "quarto/repository-blueprint.html#analytical-scripts",
+    "href": "quarto/repository-blueprint.html#analytical-scripts",
+    "title": "",
+    "section": "Analytical scripts",
+    "text": "Analytical scripts\n\nR/main.R sources definitive scripts in dependency order.\nTypical workflow: setup → cohort construction → processing → modeling → outputs.\nStudy-specific scripts may be grouped into subdirectories by analytical stage.\nR/tables.R and R/figures.R may generate outputs directly or orchestrate specialized scripts.",
+    "crumbs": [
+      "Project documents",
+      "Repository blueprint"
+    ]
+  },
+  {
+    "objectID": "quarto/repository-blueprint.html#documentation",
+    "href": "quarto/repository-blueprint.html#documentation",
+    "title": "",
+    "section": "Documentation",
+    "text": "Documentation\n\nDocument definitive analytical scripts with explanatory Quarto pages; exploratory scripts need not have pages.\nUse Cryptococcus-cost-analysis as an example for Quarto supporting files, chunk imports, callouts, and formatting—not scientific methods.\nQuarto source and rendered output locations may vary by project.",
+    "crumbs": [
+      "Project documents",
+      "Repository blueprint"
+    ]
+  },
+  {
+    "objectID": "quarto/repository-blueprint.html#outputs-and-version-control",
+    "href": "quarto/repository-blueprint.html#outputs-and-version-control",
+    "title": "",
+    "section": "Outputs and version control",
+    "text": "Outputs and version control\n\nTrack approved, nonrestricted outputs when useful for publication; otherwise retain them locally and exclude them from Git.\n.gitignore: Exclude restricted data, credentials, caches, temporary files, and generated outputs unless intentionally tracked (e.g., .Rproj.user/, .Rhistory, .RData, .httr-oauth, .quarto/, cache/, figures/, tables/, *.quarto_ipynb); verify exclusions cover actual output paths without hiding necessary source or reference files.",
+    "crumbs": [
+      "Project documents",
+      "Repository blueprint"
+    ]
+  },
+  {
+    "objectID": "quarto/about.html",
+    "href": "quarto/about.html",
+    "title": "About",
+    "section": "",
+    "text": "This study compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV, using the Scientific Registry of Transplant Recipients. It is preliminary: the analysis plan is a draft, and no results are published here.\n\nVagish Hemmige (study design and analysis)\n\nVagish Hemmige makes the scientific decisions for the project. Open decisions are listed in the project’s GitHub Issues.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "quarto/about.html#the-study",
+    "href": "quarto/about.html#the-study",
+    "title": "About",
+    "section": "",
+    "text": "This study compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV, using the Scientific Registry of Transplant Recipients. It is preliminary: the analysis plan is a draft, and no results are published here.\n\nVagish Hemmige (study design and analysis)\n\nVagish Hemmige makes the scientific decisions for the project. Open decisions are listed in the project’s GitHub Issues.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "quarto/about.html#this-repository",
+    "href": "quarto/about.html#this-repository",
+    "title": "About",
+    "section": "This repository",
+    "text": "This repository\nThe analysis will run as a series of scripts, sourced in order by R/main.R, that load the SRTR files through the sRtr package. SRTR data are available only to authorized users under the SRTR data use agreement, so neither the data nor any output derived from them is stored in this repository.\nContributions follow the rules in AGENTS.md; known issues and open decisions are tracked in Issues.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "quarto/about.html#how-this-website-was-created",
+    "href": "quarto/about.html#how-this-website-was-created",
+    "title": "About",
+    "section": "How this website was created",
+    "text": "How this website was created\nThe site is built with Quarto from the analysis scripts themselves. Each code page imports the labelled sections of its script from R/ and shows them with an explanation; the site never runs the analysis, so it is built without the analysis data. A GitHub Actions workflow renders the site and publishes it whenever the main branch changes.\nThe repository was set up with the R Analysis Workflow plugin and an AI assistant (Claude). AI assistants work under the rules in AGENTS.md: they never read SRTR data, they write and test code on synthetic data only, and scientific decisions stay with the investigator.\nFour documents describe the project. In short: the plan is the scientific intent, the architecture is the workflow as implemented, and AGENTS.md holds the rules for working together.\n\nAnalysis plan: what the analysis is meant to do, and why. The question, the population, the methods, and the open decisions. Code implements it and does not redefine it.\nArchitecture: how the code does it. The scripts, the order they run in, what each needs and produces, and how data flow between them. Not written yet.\nAGENTS.md: how people and AI assistants work on the project. Rules for restricted data, coding, checks, proposing changes and getting a person’s approval.\nRepository blueprint: the layout every project of this kind starts from, which the architecture document then describes as built.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "quarto/about.html#pages",
+    "href": "quarto/about.html#pages",
+    "title": "About",
+    "section": "Pages",
+    "text": "Pages\n\nStudy design and methods: what the study chose and why, in plain language, with the decisions still open.",
+    "crumbs": [
+      "About"
+    ]
+  },
+  {
+    "objectID": "quarto/analysis-plan.html",
+    "href": "quarto/analysis-plan.html",
+    "title": "",
+    "section": "",
+    "text": "Project documentsAnalysis plan Code",
+    "crumbs": [
+      "Project documents",
+      "Analysis plan"
+    ]
+  },
+  {
+    "objectID": "quarto/analysis-plan.html#scope-and-reporting-framework",
+    "href": "quarto/analysis-plan.html#scope-and-reporting-framework",
+    "title": "",
+    "section": "Scope and reporting framework",
+    "text": "Scope and reporting framework\nThis document is the authoritative specification of the study’s scientific objectives, population, definitions, estimands and statistical methods. ARCHITECTURE.md documents the implementation, AGENTS.md the working conventions, and GitHub Issues the open decisions and implementation status. Neither file supersedes this plan.\nReporting will follow STROBE (Elm et al. 2007) and its extension for routinely collected health data, RECORD (Benchimol et al. 2015). The reporting map below links each checklist item to a section of this plan.\nThis plan was first drafted in 2026 from an unfinished 2024 analysis script, which is kept outside the repository as a source. The decider confirmed the choices that script made, and three proposed during setup (the estimand, complete-case analysis and no multiplicity adjustment), on 2026-11-11; they are stated below as decided. The rest are open.",
+    "crumbs": [
+      "Project documents",
+      "Analysis plan"
+    ]
+  },
+  {
+    "objectID": "quarto/analysis-plan.html#1-objective",
+    "href": "quarto/analysis-plan.html#1-objective",
+    "title": "",
+    "section": "1. Objective",
+    "text": "1. Objective\nTo compare outcomes after kidney–pancreas (simultaneous pancreas–kidney) and pancreas-alone transplantation between recipients with and without HIV in the United States.\nOutcomes are listed in §7.\n\nOpen: which outcome is primary, and which are secondary (#7).",
+    "crumbs": [
+      "Project documents",
+      "Analysis plan"
+    ]
+  },
+  {
+    "objectID": "quarto/analysis-plan.html#2-design",
+    "href": "quarto/analysis-plan.html#2-design",
+    "title": "",
+    "section": "2. Design",
+    "text": "2. Design\nRetrospective cohort study using registry data. Recipients with HIV are matched to recipients without HIV on a propensity score (§6). Kidney–pancreas and pancreas-alone transplants are analysed separately.\nThe estimand is the average effect of HIV status among recipients with HIV (the average treatment effect in the treated, ATT), as implied by matching each recipient with HIV to recipients without HIV.",
+    "crumbs": [
+      "Project documents",
+      "Analysis plan"
+    ]
+  },
+  {
+    "objectID": "quarto/analysis-plan.html#3-data-source",
+    "href": "quarto/analysis-plan.html#3-data-source",
+    "title": "",
+    "section": "3. Data source",
+    "text": "3. Data source\n\nDatabase: Scientific Registry of Transplant Recipients (SRTR) standard analysis files (SAF), accessed under the SRTR data use agreement through the sRtr package.\nRelease: the 2024 script used the March 2023 release (2303).\n\nOpen: which release the updated analysis uses (#8).\n\nFiles:\n\nTX_KP and TX_PA: transplant records (cohort, donor and recipient characteristics, graft failure and death).\nTXF_KP and TXF_PA: follow-up forms (rejection and malignancy after discharge).\nIMMUNO: immunosuppression at transplant (induction).\nTX_KI: kidney transplants, for kidney center volume.\nThe KDPI supplement file (kidney donor profile index at allocation), for description only.\n\nPublic data: HRSA list of transplant centers, for maps.\nPrior use: the investigators used the 2303 release in the 2024 script, including unadjusted outcome comparisons. That earlier work was not published.",
+    "crumbs": [
+      "Project documents",
+      "Analysis plan"
+    ]
+  },
+  {
+    "objectID": "quarto/analysis-plan.html#4-study-population",
+    "href": "quarto/analysis-plan.html#4-study-population",
+    "title": "",
+    "section": "4. Study population",
+    "text": "4. Study population\nSource population: all kidney–pancreas and pancreas-alone transplants in the release.\nExclusions, in order (each is one flowchart step), applied separately to each transplant type:\n\nNo transplant date (REC_TX_DT missing).\nAge at transplant under 16 years (REC_AGE_AT_TX &lt; 16).\nNo follow-up information (REC_PX_STAT_DT missing), meaning the transplant was too recent to contribute follow-up.\nPancreas donor risk index (PDRI) cannot be calculated (§5).\n\nIndex event: the transplant. Transplant period: every transplant in the release.\n\nOpen: whether to restrict or stratify by transplant era (#2).",
+    "crumbs": [
+      "Project documents",
+      "Analysis plan"
+    ]
+  },
+  {
+    "objectID": "quarto/analysis-plan.html#5-exposure-and-time-zero",
+    "href": "quarto/analysis-plan.html#5-exposure-and-time-zero",
+    "title": "",
+    "section": "5. Exposure and time zero",
+    "text": "5. Exposure and time zero\n\nExposure: recipient HIV status at transplant, REC_HIV_STAT = “P” (positive).\n\nOpen: how recipients with HIV status negative, missing, unknown or not done are classified; the 2024 script counted all of them as HIV-negative (#9).\n\nTime zero: transplant date (REC_TX_DT).\nCovariates, measured at transplant:\n\nrecipient age, sex (CAN_GENDER), race (CAN_RACE), primary diagnosis (REC_DGN), weight and body mass index, panel-reactive antibody, cytomegalovirus and hepatitis C serostatus, time on the waiting list (CAN_LISTING_DT to REC_TX_DT);\ndonor age, sex, race, height, weight and body mass index, creatinine, cause of death, donation after circulatory death, diabetes history, hepatitis C and cytomegalovirus serostatus;\npancreas preservation time, duct management, previous kidney transplant;\ninduction therapy from IMMUNO;\ntransplant center volume in the transplant year (§8).\n\nDiagnosis group from REC_DGN: type 1 diabetes (3011, 3038, 3069, 5001), type 2 diabetes (3012, 3039, 3070, 5002), or other.\nPDRI is calculated from donor characteristics and preservation time as published (Axelrod et al. 2010), with the pancreas-alone stroke and previous-kidney term applied to pancreas-alone transplants only.\n\nOpen: how missing preservation time is handled; the 2024 script imputed the cohort mean for recipients with HIV only (#10).\n\nInduction: lymphocyte-depleting antibody, interleukin-2 receptor antagonist and steroids, each yes or no.\n\nOpen: which drugs count in each class, and whether only drugs recorded as induction count (#11).",
+    "crumbs": [
+      "Project documents",
+      "Analysis plan"
+    ]
+  },
+  {
+    "objectID": "quarto/analysis-plan.html#6-comparator-or-matching",
+    "href": "quarto/analysis-plan.html#6-comparator-or-matching",
+    "title": "",
+    "section": "6. Comparator or matching",
+    "text": "6. Comparator or matching\n\nComparator: recipients without HIV of the same transplant type.\nMethod: propensity score from logistic regression; nearest-neighbour matching without replacement, 10 recipients without HIV per recipient with HIV, no caliper. Kidney–pancreas and pancreas-alone transplants are matched separately.\nMatching variables: PDRI, transplant year, diagnosis group, recipient sex, recipient age, and recipient Black race.\n\nOpen: balance criteria (for example a standardized mean difference threshold) and what happens if they are not met (#12).",
+    "crumbs": [
+      "Project documents",
+      "Analysis plan"
+    ]
+  },
+  {
+    "objectID": "quarto/analysis-plan.html#7-outcomes",
+    "href": "quarto/analysis-plan.html#7-outcomes",
+    "title": "",
+    "section": "7. Outcomes",
+    "text": "7. Outcomes\nEach outcome is measured from transplant. Follow-up ends at the organ’s last follow-up date (TFL_LAFUDATEKI or TFL_LAFUDATEPA, or TFL_LAFUDATE for pancreas alone).\n\n\n\n\n\n\n\n\nOutcome\nTransplant type\nEvent\n\n\n\n\nDeath-censored kidney graft loss\nKidney–pancreas\nTFL_GRAFT_DT_KI\n\n\nDeath-censored pancreas graft loss\nBoth\nTFL_GRAFT_DT_PA, or TFL_GRAFT_DT for pancreas alone\n\n\nTreated acute kidney rejection\nKidney–pancreas\ntreated rejection during the transplant hospitalization, or the first follow-up form reporting it\n\n\nTreated acute pancreas rejection\nBoth\nas above, for the pancreas\n\n\nDeath\nBoth\nfirst available of the OPTN, Social Security and follow-up death dates\n\n\nMalignancy\nBoth\nfirst follow-up form reporting a malignancy\n\n\n\nA rejection during the transplant hospitalization is dated at discharge (transplant date plus length of stay). Events reported on follow-up forms are dated by the form.\nAlso described, not compared formally: length of stay, anastomotic leak, abscess and pancreatitis during the transplant hospitalization, and cause of death.\n\nOpen: censoring rules: whether graft loss is censored at death, whether rejection and malignancy are censored at graft loss or death, and how deaths found only after last follow-up are handled (#13).",
+    "crumbs": [
+      "Project documents",
+      "Analysis plan"
+    ]
+  },
+  {
+    "objectID": "quarto/analysis-plan.html#8-statistical-analysis",
+    "href": "quarto/analysis-plan.html#8-statistical-analysis",
+    "title": "",
+    "section": "8. Statistical analysis",
+    "text": "8. Statistical analysis\n\nDescriptive: characteristics of recipients with and without HIV, before and after matching, including each matching variable and missingness.\nPrimary model: Kaplan–Meier curves and Cox proportional hazards models of each outcome by HIV status in the matched cohort.\n\nOpen: how the matched design enters the model (for example robust variance clustered by matched set) and whether covariates are added (#14).\n\nSecondary analyses:\n\ninfection-related graft loss in the first year (#1);\ncenter experience with transplantation in recipients with HIV (#4);\npooled kidney–pancreas and pancreas-alone analysis (#5).\n\nCenter volume: transplants per center per calendar year. Kidney–pancreas centers are grouped as low (1–6), medium (7–13) or high (14 or more), and pancreas-alone centers as low (1–3), medium (4–10) or high (11 or more), following published tertiles (Alhamad et al. 2017). That study grouped each center’s average annual volume over the study period, not its volume in each year. Kidney center volume is grouped by quartiles following (Sonnenberg et al. 2019).\n\nOpen: whether volume is counted per year or averaged over the period, and the kidney cut-points, which the 2024 script set at 65, 110 and 195 (#4).\n\nDescriptive geography: the number of recipients with HIV by UNOS region of residence (REC_PERM_STATE), with pancreas transplant centers shown; no state-level map (#3). Which centers are shown is open (#6).\nConcentration of care: Lorenz curves and Gini coefficients of transplants in recipients with HIV across centers, and transplants per year and number of centers per year.\nMissing data: complete-case analysis unless stated otherwise in this plan.\nMultiplicity: no adjustment; secondary analyses are reported as exploratory.\nSoftware: R, with sRtr for SRTR files, MatchIt for matching and survival for time-to-event models.",
+    "crumbs": [
+      "Project documents",
+      "Analysis plan"
+    ]
+  },
+  {
+    "objectID": "quarto/analysis-plan.html#9-sensitivity-analyses",
+    "href": "quarto/analysis-plan.html#9-sensitivity-analyses",
+    "title": "",
+    "section": "9. Sensitivity analyses",
+    "text": "9. Sensitivity analyses\n\nTransplants from 2014 onwards only, testing whether the comparison holds in the recent era (#2).",
+    "crumbs": [
+      "Project documents",
+      "Analysis plan"
+    ]
+  },
+  {
+    "objectID": "quarto/analysis-plan.html#10-disclosure-control",
+    "href": "quarto/analysis-plan.html#10-disclosure-control",
+    "title": "",
+    "section": "10. Disclosure control",
+    "text": "10. Disclosure control\nOutputs follow the SRTR data use agreement, and tables, figures and maps stay out of the public repository until reviewed against it.\n\nOpen: the small-cell rule that applies, including flowchart boxes, risk tables and regional counts (#15).",
+    "crumbs": [
+      "Project documents",
+      "Analysis plan"
+    ]
+  },
+  {
+    "objectID": "quarto/analysis-plan.html#11-limitations-to-address-in-reporting",
+    "href": "quarto/analysis-plan.html#11-limitations-to-address-in-reporting",
+    "title": "",
+    "section": "11. Limitations to address in reporting",
+    "text": "11. Limitations to address in reporting\n\nSmall number of recipients with HIV, limiting precision and the number of matching variables.\nRegistry follow-up forms date events by the form, not the event.\nHIV-related variables (viral load, CD4 count, antiretroviral regimen) are not in the SAF.\nResidual confounding by center selection practices.",
+    "crumbs": [
+      "Project documents",
+      "Analysis plan"
+    ]
+  },
+  {
+    "objectID": "quarto/analysis-plan.html#12-reporting-map",
+    "href": "quarto/analysis-plan.html#12-reporting-map",
+    "title": "",
+    "section": "12. Reporting map",
+    "text": "12. Reporting map\n\n\n\n\n\n\n\n\nChecklist item\nTopic\nPlan section\n\n\n\n\nSTROBE 1 / RECORD 1.1–1.3\nTitle, abstract, data source and database type\n3\n\n\nSTROBE 2–3\nBackground and objectives\n1\n\n\nSTROBE 4\nStudy design\n2\n\n\nSTROBE 5\nSetting, dates of data\n3, 4\n\n\nSTROBE 6 / RECORD 6.1–6.3\nEligibility, selection codes and algorithms, linkage\n4, 5\n\n\nSTROBE 7 / RECORD 7.1\nVariables, codes and algorithms\n5, 7\n\n\nSTROBE 8\nData sources and measurement\n3, 5, 7\n\n\nSTROBE 9\nBias\n6, 11\n\n\nSTROBE 10\nStudy size\n4\n\n\nSTROBE 11\nQuantitative variables\n5, 8\n\n\nSTROBE 12 / RECORD 12.1–12.2\nStatistical methods, data access and cleaning, linkage\n6, 8, 9\n\n\nSTROBE 13 / RECORD 13.1\nParticipants and flow\n4\n\n\nSTROBE 14–17\nDescriptive data, outcomes, main and other results\n7, 8\n\n\nSTROBE 19 / RECORD 19.1\nLimitations\n11\n\n\nSTROBE 22 / RECORD 22.1\nFunding, access to data and code\n3, 10",
+    "crumbs": [
+      "Project documents",
+      "Analysis plan"
+    ]
+  },
+  {
+    "objectID": "quarto/analysis-plan.html#references",
+    "href": "quarto/analysis-plan.html#references",
+    "title": "",
+    "section": "References",
+    "text": "References\n\n\nAlhamad, Tarek, Andrew F Malone, Daniel C Brennan, et al. 2017. “Transplant Center Volume and the Risk of Pancreas Allograft Failure.” Transplantation 101 (11): 2757–64. https://doi.org/10.1097/TP.0000000000001628.\n\n\nAxelrod, D A, R S Sung, K H Meyer, R A Wolfe, and D B Kaufman. 2010. “Systematic Evaluation of Pancreas Allograft Quality, Outcomes and Geographic Variation in Utilization.” American Journal of Transplantation 10 (4): 837–45. https://doi.org/10.1111/j.1600-6143.2009.02996.x.\n\n\nBenchimol, Eric I, Liam Smeeth, Astrid Guttmann, et al. 2015. “The REporting of Studies Conducted Using Observational Routinely-collected Health Data (RECORD) Statement.” PLoS Medicine 12 (10): e1001885. https://doi.org/10.1371/journal.pmed.1001885.\n\n\nElm, Erik von, Douglas G Altman, Matthias Egger, et al. 2007. “The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Statement: Guidelines for Reporting Observational Studies.” Lancet 370 (9596): 1453–57. https://doi.org/10.1016/S0140-6736(07)61602-X.\n\n\nSonnenberg, Elizabeth M, Jordana B Cohen, Jesse Y Hsu, et al. 2019. “Association of Kidney Transplant Center Volume with 3-Year Clinical Outcomes.” American Journal of Kidney Diseases 74 (4): 441–51. https://doi.org/10.1053/j.ajkd.2019.02.019.",
+    "crumbs": [
+      "Project documents",
+      "Analysis plan"
+    ]
+  }
+]

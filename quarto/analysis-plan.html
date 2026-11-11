@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Vagish Hemmige">
+
+<title>Analysis plan – HIV and pancreas transplantation</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../quarto/architecture.html" rel="next">
+<link href="../quarto/study_methods.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e3a35904f429b4d0baa96e5eab7940c9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+div.callout-Pending.callout {
+  border-left-color: #f0c400;
+}
+div.callout-Pending.callout-style-default > .callout-header {
+  background-color: rgba(240, 196, 0, 0.13);
+}
+div.callout-Pending .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pending.callout-titled .callout-icon::before {
+  content: '⏳';
+  background-image: none;
+}
+div.callout-Rcode.callout {
+  border-left-color: #d63384;
+}
+div.callout-Rcode.callout-style-default > .callout-header {
+  background-color: rgba(214, 51, 132, 0.13);
+}
+div.callout-Rcode .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode.callout-titled .callout-icon::before {
+  content: '💻';
+  background-image: none;
+}
+div.callout-Results.callout {
+  border-left-color: #198754;
+}
+div.callout-Results.callout-style-default > .callout-header {
+  background-color: rgba(25, 135, 84, 0.13);
+}
+div.callout-Results .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-Results.callout-style-default .callout-icon::before, div.callout-Results.callout-titled .callout-icon::before {
+  content: '📊';
+  background-image: none;
+}
+</style>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../quarto/analysis-plan.html">Project documents</a></li><li class="breadcrumb-item"><a href="../quarto/analysis-plan.html">Analysis plan</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Site">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">HIV and pancreas transplantation</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><i class="bi bi-house" role="img">
+</i> 
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../quarto/study_methods.html" class="sidebar-item-text sidebar-link"><i class="bi bi-diagram-3" role="img">
+</i> 
+ <span class="menu-text">Study design and methods</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Project documents</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../quarto/analysis-plan.html" class="sidebar-item-text sidebar-link active"><i class="bi bi-file-earmark-ruled" role="img">
+</i> 
+ <span class="menu-text">Analysis plan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../quarto/architecture.html" class="sidebar-item-text sidebar-link"><i class="bi bi-file-earmark-ruled" role="img">
+</i> 
+ <span class="menu-text">Architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../quarto/agents.html" class="sidebar-item-text sidebar-link"><i class="bi bi-file-earmark-ruled" role="img">
+</i> 
+ <span class="menu-text">AGENTS.md</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../quarto/repository-blueprint.html" class="sidebar-item-text sidebar-link"><i class="bi bi-file-earmark-ruled" role="img">
+</i> 
+ <span class="menu-text">Repository blueprint</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../quarto/about.html" class="sidebar-item-text sidebar-link"><i class="bi bi-info-circle" role="img">
+</i> 
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#analysis-plan-outcomes-of-pancreas-transplantation-in-recipients-with-hiv" id="toc-analysis-plan-outcomes-of-pancreas-transplantation-in-recipients-with-hiv" class="nav-link active" data-scroll-target="#analysis-plan-outcomes-of-pancreas-transplantation-in-recipients-with-hiv">Analysis plan: Outcomes of pancreas transplantation in recipients with HIV</a>
+  <ul class="collapse">
+  <li><a href="#scope-and-reporting-framework" id="toc-scope-and-reporting-framework" class="nav-link" data-scroll-target="#scope-and-reporting-framework">Scope and reporting framework</a></li>
+  <li><a href="#1-objective" id="toc-1-objective" class="nav-link" data-scroll-target="#1-objective">1. Objective</a></li>
+  <li><a href="#2-design" id="toc-2-design" class="nav-link" data-scroll-target="#2-design">2. Design</a></li>
+  <li><a href="#3-data-source" id="toc-3-data-source" class="nav-link" data-scroll-target="#3-data-source">3. Data source</a></li>
+  <li><a href="#4-study-population" id="toc-4-study-population" class="nav-link" data-scroll-target="#4-study-population">4. Study population</a></li>
+  <li><a href="#5-exposure-and-time-zero" id="toc-5-exposure-and-time-zero" class="nav-link" data-scroll-target="#5-exposure-and-time-zero">5. Exposure and time zero</a></li>
+  <li><a href="#6-comparator-or-matching" id="toc-6-comparator-or-matching" class="nav-link" data-scroll-target="#6-comparator-or-matching">6. Comparator or matching</a></li>
+  <li><a href="#7-outcomes" id="toc-7-outcomes" class="nav-link" data-scroll-target="#7-outcomes">7. Outcomes</a></li>
+  <li><a href="#8-statistical-analysis" id="toc-8-statistical-analysis" class="nav-link" data-scroll-target="#8-statistical-analysis">8. Statistical analysis</a></li>
+  <li><a href="#9-sensitivity-analyses" id="toc-9-sensitivity-analyses" class="nav-link" data-scroll-target="#9-sensitivity-analyses">9. Sensitivity analyses</a></li>
+  <li><a href="#10-disclosure-control" id="toc-10-disclosure-control" class="nav-link" data-scroll-target="#10-disclosure-control">10. Disclosure control</a></li>
+  <li><a href="#11-limitations-to-address-in-reporting" id="toc-11-limitations-to-address-in-reporting" class="nav-link" data-scroll-target="#11-limitations-to-address-in-reporting">11. Limitations to address in reporting</a></li>
+  <li><a href="#12-reporting-map" id="toc-12-reporting-map" class="nav-link" data-scroll-target="#12-reporting-map">12. Reporting map</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/edit/main/quarto/analysis-plan.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content" tabindex="-1"><div class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../quarto/analysis-plan.html">Project documents</a></li><li class="breadcrumb-item"><a href="../quarto/analysis-plan.html">Analysis plan</a></li></ol></nav><div class="quarto-title-tools-only"><h1></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Vagish Hemmige </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-Pending callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Pending</span>Provisional
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="pending">Text highlighted like this</span> is provisional: it depends on a decision the analysis plan has not yet made.</p>
+</div>
+</div>
+<!--
+This page only shows analysis-plan.md from the repository root, which is the one source:
+edit that file, not this page. Its first heading is the page title.
+
+The plan links its own sections GitHub's way (for example #3-design). Quarto's
+default heading IDs drop leading numbers (#design), so `from:` above
+gives this page GitHub-style IDs and those links work on both.
+-->
+<section id="analysis-plan-outcomes-of-pancreas-transplantation-in-recipients-with-hiv" class="level1">
+<h1>Analysis plan: Outcomes of pancreas transplantation in recipients with HIV</h1>
+<p>Status: draft</p>
+<section id="scope-and-reporting-framework" class="level2">
+<h2 class="anchored" data-anchor-id="scope-and-reporting-framework">Scope and reporting framework</h2>
+<p>This document is the authoritative specification of the study’s scientific objectives, population, definitions, estimands and statistical methods. <code>ARCHITECTURE.md</code> documents the implementation, <code>AGENTS.md</code> the working conventions, and GitHub Issues the open decisions and implementation status. Neither file supersedes this plan.</p>
+<p>Reporting will follow STROBE <span class="citation" data-cites="vonelm2007strobe">(<a href="#ref-vonelm2007strobe" role="doc-biblioref"><span class="nocase">Elm et al.</span> 2007</a>)</span> and its extension for routinely collected health data, RECORD <span class="citation" data-cites="benchimol2015record">(<a href="#ref-benchimol2015record" role="doc-biblioref"><span class="nocase">Benchimol et al.</span> 2015</a>)</span>. The reporting map below links each checklist item to a section of this plan.</p>
+<p>This plan was first drafted in 2026 from an unfinished 2024 analysis script, which is kept outside the repository as a source. The decider confirmed the choices that script made, and three proposed during setup (the estimand, complete-case analysis and no multiplicity adjustment), on 2026-11-11; they are stated below as decided. The rest are open.</p>
+</section>
+<section id="1-objective" class="level2">
+<h2 class="anchored" data-anchor-id="1-objective">1. Objective</h2>
+<p>To compare outcomes after kidney–pancreas (simultaneous pancreas–kidney) and pancreas-alone transplantation between recipients with and without HIV in the United States.</p>
+<p>Outcomes are listed in <a href="#7-outcomes">§7</a>.</p>
+<div class="pending-note">
+<p><strong>Open:</strong> which outcome is primary, and which are secondary (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/7">#7</a>).</p>
+</div>
+</section>
+<section id="2-design" class="level2">
+<h2 class="anchored" data-anchor-id="2-design">2. Design</h2>
+<p>Retrospective cohort study using registry data. Recipients with HIV are matched to recipients without HIV on a propensity score (<a href="#6-comparator-or-matching">§6</a>). Kidney–pancreas and pancreas-alone transplants are analysed separately.</p>
+<p>The estimand is the average effect of HIV status among recipients with HIV (the average treatment effect in the treated, ATT), as implied by matching each recipient with HIV to recipients without HIV.</p>
+</section>
+<section id="3-data-source" class="level2">
+<h2 class="anchored" data-anchor-id="3-data-source">3. Data source</h2>
+<ul>
+<li><p><strong>Database:</strong> Scientific Registry of Transplant Recipients (SRTR) standard analysis files (SAF), accessed under the SRTR data use agreement through the <code>sRtr</code> package.</p></li>
+<li><p><strong>Release:</strong> the 2024 script used the March 2023 release (2303).</p>
+<div class="pending-note">
+<p><strong>Open:</strong> which release the updated analysis uses (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/8">#8</a>).</p>
+</div></li>
+<li><p><strong>Files:</strong></p>
+<ul>
+<li><code>TX_KP</code> and <code>TX_PA</code>: transplant records (cohort, donor and recipient characteristics, graft failure and death).</li>
+<li><code>TXF_KP</code> and <code>TXF_PA</code>: follow-up forms (rejection and malignancy after discharge).</li>
+<li><code>IMMUNO</code>: immunosuppression at transplant (induction).</li>
+<li><code>TX_KI</code>: kidney transplants, for kidney center volume.</li>
+<li>The KDPI supplement file (kidney donor profile index at allocation), for description only.</li>
+</ul></li>
+<li><p><strong>Public data:</strong> HRSA list of transplant centers, for maps.</p></li>
+<li><p><strong>Prior use:</strong> the investigators used the 2303 release in the 2024 script, including unadjusted outcome comparisons. That earlier work was not published.</p></li>
+</ul>
+</section>
+<section id="4-study-population" class="level2">
+<h2 class="anchored" data-anchor-id="4-study-population">4. Study population</h2>
+<p>Source population: all kidney–pancreas and pancreas-alone transplants in the release.</p>
+<p>Exclusions, in order (each is one flowchart step), applied separately to each transplant type:</p>
+<ol type="1">
+<li>No transplant date (<code>REC_TX_DT</code> missing).</li>
+<li>Age at transplant under 16 years (<code>REC_AGE_AT_TX</code> &lt; 16).</li>
+<li>No follow-up information (<code>REC_PX_STAT_DT</code> missing), meaning the transplant was too recent to contribute follow-up.</li>
+<li>Pancreas donor risk index (PDRI) cannot be calculated (<a href="#5-exposure-and-time-zero">§5</a>).</li>
+</ol>
+<p>Index event: the transplant. Transplant period: every transplant in the release.</p>
+<div class="pending-note">
+<p><strong>Open:</strong> whether to restrict or stratify by transplant era (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/2">#2</a>).</p>
+</div>
+</section>
+<section id="5-exposure-and-time-zero" class="level2">
+<h2 class="anchored" data-anchor-id="5-exposure-and-time-zero">5. Exposure and time zero</h2>
+<ul>
+<li><p><strong>Exposure:</strong> recipient HIV status at transplant, <code>REC_HIV_STAT</code> = “P” (positive).</p>
+<div class="pending-note">
+<p><strong>Open:</strong> how recipients with HIV status negative, missing, unknown or not done are classified; the 2024 script counted all of them as HIV-negative (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/9">#9</a>).</p>
+</div></li>
+<li><p><strong>Time zero:</strong> transplant date (<code>REC_TX_DT</code>).</p></li>
+<li><p><strong>Covariates,</strong> measured at transplant:</p>
+<ul>
+<li>recipient age, sex (<code>CAN_GENDER</code>), race (<code>CAN_RACE</code>), primary diagnosis (<code>REC_DGN</code>), weight and body mass index, panel-reactive antibody, cytomegalovirus and hepatitis C serostatus, time on the waiting list (<code>CAN_LISTING_DT</code> to <code>REC_TX_DT</code>);</li>
+<li>donor age, sex, race, height, weight and body mass index, creatinine, cause of death, donation after circulatory death, diabetes history, hepatitis C and cytomegalovirus serostatus;</li>
+<li>pancreas preservation time, duct management, previous kidney transplant;</li>
+<li>induction therapy from <code>IMMUNO</code>;</li>
+<li>transplant center volume in the transplant year (<a href="#8-statistical-analysis">§8</a>).</li>
+</ul></li>
+<li><p><strong>Diagnosis group</strong> from <code>REC_DGN</code>: type 1 diabetes (3011, 3038, 3069, 5001), type 2 diabetes (3012, 3039, 3070, 5002), or other.</p></li>
+<li><p><strong>PDRI</strong> is calculated from donor characteristics and preservation time as published <span class="citation" data-cites="axelrod2010pdri">(<a href="#ref-axelrod2010pdri" role="doc-biblioref">Axelrod et al. 2010</a>)</span>, with the pancreas-alone stroke and previous-kidney term applied to pancreas-alone transplants only.</p>
+<div class="pending-note">
+<p><strong>Open:</strong> how missing preservation time is handled; the 2024 script imputed the cohort mean for recipients with HIV only (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/10">#10</a>).</p>
+</div></li>
+<li><p><strong>Induction:</strong> lymphocyte-depleting antibody, interleukin-2 receptor antagonist and steroids, each yes or no.</p>
+<div class="pending-note">
+<p><strong>Open:</strong> which drugs count in each class, and whether only drugs recorded as induction count (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/11">#11</a>).</p>
+</div></li>
+</ul>
+</section>
+<section id="6-comparator-or-matching" class="level2">
+<h2 class="anchored" data-anchor-id="6-comparator-or-matching">6. Comparator or matching</h2>
+<ul>
+<li><p><strong>Comparator:</strong> recipients without HIV of the same transplant type.</p></li>
+<li><p><strong>Method:</strong> propensity score from logistic regression; nearest-neighbour matching without replacement, 10 recipients without HIV per recipient with HIV, no caliper. Kidney–pancreas and pancreas-alone transplants are matched separately.</p></li>
+<li><p><strong>Matching variables:</strong> PDRI, transplant year, diagnosis group, recipient sex, recipient age, and recipient Black race.</p>
+<div class="pending-note">
+<p><strong>Open:</strong> balance criteria (for example a standardized mean difference threshold) and what happens if they are not met (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/12">#12</a>).</p>
+</div></li>
+</ul>
+</section>
+<section id="7-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="7-outcomes">7. Outcomes</h2>
+<p>Each outcome is measured from transplant. Follow-up ends at the organ’s last follow-up date (<code>TFL_LAFUDATEKI</code> or <code>TFL_LAFUDATEPA</code>, or <code>TFL_LAFUDATE</code> for pancreas alone).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Outcome</th>
+<th>Transplant type</th>
+<th>Event</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Death-censored kidney graft loss</td>
+<td>Kidney–pancreas</td>
+<td><code>TFL_GRAFT_DT_KI</code></td>
+</tr>
+<tr class="even">
+<td>Death-censored pancreas graft loss</td>
+<td>Both</td>
+<td><code>TFL_GRAFT_DT_PA</code>, or <code>TFL_GRAFT_DT</code> for pancreas alone</td>
+</tr>
+<tr class="odd">
+<td>Treated acute kidney rejection</td>
+<td>Kidney–pancreas</td>
+<td>treated rejection during the transplant hospitalization, or the first follow-up form reporting it</td>
+</tr>
+<tr class="even">
+<td>Treated acute pancreas rejection</td>
+<td>Both</td>
+<td>as above, for the pancreas</td>
+</tr>
+<tr class="odd">
+<td>Death</td>
+<td>Both</td>
+<td>first available of the OPTN, Social Security and follow-up death dates</td>
+</tr>
+<tr class="even">
+<td>Malignancy</td>
+<td>Both</td>
+<td>first follow-up form reporting a malignancy</td>
+</tr>
+</tbody>
+</table>
+<p>A rejection during the transplant hospitalization is dated at discharge (transplant date plus length of stay). Events reported on follow-up forms are dated by the form.</p>
+<p>Also described, not compared formally: length of stay, anastomotic leak, abscess and pancreatitis during the transplant hospitalization, and cause of death.</p>
+<div class="pending-note">
+<p><strong>Open:</strong> censoring rules: whether graft loss is censored at death, whether rejection and malignancy are censored at graft loss or death, and how deaths found only after last follow-up are handled (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/13">#13</a>).</p>
+</div>
+</section>
+<section id="8-statistical-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="8-statistical-analysis">8. Statistical analysis</h2>
+<ul>
+<li><p><strong>Descriptive:</strong> characteristics of recipients with and without HIV, before and after matching, including each matching variable and missingness.</p></li>
+<li><p><strong>Primary model:</strong> Kaplan–Meier curves and Cox proportional hazards models of each outcome by HIV status in the matched cohort.</p>
+<div class="pending-note">
+<p><strong>Open:</strong> how the matched design enters the model (for example robust variance clustered by matched set) and whether covariates are added (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/14">#14</a>).</p>
+</div></li>
+<li><p><strong>Secondary analyses:</strong></p>
+<ul>
+<li>infection-related graft loss in the first year (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/1">#1</a>);</li>
+<li>center experience with transplantation in recipients with HIV (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/4">#4</a>);</li>
+<li>pooled kidney–pancreas and pancreas-alone analysis (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/5">#5</a>).</li>
+</ul></li>
+<li><p><strong>Center volume:</strong> transplants per center per calendar year. Kidney–pancreas centers are grouped as low (1–6), medium (7–13) or high (14 or more), and pancreas-alone centers as low (1–3), medium (4–10) or high (11 or more), following published tertiles <span class="citation" data-cites="alhamad2017volume">(<a href="#ref-alhamad2017volume" role="doc-biblioref">Alhamad et al. 2017</a>)</span>. That study grouped each center’s average annual volume over the study period, not its volume in each year. Kidney center volume is grouped by quartiles following <span class="citation" data-cites="sonnenberg2019volume">(<a href="#ref-sonnenberg2019volume" role="doc-biblioref">Sonnenberg et al. 2019</a>)</span>.</p>
+<div class="pending-note">
+<p><strong>Open:</strong> whether volume is counted per year or averaged over the period, and the kidney cut-points, which the 2024 script set at 65, 110 and 195 (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/4">#4</a>).</p>
+</div></li>
+<li><p><strong>Descriptive geography:</strong> the number of recipients with HIV by UNOS region of residence (<code>REC_PERM_STATE</code>), with pancreas transplant centers shown; no state-level map (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/3">#3</a>). Which centers are shown is open (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/6">#6</a>).</p></li>
+<li><p><strong>Concentration of care:</strong> Lorenz curves and Gini coefficients of transplants in recipients with HIV across centers, and transplants per year and number of centers per year.</p></li>
+<li><p><strong>Missing data:</strong> complete-case analysis unless stated otherwise in this plan.</p></li>
+<li><p><strong>Multiplicity:</strong> no adjustment; secondary analyses are reported as exploratory.</p></li>
+<li><p><strong>Software:</strong> R, with <code>sRtr</code> for SRTR files, <code>MatchIt</code> for matching and <code>survival</code> for time-to-event models.</p></li>
+</ul>
+</section>
+<section id="9-sensitivity-analyses" class="level2">
+<h2 class="anchored" data-anchor-id="9-sensitivity-analyses">9. Sensitivity analyses</h2>
+<ul>
+<li>Transplants from 2014 onwards only, testing whether the comparison holds in the recent era (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/2">#2</a>).</li>
+</ul>
+</section>
+<section id="10-disclosure-control" class="level2">
+<h2 class="anchored" data-anchor-id="10-disclosure-control">10. Disclosure control</h2>
+<p>Outputs follow the SRTR data use agreement, and tables, figures and maps stay out of the public repository until reviewed against it.</p>
+<div class="pending-note">
+<p><strong>Open:</strong> the small-cell rule that applies, including flowchart boxes, risk tables and regional counts (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/15">#15</a>).</p>
+</div>
+</section>
+<section id="11-limitations-to-address-in-reporting" class="level2">
+<h2 class="anchored" data-anchor-id="11-limitations-to-address-in-reporting">11. Limitations to address in reporting</h2>
+<ul>
+<li>Small number of recipients with HIV, limiting precision and the number of matching variables.</li>
+<li>Registry follow-up forms date events by the form, not the event.</li>
+<li>HIV-related variables (viral load, CD4 count, antiretroviral regimen) are not in the SAF.</li>
+<li>Residual confounding by center selection practices.</li>
+</ul>
+</section>
+<section id="12-reporting-map" class="level2">
+<h2 class="anchored" data-anchor-id="12-reporting-map">12. Reporting map</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Checklist item</th>
+<th>Topic</th>
+<th>Plan section</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>STROBE 1 / RECORD 1.1–1.3</td>
+<td>Title, abstract, data source and database type</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>STROBE 2–3</td>
+<td>Background and objectives</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>STROBE 4</td>
+<td>Study design</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>STROBE 5</td>
+<td>Setting, dates of data</td>
+<td>3, 4</td>
+</tr>
+<tr class="odd">
+<td>STROBE 6 / RECORD 6.1–6.3</td>
+<td>Eligibility, selection codes and algorithms, linkage</td>
+<td>4, 5</td>
+</tr>
+<tr class="even">
+<td>STROBE 7 / RECORD 7.1</td>
+<td>Variables, codes and algorithms</td>
+<td>5, 7</td>
+</tr>
+<tr class="odd">
+<td>STROBE 8</td>
+<td>Data sources and measurement</td>
+<td>3, 5, 7</td>
+</tr>
+<tr class="even">
+<td>STROBE 9</td>
+<td>Bias</td>
+<td>6, 11</td>
+</tr>
+<tr class="odd">
+<td>STROBE 10</td>
+<td>Study size</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>STROBE 11</td>
+<td>Quantitative variables</td>
+<td>5, 8</td>
+</tr>
+<tr class="odd">
+<td>STROBE 12 / RECORD 12.1–12.2</td>
+<td>Statistical methods, data access and cleaning, linkage</td>
+<td>6, 8, 9</td>
+</tr>
+<tr class="even">
+<td>STROBE 13 / RECORD 13.1</td>
+<td>Participants and flow</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>STROBE 14–17</td>
+<td>Descriptive data, outcomes, main and other results</td>
+<td>7, 8</td>
+</tr>
+<tr class="even">
+<td>STROBE 19 / RECORD 19.1</td>
+<td>Limitations</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td>STROBE 22 / RECORD 22.1</td>
+<td>Funding, access to data and code</td>
+<td>3, 10</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-alhamad2017volume" class="csl-entry" role="listitem">
+Alhamad, Tarek, Andrew F Malone, Daniel C Brennan, et al. 2017. <span>“Transplant Center Volume and the Risk of Pancreas Allograft Failure.”</span> <em>Transplantation</em> 101 (11): 2757–64. <a href="https://doi.org/10.1097/TP.0000000000001628">https://doi.org/10.1097/TP.0000000000001628</a>.
+</div>
+<div id="ref-axelrod2010pdri" class="csl-entry" role="listitem">
+Axelrod, D A, R S Sung, K H Meyer, R A Wolfe, and D B Kaufman. 2010. <span>“Systematic Evaluation of Pancreas Allograft Quality, Outcomes and Geographic Variation in Utilization.”</span> <em>American Journal of Transplantation</em> 10 (4): 837–45. <a href="https://doi.org/10.1111/j.1600-6143.2009.02996.x">https://doi.org/10.1111/j.1600-6143.2009.02996.x</a>.
+</div>
+<div id="ref-benchimol2015record" class="csl-entry" role="listitem">
+<span class="nocase">Benchimol, Eric I, Liam Smeeth, Astrid Guttmann, et al.</span> 2015. <span>“The <span>REporting</span> of Studies <span>Conducted</span> Using <span class="nocase">Observational Routinely-collected</span> Health <span>Data</span> (<span>RECORD</span>) Statement.”</span> <em>PLoS Medicine</em> 12 (10): e1001885. <a href="https://doi.org/10.1371/journal.pmed.1001885">https://doi.org/10.1371/journal.pmed.1001885</a>.
+</div>
+<div id="ref-vonelm2007strobe" class="csl-entry" role="listitem">
+<span class="nocase">Elm, Erik von, Douglas G Altman, Matthias Egger, et al.</span> 2007. <span>“The <span class="nocase">Strengthening the Reporting of Observational Studies in Epidemiology (STROBE)</span> Statement: Guidelines for Reporting Observational Studies.”</span> <em>Lancet</em> 370 (9596): 1453–57. <a href="https://doi.org/10.1016/S0140-6736(07)61602-X">https://doi.org/10.1016/S0140-6736(07)61602-X</a>.
+</div>
+<div id="ref-sonnenberg2019volume" class="csl-entry" role="listitem">
+Sonnenberg, Elizabeth M, Jordana B Cohen, Jesse Y Hsu, et al. 2019. <span>“Association of Kidney Transplant Center Volume with 3-Year Clinical Outcomes.”</span> <em>American Journal of Kidney Diseases</em> 74 (4): 441–51. <a href="https://doi.org/10.1053/j.ajkd.2019.02.019">https://doi.org/10.1053/j.ajkd.2019.02.019</a>.
+</div>
+</div>
+
+
+<!-- -->
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/vagishhemmige\.github\.io\/HIV-pancreas-2024-srtr");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation column-body" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+      <a href="../quarto/study_methods.html" class="pagination-link" aria-label="Study design and methods">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Study design and methods</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../quarto/architecture.html" class="pagination-link" aria-label="Architecture">
+        <span class="nav-page-text">Architecture</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">pagetitle:</span><span class="co"> "Analysis plan"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">from:</span><span class="co"> markdown+gfm_auto_identifiers</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">This page only shows analysis-plan.md from the repository root, which is the one source:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">edit that file, not this page. Its first heading is the page title.</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">The plan links its own sections GitHub's way (for example #3-design). Quarto's</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">default heading IDs drop leading numbers (#design), so `from:` above</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">gives this page GitHub-style IDs and those links work on both.</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">--&gt;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>{{&lt; include ../analysis-plan.md &gt;}}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/edit/main/quarto/analysis-plan.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
