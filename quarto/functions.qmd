@@ -1,0 +1,112 @@
+---
+title: "Functions"
+format: html
+---
+
+This script defines the helper functions used by the analysis scripts. Several stand in for sRtr functions that are planned but not yet written; each names the sRtr issue that will replace it. Every function is tested on synthetic data in `tests/testthat/test-functions.R`.
+
+::: {.Rcode title="Source code"}
+The full R script is available at:
+
+-   [`R/functions.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/R/functions.R)
+
+This R script file is itself reliant on the following helper files:
+
+-   [`R/setup.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/R/setup.R)
+
+The code sections below are imported directly from that script when this page is rendered.
+:::
+
+```{r}
+#| include: false
+#| eval: true
+#| cache: false
+knitr::read_chunk("../R/functions.R")
+```
+
+## Reading SRTR codes
+
+sRtr labels coded values as "code: meaning". This function returns the numeric code from either form, so code lists can be matched against the SRTR formats whether or not the labels have been applied.
+
+```{r}
+#| label: srtr-code
+#| eval: false
+```
+
+## Diagnosis group
+
+Groups the primary diagnosis into type 1 diabetes, type 2 diabetes and other, using the codes in the plan. It will move to the planned sRtr code-grouping function ([sRtr#2](https://github.com/VagishHemmige/sRtr/issues/2)).
+
+```{r}
+#| label: diagnosis-group
+#| eval: false
+```
+
+## Missing preservation time
+
+Fills missing pancreas preservation time before the PDRI is calculated, by one of three rules.
+
+**Decision pending:** which rule applies ([#10](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/10)).
+
+```{r}
+#| label: impute-preservation-time
+#| eval: false
+```
+
+## Center volume
+
+Counts transplants per center per calendar year from a whole transplant file, optionally within a subgroup such as recipients with HIV, and groups the counts by cut-points. It will move to sRtr ([sRtr#52](https://github.com/VagishHemmige/sRtr/issues/52)).
+
+```{r}
+#| label: center-volume
+#| eval: false
+```
+
+## Induction therapy
+
+Flags, for each transplant, whether it received each class of induction drug.
+
+**Decision pending:** which drugs count, and whether only drugs recorded as induction count ([#11](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/11)). The function will move to sRtr ([sRtr#51](https://github.com/VagishHemmige/sRtr/issues/51)).
+
+```{r}
+#| label: induction-flags
+#| eval: false
+```
+
+## Weights for the average effect among recipients with HIV
+
+Inverse probability weights for the plan's estimand: 1 for recipients with HIV, and the propensity score divided by one minus it for recipients without HIV, with optional truncation.
+
+**Decision pending:** stabilization and truncation ([#21](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/21)).
+
+```{r}
+#| label: att-weights
+#| eval: false
+```
+
+## Balance
+
+Standardized mean differences between recipients with and without HIV, with or without weights, for each variable or each level of a categorical variable.
+
+```{r}
+#| label: weighted-smd
+#| eval: false
+```
+
+## Concentration across centers
+
+Points of a Lorenz curve and the Gini coefficient for counts across transplant centers.
+
+```{r}
+#| label: lorenz-gini
+#| eval: false
+```
+
+## Follow-up dates
+
+First rejection and malignancy dates from the follow-up files through sRtr, with the output columns fixed so they do not depend on which organs had a rejection ([sRtr#16](https://github.com/VagishHemmige/sRtr/issues/16)).
+
+```{r}
+#| label: followup-dates
+#| eval: false
+```

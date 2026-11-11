@@ -33,3 +33,5 @@ Four documents describe the project. In short: the plan is the scientific intent
 ## Pages
 
 -   [**Study design and methods**](study_methods.qmd): what the study chose and why, in plain language, with the decisions still open.
+-   [**Setup**](setup.qmd): packages and shared constants, including the provisional values of open decisions.
+-   [**Functions**](functions.qmd): reusable helper functions, each tested on synthetic data.
