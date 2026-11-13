@@ -13,7 +13,7 @@ Vagish Hemmige makes the scientific decisions for the project. Open decisions ar
 
 ## This repository
 
-The analysis will run as a series of scripts, sourced in order by `R/main.R`, that load the SRTR files through the [sRtr](https://github.com/VagishHemmige/sRtr) package. SRTR data are available only to authorized users under the SRTR data use agreement, so neither the data nor any output derived from them is stored in this repository.
+The analysis will run as a series of scripts, sourced in order by `R/main.R`, that load the SRTR files through the [{sRtr}](https://github.com/VagishHemmige/sRtr) package. SRTR data are available only to authorized users under the SRTR data use agreement, so neither the data nor any output derived from them is stored in this repository.
 
 Contributions follow the rules in [`AGENTS.md`](agents.qmd); known issues and open decisions are tracked in [Issues](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues).
 

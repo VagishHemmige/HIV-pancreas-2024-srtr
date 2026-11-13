@@ -22,7 +22,7 @@ knitr::read_chunk("../R/setup.R")
 
 ## Packages
 
-The SRTR files are loaded and labelled through [sRtr](https://github.com/VagishHemmige/sRtr), which also provides the PDRI, composite death date and time-to-event helpers. The cohort is built with flowchart so the flow diagram and the analytic data come from the same code; matching uses MatchIt; outcome models use survival; tables use gtsummary and survival curves ggsurvfit.
+The SRTR files are loaded and labelled through [{sRtr}](https://github.com/VagishHemmige/sRtr), which also provides the PDRI, composite death date and time-to-event helpers. The cohort is built with flowchart so the flow diagram and the analytic data come from the same code; matching uses [{MatchIt}](https://kosukeimai.github.io/MatchIt/); outcome models use survival; tables use [{gtsummary}](https://www.danieldsjoberg.com/gtsummary/) and [{survival}](https://CRAN.R-project.org/package=survival) curves [{ggsurvfit}](https://www.danieldsjoberg.com/ggsurvfit/).
 
 ```{r}
 #| label: load-packages
