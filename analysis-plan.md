@@ -41,7 +41,7 @@ recipients without HIV. The weights target the same estimand.
 ## 3. Data source
 
 - **Database:** Scientific Registry of Transplant Recipients (SRTR) standard analysis files
-  (SAF), accessed under the SRTR data use agreement through the `sRtr` package.
+  (SAF), accessed under the SRTR data use agreement through the [{sRtr}](https://vagishhemmige.github.io/sRtr/) package.
 - **Release:** the 2024 script used the March 2023 release (2303).
 
   **Open:** which release the updated analysis uses ([#8](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/8)).
@@ -190,7 +190,7 @@ follow-up are handled ([#13](https://github.com/VagishHemmige/HIV-pancreas-2024-
   with HIV across centers, and transplants per year and number of centers per year.
 - **Missing data:** complete-case analysis unless stated otherwise in this plan.
 - **Multiplicity:** no adjustment; secondary analyses are reported as exploratory.
-- **Software:** R, with `sRtr` for SRTR files, `MatchIt` for matching and `survival` for
+- **Software:** R, with {sRtr} for SRTR files, [{MatchIt}](https://kosukeimai.github.io/MatchIt/) for matching and [{survival}](https://CRAN.R-project.org/package=survival) for
   time-to-event models.
 
 ## 9. Sensitivity analyses

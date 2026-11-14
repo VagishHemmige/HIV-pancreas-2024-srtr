@@ -3,7 +3,7 @@ title: "Functions"
 format: html
 ---
 
-This script defines the helper functions used by the analysis scripts. Several stand in for sRtr functions that are planned but not yet written; each names the sRtr issue that will replace it. Every function is tested on synthetic data in [`tests/testthat/test-functions.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/tests/testthat/test-functions.R). Each section ends by linking the scripts that use it; those scripts are still exploratory, so they link to GitHub rather than to pages of their own.
+This script defines the helper functions used by the analysis scripts. Several stand in for [{sRtr}](https://vagishhemmige.github.io/sRtr/) functions that are planned but not yet written; each names the {sRtr} issue that will replace it. Every function is tested on synthetic data in [`tests/testthat/test-functions.R`](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/tests/testthat/test-functions.R). Each section ends by linking the scripts that use it; those scripts are still exploratory, so they link to GitHub rather than to pages of their own.
 
 ::: {.Rcode title="Source code"}
 The full R script is available at:
@@ -26,7 +26,7 @@ knitr::read_chunk("../R/functions.R")
 
 ## Reading SRTR codes
 
-sRtr labels coded values as "code: meaning". This function returns the numeric code from either form, so code lists can be matched against the SRTR formats whether or not the labels have been applied.
+{sRtr} labels coded values as "code: meaning". This function returns the numeric code from either form, so code lists can be matched against the SRTR formats whether or not the labels have been applied.
 
 ```{r}
 #| label: srtr-code
@@ -37,7 +37,7 @@ sRtr labels coded values as "code: meaning". This function returns the numeric c
 
 ## Diagnosis group
 
-Groups the primary diagnosis into type 1 diabetes, type 2 diabetes and other, using the codes in the plan. It will move to the planned sRtr code-grouping function ([sRtr#2](https://github.com/VagishHemmige/sRtr/issues/2)).
+Groups the primary diagnosis into type 1 diabetes, type 2 diabetes and other, using the codes in the plan. It will move to the planned {sRtr} code-grouping function ([{sRtr}#2](https://github.com/VagishHemmige/sRtr/issues/2)).
 
 ```{r}
 #| label: diagnosis-group
@@ -61,7 +61,7 @@ Fills missing pancreas preservation time before the PDRI is calculated, by one o
 
 ## Center volume
 
-Counts transplants per center per calendar year from a whole transplant file, optionally within a subgroup such as recipients with HIV, and groups the counts by cut-points. It will move to sRtr ([sRtr#52](https://github.com/VagishHemmige/sRtr/issues/52)).
+Counts transplants per center per calendar year from a whole transplant file, optionally within a subgroup such as recipients with HIV, and groups the counts by cut-points. It will move to {sRtr} ([{sRtr}#52](https://github.com/VagishHemmige/sRtr/issues/52)).
 
 ```{r}
 #| label: center-volume
@@ -74,7 +74,7 @@ Counts transplants per center per calendar year from a whole transplant file, op
 
 Flags, for each transplant, whether it received each class of induction drug.
 
-**Decision pending:** which drugs count, and whether only drugs recorded as induction count ([#11](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/11)). The function will move to sRtr ([sRtr#51](https://github.com/VagishHemmige/sRtr/issues/51)).
+**Decision pending:** which drugs count, and whether only drugs recorded as induction count ([#11](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/11)). The function will move to {sRtr} ([{sRtr}#51](https://github.com/VagishHemmige/sRtr/issues/51)).
 
 ```{r}
 #| label: induction-flags
@@ -120,7 +120,7 @@ Points of a Lorenz curve and the Gini coefficient for counts across transplant c
 
 ## Follow-up dates
 
-First rejection and malignancy dates from the follow-up files through sRtr, with the output columns fixed so they do not depend on which organs had a rejection ([sRtr#16](https://github.com/VagishHemmige/sRtr/issues/16)).
+First rejection and malignancy dates from the follow-up files through {sRtr}, with the output columns fixed so they do not depend on which organs had a rejection ([{sRtr}#16](https://github.com/VagishHemmige/sRtr/issues/16)).
 
 ```{r}
 #| label: followup-dates

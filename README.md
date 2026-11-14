@@ -18,7 +18,7 @@ standard analysis files, with recipients matched on a propensity score.
 
 This analysis is in progress. The repository currently holds the
 analysis plan and project structure; the code is being rebuilt on the
-[sRtr](https://github.com/VagishHemmige/sRtr) package.
+[{sRtr}](https://github.com/VagishHemmige/sRtr) package.
 
 The full analysis website, which explains the code step by step, is
 available at: <https://vagishhemmige.github.io/HIV-pancreas-2024-srtr/>
@@ -36,7 +36,7 @@ available at: <https://vagishhemmige.github.io/HIV-pancreas-2024-srtr/>
 
 Run `R/main.R` from the project root. Requires authorized access to the
 SRTR standard analysis files under the SRTR data use agreement, located
-through the sRtr package (`sRtr::set_srtr_wd()`). No SRTR data or
+through the {sRtr} package (`sRtr::set_srtr_wd()`). No SRTR data or
 outputs derived from them are stored in this repository.
 
 <!-- Results: add only when the figures and tables are cleared for public release. -->

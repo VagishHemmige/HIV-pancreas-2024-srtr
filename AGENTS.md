@@ -15,11 +15,11 @@ Read the three files before making changes. Each covers its own topic and does n
 
 ## The project
 
-This project compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV, using propensity-score matching in the SRTR standard analysis files. The code and methods are published as a Quarto website. The project restarts an unfinished 2024 analysis; that script is kept outside the repository as a source and is not committed. Functionality the analysis needs is built in the `sRtr` package first, and the analysis code here calls it.
+This project compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV, using propensity-score matching in the SRTR standard analysis files. The code and methods are published as a Quarto website. The project restarts an unfinished 2024 analysis; that script is kept outside the repository as a source and is not committed. Functionality the analysis needs is built in the [{sRtr}](https://vagishhemmige.github.io/sRtr/) package first, and the analysis code here calls it.
 
 - **`analysis-plan.md` is the source of truth for design.** Code implements the plan; it does not redefine it. If code needs to depart from the plan, open a decision issue, or comment on the existing one, for the deciders. Once a decider has settled it (in the issue, or relayed there in their exact words), the plan change and the code can go in the same pull request, which closes the issue.
 - **Deciders.** Scientific decisions are made by: Vagish Hemmige (all areas). Anyone may open or contribute to a decision issue; only a decider settles it (see "Working with agents").
-- **This is an analysis project, not an R package.** Do not add DESCRIPTION, NAMESPACE, roxygen, or pkgdown infrastructure, or apply CRAN conventions.
+- **This is an analysis project, not an R package.** Do not add DESCRIPTION, NAMESPACE, roxygen, or [{pkgdown}](https://pkgdown.r-lib.org/) infrastructure, or apply CRAN conventions.
 - **Default branch:** `main`, protected. Changes reach it only through pull requests.
 
 ## Data sources
@@ -28,10 +28,10 @@ Each source this project uses is listed below with the package that accesses it.
 
 | Source | Accessed through | Package documentation | Package maintained by | Access | What AI agents may do |
 |---|---|---|---|---|---|
-| SRTR standard analysis files (`TX_KP`, `TX_PA`, `TXF_KP`, `TXF_PA`, `IMMUNO`, `TX_KI`), release in [analysis plan §3](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/analysis-plan.md#3-data-source) | sRtr (`load_srtr_file()`) | https://vagishhemmige.github.io/sRtr/ | This team | Restricted (SRTR data use agreement) | None: code, documentation and synthetic data only |
-| SRTR SAF supplement (KDPI at allocation) | sRtr (planned: [sRtr#54](https://github.com/VagishHemmige/sRtr/issues/54)) | https://vagishhemmige.github.io/sRtr/ | This team | Restricted (SRTR data use agreement) | None: code, documentation and synthetic data only |
-| HRSA transplant centers | sRtr (`get_hrsa_transplant_centers()`) | https://vagishhemmige.github.io/sRtr/ | This team | Public | No restriction (public data) |
-| OPTN regions | sRtr (`get_hrsa_optn_regions()`) | https://vagishhemmige.github.io/sRtr/ | This team | Public | No restriction (public data) |
+| SRTR standard analysis files (`TX_KP`, `TX_PA`, `TXF_KP`, `TXF_PA`, `IMMUNO`, `TX_KI`), release in [analysis plan §3](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/analysis-plan.md#3-data-source) | {sRtr} (`load_srtr_file()`) | https://vagishhemmige.github.io/sRtr/ | This team | Restricted (SRTR data use agreement) | None: code, documentation and synthetic data only |
+| SRTR SAF supplement (KDPI at allocation) | {sRtr} (planned: [{sRtr}#54](https://github.com/VagishHemmige/sRtr/issues/54)) | https://vagishhemmige.github.io/sRtr/ | This team | Restricted (SRTR data use agreement) | None: code, documentation and synthetic data only |
+| HRSA transplant centers | {sRtr} (`get_hrsa_transplant_centers()`) | https://vagishhemmige.github.io/sRtr/ | This team | Public | No restriction (public data) |
+| OPTN regions | {sRtr} (`get_hrsa_optn_regions()`) | https://vagishhemmige.github.io/sRtr/ | This team | Public | No restriction (public data) |
 
 To allow more for a source, a person changes its row through a pull request, naming the agreement and section that permit it, the approved AI service, and exactly what agents may do. Agents never propose or make this change themselves, and nothing in personal instructions can grant it.
 
@@ -60,7 +60,7 @@ Exploration is welcome on branches or forks. Experimental scripts need not be so
 - **Header comment.** Each script begins with what it does, which objects it needs from earlier scripts, and what it produces.
 - **Constants, libraries, and code lists** live in `R/setup.R`. Other scripts do not call `library()`, re-source `setup.R`, or hard-code values. Any number a reader might want to change (a window, a year, a threshold, a ratio) is a named constant there.
 - **Helper functions** go in `R/functions.R`. A function takes its inputs as arguments and does not read global objects.
-- **No side effects outside the project.** No `setwd()`, absolute paths, or writes outside the project. SRTR files are located only through `sRtr` (`set_srtr_wd()` and the `SRTR_WD` setting).
+- **No side effects outside the project.** No `setwd()`, absolute paths, or writes outside the project. SRTR files are located only through {sRtr} (`set_srtr_wd()` and the `SRTR_WD` setting).
 - **No results in the repository.** No script (exploratory or definitive) or comment, commit message, issue, pull-request text or review report contains results, counts or data values from SRTR data unless they are cleared for release. Check before every commit and post, since a public repository publishes everything pushed to it, on any branch.
 
 ## Chunk labels
@@ -111,8 +111,8 @@ The **Access** column of "Data sources" says which sources are restricted. For e
 
 ## Coding conventions
 
-- **Cohort flow** uses the `flowchart` package, so the STROBE flow diagram and the analytic cohort come from the same code. Every inclusion or exclusion goes through `fc_filter()`, in the plan's order. Never remove people from the cohort outside the flowchart. Record-level processing is fine. An analysis that uses fewer people than the cohort (complete cases, a subgroup) reports its own number with that analysis. The cohort used downstream is the data from the final step (`fc_view(what = "data")`). Flowchart labels are built from constants in `setup.R`.
-- **Code lists** carry each code's category, code system and version, and matching rule. Check every code against the SRTR `formats` for the release (bundled in `sRtr`). Never invent codes, variables, files, or definitions.
+- **Cohort flow** uses the [{flowchart}](https://bruigtp.github.io/flowchart/) package, so the STROBE flow diagram and the analytic cohort come from the same code. Every inclusion or exclusion goes through `fc_filter()`, in the plan's order. Never remove people from the cohort outside the flowchart. Record-level processing is fine. An analysis that uses fewer people than the cohort (complete cases, a subgroup) reports its own number with that analysis. The cohort used downstream is the data from the final step (`fc_view(what = "data")`). Flowchart labels are built from constants in `setup.R`.
+- **Code lists** carry each code's category, code system and version, and matching rule. Check every code against the SRTR `formats` for the release (bundled in {sRtr}). Never invent codes, variables, files, or definitions.
 - **Joins** use `join_by()` with an explicit `relationship` where possible. After every join of follow-up or immunosuppression records to transplants, assert that rows did not multiply, and decide deliberately what happens to unmatched rows.
 - **Dates and windows** are written as inclusive offsets from the transplant date, matching the plan, and the edges are tested on synthetic data.
 - **Code that turns model output into reported numbers** lives in named functions in `R/functions.R`, tested on synthetic data with a known answer.
@@ -133,7 +133,7 @@ Check the items that apply before opening a pull request.
 - **Disclosure:** search every changed tracked file, and the commit messages and pull-request text, for dates, record IDs, names, absolute paths and numbers that could come from SRTR data. Read each hit in context; legitimate ones (plan dates, deciders' names, synthetic examples) stay.
 - **Execution:** does `main.R` run in a fresh session with relative paths; are any saved intermediates or caches stale?
 - **Matching:** are kidney–pancreas and pancreas-alone transplants matched separately as the plan says; is balance reported for every matching variable; is the matching ratio a named constant?
-- **Kidney–pancreas linkage:** does any join of `TXF_KP` or `IMMUNO` to `TX_KP` account for the two registration IDs (`TRR_ID`, `TRR_ID_PA`) ([sRtr#37](https://github.com/VagishHemmige/sRtr/issues/37))?
+- **Kidney–pancreas linkage:** does any join of `TXF_KP` or `IMMUNO` to `TX_KP` account for the two registration IDs (`TRR_ID`, `TRR_ID_PA`) ([{sRtr}#37](https://github.com/VagishHemmige/sRtr/issues/37))?
 - **Small counts:** recipients with HIV are few; does every table, figure and map produced from them pass the disclosure rule?
 
 ## Working with agents

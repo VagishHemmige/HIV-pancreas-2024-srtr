@@ -11,6 +11,8 @@ Transplantation is now standard care for people with HIV and end-stage kidney or
 
 This analysis compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV in the United States. It uses the Scientific Registry of Transplant Recipients (SRTR) standard analysis files, which cover every transplant performed in the country.
 
+[Braces](https://forum.posit.co/t/curly-braces-around-package-name-convention/122547) identify R packages throughout this site.
+
 ## Methods
 
 Recipients with HIV are compared with similar recipients without HIV of the same transplant type in two ways: by matching each to up to ten recipients without HIV, and by weighting all recipients without HIV to resemble those with HIV. Graft loss, rejection, death and cancer after transplant are then compared. [Study design and methods](quarto/study_methods.qmd) explains each step in plain language, and the authoritative specification is the [analysis plan](quarto/analysis-plan.qmd).
