@@ -84,7 +84,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e3a35904f429b4d0baa96e5eab7940c9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-7881209bc2a9289d3bb75d0acd3c394d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -113,15 +113,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-div.callout-Pending.callout {
-  border-left-color: #f0c400;
+div.callout-Rcode.callout {
+  border-left-color: #d63384;
 }
-div.callout-Pending.callout-style-default > .callout-header {
-  background-color: rgba(240, 196, 0, 0.13);
+div.callout-Rcode.callout-style-default > .callout-header {
+  background-color: rgba(214, 51, 132, 0.13);
 }
-div.callout-Pending .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pending.callout-titled .callout-icon::before {
-  content: '⏳';
+div.callout-Rcode .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode.callout-titled .callout-icon::before {
+  content: '💻';
   background-image: none;
 }
 div.callout-Results.callout {
@@ -135,15 +135,15 @@ div.callout-Results.callout-style-default .callout-icon::before, div.callout-Res
   content: '📊';
   background-image: none;
 }
-div.callout-Rcode.callout {
-  border-left-color: #d63384;
+div.callout-Pending.callout {
+  border-left-color: #f0c400;
 }
-div.callout-Rcode.callout-style-default > .callout-header {
-  background-color: rgba(214, 51, 132, 0.13);
+div.callout-Pending.callout-style-default > .callout-header {
+  background-color: rgba(240, 196, 0, 0.13);
 }
-div.callout-Rcode .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode.callout-titled .callout-icon::before {
-  content: '💻';
+div.callout-Pending .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pending.callout-titled .callout-icon::before {
+  content: '⏳';
   background-image: none;
 }
 </style>
@@ -358,7 +358,7 @@ div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode
 <p><span class="pending">Text highlighted like this</span> is provisional: it depends on a decision the analysis plan has not yet made.</p>
 </div>
 </div>
-<p>This script defines the helper functions used by the analysis scripts. Several stand in for sRtr functions that are planned but not yet written; each names the sRtr issue that will replace it. Every function is tested on synthetic data in <a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/tests/testthat/test-functions.R"><code>tests/testthat/test-functions.R</code></a>. Each section ends by linking the scripts that use it; those scripts are still exploratory, so they link to GitHub rather than to pages of their own.</p>
+<p>This script defines the helper functions used by the analysis scripts. Several stand in for <a href="https://vagishhemmige.github.io/sRtr/">{sRtr}</a> functions that are planned but not yet written; each names the {sRtr} issue that will replace it. Every function is tested on synthetic data in <a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/tests/testthat/test-functions.R"><code>tests/testthat/test-functions.R</code></a>. Each section ends by linking the scripts that use it; those scripts are still exploratory, so they link to GitHub rather than to pages of their own.</p>
 <div class="callout callout-style-default callout-Rcode callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -382,7 +382,7 @@ div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode
 </div>
 <section id="reading-srtr-codes" class="level2">
 <h2 class="anchored" data-anchor-id="reading-srtr-codes">Reading SRTR codes</h2>
-<p>sRtr labels coded values as “code: meaning”. This function returns the numeric code from either form, so code lists can be matched against the SRTR formats whether or not the labels have been applied.</p>
+<p>{sRtr} labels coded values as “code: meaning”. This function returns the numeric code from either form, so code lists can be matched against the SRTR formats whether or not the labels have been applied.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Click to show/hide R Code</summary>
@@ -404,7 +404,7 @@ div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode
 </section>
 <section id="diagnosis-group" class="level2">
 <h2 class="anchored" data-anchor-id="diagnosis-group">Diagnosis group</h2>
-<p>Groups the primary diagnosis into type 1 diabetes, type 2 diabetes and other, using the codes in the plan. It will move to the planned sRtr code-grouping function (<a href="https://github.com/VagishHemmige/sRtr/issues/2">sRtr#2</a>).</p>
+<p>Groups the primary diagnosis into type 1 diabetes, type 2 diabetes and other, using the codes in the plan. It will move to the planned {sRtr} code-grouping function (<a href="https://github.com/VagishHemmige/sRtr/issues/2">{sRtr}#2</a>).</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Click to show/hide R Code</summary>
@@ -450,7 +450,7 @@ div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode
 </section>
 <section id="center-volume" class="level2">
 <h2 class="anchored" data-anchor-id="center-volume">Center volume</h2>
-<p>Counts transplants per center per calendar year from a whole transplant file, optionally within a subgroup such as recipients with HIV, and groups the counts by cut-points. It will move to sRtr (<a href="https://github.com/VagishHemmige/sRtr/issues/52">sRtr#52</a>).</p>
+<p>Counts transplants per center per calendar year from a whole transplant file, optionally within a subgroup such as recipients with HIV, and groups the counts by cut-points. It will move to {sRtr} (<a href="https://github.com/VagishHemmige/sRtr/issues/52">{sRtr}#52</a>).</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Click to show/hide R Code</summary>
@@ -482,7 +482,7 @@ div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode
 <h2 class="anchored" data-anchor-id="induction-therapy">Induction therapy</h2>
 <p>Flags, for each transplant, whether it received each class of induction drug.</p>
 <div class="pending-note">
-<p><strong>Decision pending:</strong> which drugs count, and whether only drugs recorded as induction count (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/11">#11</a>). The function will move to sRtr (<a href="https://github.com/VagishHemmige/sRtr/issues/51">sRtr#51</a>).</p>
+<p><strong>Decision pending:</strong> which drugs count, and whether only drugs recorded as induction count (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/11">#11</a>). The function will move to {sRtr} (<a href="https://github.com/VagishHemmige/sRtr/issues/51">{sRtr}#51</a>).</p>
 </div>
 <div class="cell">
 <details class="code-fold">
@@ -621,7 +621,7 @@ div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode
 </section>
 <section id="follow-up-dates" class="level2">
 <h2 class="anchored" data-anchor-id="follow-up-dates">Follow-up dates</h2>
-<p>First rejection and malignancy dates from the follow-up files through sRtr, with the output columns fixed so they do not depend on which organs had a rejection (<a href="https://github.com/VagishHemmige/sRtr/issues/16">sRtr#16</a>).</p>
+<p>First rejection and malignancy dates from the follow-up files through {sRtr}, with the output columns fixed so they do not depend on which organs had a rejection (<a href="https://github.com/VagishHemmige/sRtr/issues/16">{sRtr}#16</a>).</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Click to show/hide R Code</summary>
@@ -1202,7 +1202,7 @@ div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>This script defines the helper functions used by the analysis scripts. Several stand in for sRtr functions that are planned but not yet written; each names the sRtr issue that will replace it. Every function is tested on synthetic data in <span class="co">[</span><span class="ot">`tests/testthat/test-functions.R`</span><span class="co">](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/tests/testthat/test-functions.R)</span>. Each section ends by linking the scripts that use it; those scripts are still exploratory, so they link to GitHub rather than to pages of their own.</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>This script defines the helper functions used by the analysis scripts. Several stand in for <span class="co">[</span><span class="ot">{sRtr}</span><span class="co">](https://vagishhemmige.github.io/sRtr/)</span> functions that are planned but not yet written; each names the {sRtr} issue that will replace it. Every function is tested on synthetic data in <span class="co">[</span><span class="ot">`tests/testthat/test-functions.R`</span><span class="co">](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/tests/testthat/test-functions.R)</span>. Each section ends by linking the scripts that use it; those scripts are still exploratory, so they link to GitHub rather than to pages of their own.</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>::: {.Rcode title="Source code"}</span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>The full R script is available at:</span>
@@ -1225,7 +1225,7 @@ div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode
 <span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reading SRTR codes</span></span>
 <span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>sRtr labels coded values as "code: meaning". This function returns the numeric code from either form, so code lists can be matched against the SRTR formats whether or not the labels have been applied.</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>{sRtr} labels coded values as "code: meaning". This function returns the numeric code from either form, so code lists can be matched against the SRTR formats whether or not the labels have been applied.</span>
 <span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: srtr-code</span></span>
@@ -1236,7 +1236,7 @@ div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode
 <span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## Diagnosis group</span></span>
 <span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>Groups the primary diagnosis into type 1 diabetes, type 2 diabetes and other, using the codes in the plan. It will move to the planned sRtr code-grouping function (<span class="co">[</span><span class="ot">sRtr#2</span><span class="co">](https://github.com/VagishHemmige/sRtr/issues/2)</span>).</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>Groups the primary diagnosis into type 1 diabetes, type 2 diabetes and other, using the codes in the plan. It will move to the planned {sRtr} code-grouping function (<span class="co">[</span><span class="ot">{sRtr}#2</span><span class="co">](https://github.com/VagishHemmige/sRtr/issues/2)</span>).</span>
 <span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: diagnosis-group</span></span>
@@ -1260,7 +1260,7 @@ div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode
 <span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## Center volume</span></span>
 <span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>Counts transplants per center per calendar year from a whole transplant file, optionally within a subgroup such as recipients with HIV, and groups the counts by cut-points. It will move to sRtr (<span class="co">[</span><span class="ot">sRtr#52</span><span class="co">](https://github.com/VagishHemmige/sRtr/issues/52)</span>).</span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>Counts transplants per center per calendar year from a whole transplant file, optionally within a subgroup such as recipients with HIV, and groups the counts by cut-points. It will move to {sRtr} (<span class="co">[</span><span class="ot">{sRtr}#52</span><span class="co">](https://github.com/VagishHemmige/sRtr/issues/52)</span>).</span>
 <span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: center-volume</span></span>
@@ -1273,7 +1273,7 @@ div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode
 <span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>Flags, for each transplant, whether it received each class of induction drug.</span>
 <span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>**Decision pending:** which drugs count, and whether only drugs recorded as induction count (<span class="co">[</span><span class="ot">#11</span><span class="co">](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/11)</span>). The function will move to sRtr (<span class="co">[</span><span class="ot">sRtr#51</span><span class="co">](https://github.com/VagishHemmige/sRtr/issues/51)</span>).</span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>**Decision pending:** which drugs count, and whether only drugs recorded as induction count (<span class="co">[</span><span class="ot">#11</span><span class="co">](https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/11)</span>). The function will move to {sRtr} (<span class="co">[</span><span class="ot">{sRtr}#51</span><span class="co">](https://github.com/VagishHemmige/sRtr/issues/51)</span>).</span>
 <span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: induction-flags</span></span>
@@ -1319,7 +1319,7 @@ div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode
 <span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a><span class="fu">## Follow-up dates</span></span>
 <span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a>First rejection and malignancy dates from the follow-up files through sRtr, with the output columns fixed so they do not depend on which organs had a rejection (<span class="co">[</span><span class="ot">sRtr#16</span><span class="co">](https://github.com/VagishHemmige/sRtr/issues/16)</span>).</span>
+<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a>First rejection and malignancy dates from the follow-up files through {sRtr}, with the output columns fixed so they do not depend on which organs had a rejection (<span class="co">[</span><span class="ot">{sRtr}#16</span><span class="co">](https://github.com/VagishHemmige/sRtr/issues/16)</span>).</span>
 <span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: followup-dates</span></span>

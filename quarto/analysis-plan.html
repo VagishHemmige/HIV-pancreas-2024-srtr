@@ -103,7 +103,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e3a35904f429b4d0baa96e5eab7940c9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-7881209bc2a9289d3bb75d0acd3c394d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -132,17 +132,6 @@ div.csl-indent {
   }
 }</script>
 <style>
-div.callout-Pending.callout {
-  border-left-color: #f0c400;
-}
-div.callout-Pending.callout-style-default > .callout-header {
-  background-color: rgba(240, 196, 0, 0.13);
-}
-div.callout-Pending .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pending.callout-titled .callout-icon::before {
-  content: '⏳';
-  background-image: none;
-}
 div.callout-Results.callout {
   border-left-color: #198754;
 }
@@ -152,6 +141,17 @@ div.callout-Results.callout-style-default > .callout-header {
 div.callout-Results .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
 div.callout-Results.callout-style-default .callout-icon::before, div.callout-Results.callout-titled .callout-icon::before {
   content: '📊';
+  background-image: none;
+}
+div.callout-Pending.callout {
+  border-left-color: #f0c400;
+}
+div.callout-Pending.callout-style-default > .callout-header {
+  background-color: rgba(240, 196, 0, 0.13);
+}
+div.callout-Pending .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pending.callout-titled .callout-icon::before {
+  content: '⏳';
   background-image: none;
 }
 div.callout-Rcode.callout {
@@ -417,7 +417,7 @@ gives this page GitHub-style IDs and those links work on both.
 <section id="3-data-source" class="level2">
 <h2 class="anchored" data-anchor-id="3-data-source">3. Data source</h2>
 <ul>
-<li><p><strong>Database:</strong> Scientific Registry of Transplant Recipients (SRTR) standard analysis files (SAF), accessed under the SRTR data use agreement through the <code>sRtr</code> package.</p></li>
+<li><p><strong>Database:</strong> Scientific Registry of Transplant Recipients (SRTR) standard analysis files (SAF), accessed under the SRTR data use agreement through the <a href="https://vagishhemmige.github.io/sRtr/">{sRtr}</a> package.</p></li>
 <li><p><strong>Release:</strong> the 2024 script used the March 2023 release (2303).</p>
 <div class="pending-note">
 <p><strong>Open:</strong> which release the updated analysis uses (<a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/issues/8">#8</a>).</p>
@@ -569,7 +569,7 @@ gives this page GitHub-style IDs and those links work on both.
 <li><p><strong>Concentration of care:</strong> Lorenz curves and Gini coefficients of transplants in recipients with HIV across centers, and transplants per year and number of centers per year.</p></li>
 <li><p><strong>Missing data:</strong> complete-case analysis unless stated otherwise in this plan.</p></li>
 <li><p><strong>Multiplicity:</strong> no adjustment; secondary analyses are reported as exploratory.</p></li>
-<li><p><strong>Software:</strong> R, with <code>sRtr</code> for SRTR files, <code>MatchIt</code> for matching and <code>survival</code> for time-to-event models.</p></li>
+<li><p><strong>Software:</strong> R, with {sRtr} for SRTR files, <a href="https://kosukeimai.github.io/MatchIt/">{MatchIt}</a> for matching and <a href="https://CRAN.R-project.org/package=survival">{survival}</a> for time-to-event models.</p></li>
 </ul>
 </section>
 <section id="9-sensitivity-analyses" class="level2">

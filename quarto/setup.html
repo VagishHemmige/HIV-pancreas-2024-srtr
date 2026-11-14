@@ -84,7 +84,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e3a35904f429b4d0baa96e5eab7940c9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-7881209bc2a9289d3bb75d0acd3c394d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -371,7 +371,7 @@ div.callout-Results.callout-style-default .callout-icon::before, div.callout-Res
 </div>
 <section id="packages" class="level2">
 <h2 class="anchored" data-anchor-id="packages">Packages</h2>
-<p>The SRTR files are loaded and labelled through <a href="https://github.com/VagishHemmige/sRtr">sRtr</a>, which also provides the PDRI, composite death date and time-to-event helpers. The cohort is built with flowchart so the flow diagram and the analytic data come from the same code; matching uses MatchIt; outcome models use survival; tables use gtsummary and survival curves ggsurvfit.</p>
+<p>The SRTR files are loaded and labelled through <a href="https://github.com/VagishHemmige/sRtr">{sRtr}</a>, which also provides the PDRI, composite death date and time-to-event helpers. The cohort is built with flowchart so the flow diagram and the analytic data come from the same code; matching uses <a href="https://kosukeimai.github.io/MatchIt/">{MatchIt}</a>; outcome models use survival; tables use <a href="https://www.danieldsjoberg.com/gtsummary/">{gtsummary}</a> and <a href="https://CRAN.R-project.org/package=survival">{survival}</a> curves <a href="https://www.danieldsjoberg.com/ggsurvfit/">{ggsurvfit}</a>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Click to show/hide R Code</summary>
@@ -1081,7 +1081,7 @@ div.callout-Results.callout-style-default .callout-icon::before, div.callout-Res
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Packages</span></span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>The SRTR files are loaded and labelled through <span class="co">[</span><span class="ot">sRtr</span><span class="co">](https://github.com/VagishHemmige/sRtr)</span>, which also provides the PDRI, composite death date and time-to-event helpers. The cohort is built with flowchart so the flow diagram and the analytic data come from the same code; matching uses MatchIt; outcome models use survival; tables use gtsummary and survival curves ggsurvfit.</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>The SRTR files are loaded and labelled through <span class="co">[</span><span class="ot">{sRtr}</span><span class="co">](https://github.com/VagishHemmige/sRtr)</span>, which also provides the PDRI, composite death date and time-to-event helpers. The cohort is built with flowchart so the flow diagram and the analytic data come from the same code; matching uses <span class="co">[</span><span class="ot">{MatchIt}</span><span class="co">](https://kosukeimai.github.io/MatchIt/)</span>; outcome models use survival; tables use <span class="co">[</span><span class="ot">{gtsummary}</span><span class="co">](https://www.danieldsjoberg.com/gtsummary/)</span> and <span class="co">[</span><span class="ot">{survival}</span><span class="co">](https://CRAN.R-project.org/package=survival)</span> curves <span class="co">[</span><span class="ot">{ggsurvfit}</span><span class="co">](https://www.danieldsjoberg.com/ggsurvfit/)</span>.</span>
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load-packages</span></span>

@@ -84,7 +84,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e3a35904f429b4d0baa96e5eab7940c9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-7881209bc2a9289d3bb75d0acd3c394d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -113,17 +113,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-div.callout-Rcode.callout {
-  border-left-color: #d63384;
-}
-div.callout-Rcode.callout-style-default > .callout-header {
-  background-color: rgba(214, 51, 132, 0.13);
-}
-div.callout-Rcode .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode.callout-titled .callout-icon::before {
-  content: '💻';
-  background-image: none;
-}
 div.callout-Pending.callout {
   border-left-color: #f0c400;
 }
@@ -133,6 +122,17 @@ div.callout-Pending.callout-style-default > .callout-header {
 div.callout-Pending .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
 div.callout-Pending.callout-style-default .callout-icon::before, div.callout-Pending.callout-titled .callout-icon::before {
   content: '⏳';
+  background-image: none;
+}
+div.callout-Rcode.callout {
+  border-left-color: #d63384;
+}
+div.callout-Rcode.callout-style-default > .callout-header {
+  background-color: rgba(214, 51, 132, 0.13);
+}
+div.callout-Rcode .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-Rcode.callout-style-default .callout-icon::before, div.callout-Rcode.callout-titled .callout-icon::before {
+  content: '💻';
   background-image: none;
 }
 div.callout-Results.callout {
@@ -387,11 +387,11 @@ edit that file, not this page. Its first heading is the page title.
 <p>Read the three files before making changes. Each covers its own topic and does not repeat the others.</p>
 <section id="the-project" class="level2">
 <h2 class="anchored" data-anchor-id="the-project">The project</h2>
-<p>This project compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV, using propensity-score matching in the SRTR standard analysis files. The code and methods are published as a Quarto website. The project restarts an unfinished 2024 analysis; that script is kept outside the repository as a source and is not committed. Functionality the analysis needs is built in the <code>sRtr</code> package first, and the analysis code here calls it.</p>
+<p>This project compares outcomes after kidney–pancreas and pancreas-alone transplantation between recipients with and without HIV, using propensity-score matching in the SRTR standard analysis files. The code and methods are published as a Quarto website. The project restarts an unfinished 2024 analysis; that script is kept outside the repository as a source and is not committed. Functionality the analysis needs is built in the <a href="https://vagishhemmige.github.io/sRtr/">{sRtr}</a> package first, and the analysis code here calls it.</p>
 <ul>
 <li><strong><code>analysis-plan.md</code> is the source of truth for design.</strong> Code implements the plan; it does not redefine it. If code needs to depart from the plan, open a decision issue, or comment on the existing one, for the deciders. Once a decider has settled it (in the issue, or relayed there in their exact words), the plan change and the code can go in the same pull request, which closes the issue.</li>
 <li><strong>Deciders.</strong> Scientific decisions are made by: Vagish Hemmige (all areas). Anyone may open or contribute to a decision issue; only a decider settles it (see “Working with agents”).</li>
-<li><strong>This is an analysis project, not an R package.</strong> Do not add DESCRIPTION, NAMESPACE, roxygen, or pkgdown infrastructure, or apply CRAN conventions.</li>
+<li><strong>This is an analysis project, not an R package.</strong> Do not add DESCRIPTION, NAMESPACE, roxygen, or <a href="https://pkgdown.r-lib.org/">{pkgdown}</a> infrastructure, or apply CRAN conventions.</li>
 <li><strong>Default branch:</strong> <code>main</code>, protected. Changes reach it only through pull requests.</li>
 </ul>
 </section>
@@ -412,7 +412,7 @@ edit that file, not this page. Its first heading is the page title.
 <tbody>
 <tr class="odd">
 <td>SRTR standard analysis files (<code>TX_KP</code>, <code>TX_PA</code>, <code>TXF_KP</code>, <code>TXF_PA</code>, <code>IMMUNO</code>, <code>TX_KI</code>), release in <a href="https://github.com/VagishHemmige/HIV-pancreas-2024-srtr/blob/main/analysis-plan.md#3-data-source">analysis plan §3</a></td>
-<td>sRtr (<code>load_srtr_file()</code>)</td>
+<td>{sRtr} (<code>load_srtr_file()</code>)</td>
 <td>https://vagishhemmige.github.io/sRtr/</td>
 <td>This team</td>
 <td>Restricted (SRTR data use agreement)</td>
@@ -420,7 +420,7 @@ edit that file, not this page. Its first heading is the page title.
 </tr>
 <tr class="even">
 <td>SRTR SAF supplement (KDPI at allocation)</td>
-<td>sRtr (planned: <a href="https://github.com/VagishHemmige/sRtr/issues/54">sRtr#54</a>)</td>
+<td>{sRtr} (planned: <a href="https://github.com/VagishHemmige/sRtr/issues/54">{sRtr}#54</a>)</td>
 <td>https://vagishhemmige.github.io/sRtr/</td>
 <td>This team</td>
 <td>Restricted (SRTR data use agreement)</td>
@@ -428,7 +428,7 @@ edit that file, not this page. Its first heading is the page title.
 </tr>
 <tr class="odd">
 <td>HRSA transplant centers</td>
-<td>sRtr (<code>get_hrsa_transplant_centers()</code>)</td>
+<td>{sRtr} (<code>get_hrsa_transplant_centers()</code>)</td>
 <td>https://vagishhemmige.github.io/sRtr/</td>
 <td>This team</td>
 <td>Public</td>
@@ -436,7 +436,7 @@ edit that file, not this page. Its first heading is the page title.
 </tr>
 <tr class="even">
 <td>OPTN regions</td>
-<td>sRtr (<code>get_hrsa_optn_regions()</code>)</td>
+<td>{sRtr} (<code>get_hrsa_optn_regions()</code>)</td>
 <td>https://vagishhemmige.github.io/sRtr/</td>
 <td>This team</td>
 <td>Public</td>
@@ -472,7 +472,7 @@ edit that file, not this page. Its first heading is the page title.
 <li><strong>Header comment.</strong> Each script begins with what it does, which objects it needs from earlier scripts, and what it produces.</li>
 <li><strong>Constants, libraries, and code lists</strong> live in <code>R/setup.R</code>. Other scripts do not call <code>library()</code>, re-source <code>setup.R</code>, or hard-code values. Any number a reader might want to change (a window, a year, a threshold, a ratio) is a named constant there.</li>
 <li><strong>Helper functions</strong> go in <code>R/functions.R</code>. A function takes its inputs as arguments and does not read global objects.</li>
-<li><strong>No side effects outside the project.</strong> No <code>setwd()</code>, absolute paths, or writes outside the project. SRTR files are located only through <code>sRtr</code> (<code>set_srtr_wd()</code> and the <code>SRTR_WD</code> setting).</li>
+<li><strong>No side effects outside the project.</strong> No <code>setwd()</code>, absolute paths, or writes outside the project. SRTR files are located only through {sRtr} (<code>set_srtr_wd()</code> and the <code>SRTR_WD</code> setting).</li>
 <li><strong>No results in the repository.</strong> No script (exploratory or definitive) or comment, commit message, issue, pull-request text or review report contains results, counts or data values from SRTR data unless they are cleared for release. Check before every commit and post, since a public repository publishes everything pushed to it, on any branch.</li>
 </ul>
 </section>
@@ -527,8 +527,8 @@ edit that file, not this page. Its first heading is the page title.
 <section id="coding-conventions" class="level2">
 <h2 class="anchored" data-anchor-id="coding-conventions">Coding conventions</h2>
 <ul>
-<li><strong>Cohort flow</strong> uses the <code>flowchart</code> package, so the STROBE flow diagram and the analytic cohort come from the same code. Every inclusion or exclusion goes through <code>fc_filter()</code>, in the plan’s order. Never remove people from the cohort outside the flowchart. Record-level processing is fine. An analysis that uses fewer people than the cohort (complete cases, a subgroup) reports its own number with that analysis. The cohort used downstream is the data from the final step (<code>fc_view(what = "data")</code>). Flowchart labels are built from constants in <code>setup.R</code>.</li>
-<li><strong>Code lists</strong> carry each code’s category, code system and version, and matching rule. Check every code against the SRTR <code>formats</code> for the release (bundled in <code>sRtr</code>). Never invent codes, variables, files, or definitions.</li>
+<li><strong>Cohort flow</strong> uses the <a href="https://bruigtp.github.io/flowchart/">{flowchart}</a> package, so the STROBE flow diagram and the analytic cohort come from the same code. Every inclusion or exclusion goes through <code>fc_filter()</code>, in the plan’s order. Never remove people from the cohort outside the flowchart. Record-level processing is fine. An analysis that uses fewer people than the cohort (complete cases, a subgroup) reports its own number with that analysis. The cohort used downstream is the data from the final step (<code>fc_view(what = "data")</code>). Flowchart labels are built from constants in <code>setup.R</code>.</li>
+<li><strong>Code lists</strong> carry each code’s category, code system and version, and matching rule. Check every code against the SRTR <code>formats</code> for the release (bundled in {sRtr}). Never invent codes, variables, files, or definitions.</li>
 <li><strong>Joins</strong> use <code>join_by()</code> with an explicit <code>relationship</code> where possible. After every join of follow-up or immunosuppression records to transplants, assert that rows did not multiply, and decide deliberately what happens to unmatched rows.</li>
 <li><strong>Dates and windows</strong> are written as inclusive offsets from the transplant date, matching the plan, and the edges are tested on synthetic data.</li>
 <li><strong>Code that turns model output into reported numbers</strong> lives in named functions in <code>R/functions.R</code>, tested on synthetic data with a known answer.</li>
@@ -550,7 +550,7 @@ edit that file, not this page. Its first heading is the page title.
 <li><strong>Disclosure:</strong> search every changed tracked file, and the commit messages and pull-request text, for dates, record IDs, names, absolute paths and numbers that could come from SRTR data. Read each hit in context; legitimate ones (plan dates, deciders’ names, synthetic examples) stay.</li>
 <li><strong>Execution:</strong> does <code>main.R</code> run in a fresh session with relative paths; are any saved intermediates or caches stale?</li>
 <li><strong>Matching:</strong> are kidney–pancreas and pancreas-alone transplants matched separately as the plan says; is balance reported for every matching variable; is the matching ratio a named constant?</li>
-<li><strong>Kidney–pancreas linkage:</strong> does any join of <code>TXF_KP</code> or <code>IMMUNO</code> to <code>TX_KP</code> account for the two registration IDs (<code>TRR_ID</code>, <code>TRR_ID_PA</code>) (<a href="https://github.com/VagishHemmige/sRtr/issues/37">sRtr#37</a>)?</li>
+<li><strong>Kidney–pancreas linkage:</strong> does any join of <code>TXF_KP</code> or <code>IMMUNO</code> to <code>TX_KP</code> account for the two registration IDs (<code>TRR_ID</code>, <code>TRR_ID_PA</code>) (<a href="https://github.com/VagishHemmige/sRtr/issues/37">{sRtr}#37</a>)?</li>
 <li><strong>Small counts:</strong> recipients with HIV are few; does every table, figure and map produced from them pass the disclosure rule?</li>
 </ul>
 </section>
